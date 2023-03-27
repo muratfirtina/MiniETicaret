@@ -1,0 +1,181 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Infrastructure/MiniETicaret.Persistence/MiniETicaret.Persistence.csproj": {}
+  },
+  "projects": {
+    "/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Core/MiniETicaret.Application/MiniETicaret.Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Core/MiniETicaret.Application/MiniETicaret.Application.csproj",
+        "projectName": "MiniETicaret.Application",
+        "projectPath": "/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Core/MiniETicaret.Application/MiniETicaret.Application.csproj",
+        "packagesPath": "/Users/muratfirtina/.nuget/packages/",
+        "outputPath": "/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Core/MiniETicaret.Application/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/muratfirtina/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Core/MiniETicaret.Domain/MiniETicaret.Domain.csproj": {
+                "projectPath": "/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Core/MiniETicaret.Domain/MiniETicaret.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.202/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Core/MiniETicaret.Domain/MiniETicaret.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Core/MiniETicaret.Domain/MiniETicaret.Domain.csproj",
+        "projectName": "MiniETicaret.Domain",
+        "projectPath": "/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Core/MiniETicaret.Domain/MiniETicaret.Domain.csproj",
+        "packagesPath": "/Users/muratfirtina/.nuget/packages/",
+        "outputPath": "/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Core/MiniETicaret.Domain/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/muratfirtina/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.202/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Infrastructure/MiniETicaret.Persistence/MiniETicaret.Persistence.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Infrastructure/MiniETicaret.Persistence/MiniETicaret.Persistence.csproj",
+        "projectName": "MiniETicaret.Persistence",
+        "projectPath": "/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Infrastructure/MiniETicaret.Persistence/MiniETicaret.Persistence.csproj",
+        "packagesPath": "/Users/muratfirtina/.nuget/packages/",
+        "outputPath": "/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Infrastructure/MiniETicaret.Persistence/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/muratfirtina/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Core/MiniETicaret.Application/MiniETicaret.Application.csproj": {
+                "projectPath": "/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Core/MiniETicaret.Application/MiniETicaret.Application.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.Extensions.DependencyInjection.Abstractions": {
+              "target": "Package",
+              "version": "[8.0.0-preview.2.23128.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.202/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "Q+Q+lBbY4IPIShJ4bCqnlIHiTREQmFrFS/Uj8NNLomMt3sK0DRu5gAPo87GrlGtnOo73ShfVhM+UH8yvwJC4yw==",
+  "success": true,
+  "projectFilePath": "/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Infrastructure/MiniETicaret.Persistence/MiniETicaret.Persistence.csproj",
+  "expectedPackageFiles": [
+    "/Users/muratfirtina/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/8.0.0-preview.2.23128.3/microsoft.extensions.dependencyinjection.abstractions.8.0.0-preview.2.23128.3.nupkg.sha512"
+  ],
+  "logs": []
+}

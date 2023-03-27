@@ -1,0 +1,15 @@
+/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Core/MiniETicaret.Application/bin/Debug/net6.0/MiniETicaret.Application.deps.json
+/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Core/MiniETicaret.Application/bin/Debug/net6.0/MiniETicaret.Application.dll
+/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Core/MiniETicaret.Application/bin/Debug/net6.0/MiniETicaret.Application.pdb
+/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Core/MiniETicaret.Application/bin/Debug/net6.0/MiniETicaret.Domain.dll
+/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Core/MiniETicaret.Application/bin/Debug/net6.0/MiniETicaret.Domain.pdb
+/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Core/MiniETicaret.Application/obj/Debug/net6.0/MiniETicaret.Application.csproj.AssemblyReference.cache
+/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Core/MiniETicaret.Application/obj/Debug/net6.0/MiniETicaret.Application.GeneratedMSBuildEditorConfig.editorconfig
+/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Core/MiniETicaret.Application/obj/Debug/net6.0/MiniETicaret.Application.AssemblyInfoInputs.cache
+/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Core/MiniETicaret.Application/obj/Debug/net6.0/MiniETicaret.Application.AssemblyInfo.cs
+/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Core/MiniETicaret.Application/obj/Debug/net6.0/MiniETicaret.Application.csproj.CoreCompileInputs.cache
+/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Core/MiniETicaret.Application/obj/Debug/net6.0/MiniETicaret.Application.csproj.CopyComplete
+/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Core/MiniETicaret.Application/obj/Debug/net6.0/MiniETicaret.Application.dll
+/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Core/MiniETicaret.Application/obj/Debug/net6.0/refint/MiniETicaret.Application.dll
+/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Core/MiniETicaret.Application/obj/Debug/net6.0/MiniETicaret.Application.pdb
+/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Core/MiniETicaret.Application/obj/Debug/net6.0/ref/MiniETicaret.Application.dll

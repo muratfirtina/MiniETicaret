@@ -1,0 +1,107 @@
+{
+  "version": 3,
+  "targets": {
+    "net6.0": {
+      "MiniETicaret.Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "MiniETicaret.Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/MiniETicaret.Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MiniETicaret.Application.dll": {}
+        }
+      },
+      "MiniETicaret.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/MiniETicaret.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MiniETicaret.Domain.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "MiniETicaret.Application/1.0.0": {
+      "type": "project",
+      "path": "../../Core/MiniETicaret.Application/MiniETicaret.Application.csproj",
+      "msbuildProject": "../../Core/MiniETicaret.Application/MiniETicaret.Application.csproj"
+    },
+    "MiniETicaret.Domain/1.0.0": {
+      "type": "project",
+      "path": "../../Core/MiniETicaret.Domain/MiniETicaret.Domain.csproj",
+      "msbuildProject": "../../Core/MiniETicaret.Domain/MiniETicaret.Domain.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net6.0": [
+      "MiniETicaret.Application >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "/Users/muratfirtina/.nuget/packages/": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Infrastructure/MiniETicaret.Infrastructure/MiniETicaret.Infrastructure.csproj",
+      "projectName": "MiniETicaret.Infrastructure",
+      "projectPath": "/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Infrastructure/MiniETicaret.Infrastructure/MiniETicaret.Infrastructure.csproj",
+      "packagesPath": "/Users/muratfirtina/.nuget/packages/",
+      "outputPath": "/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Infrastructure/MiniETicaret.Infrastructure/obj/",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "/Users/muratfirtina/.nuget/NuGet/NuGet.Config"
+      ],
+      "originalTargetFrameworks": [
+        "net6.0"
+      ],
+      "sources": {
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "projectReferences": {
+            "/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Core/MiniETicaret.Application/MiniETicaret.Application.csproj": {
+              "projectPath": "/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Core/MiniETicaret.Application/MiniETicaret.Application.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net6.0": {
+        "targetAlias": "net6.0",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.202/RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

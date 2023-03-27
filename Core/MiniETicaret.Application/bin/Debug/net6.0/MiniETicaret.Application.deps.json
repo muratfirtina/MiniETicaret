@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "MiniETicaret.Application/1.0.0": {
+        "dependencies": {
+          "MiniETicaret.Domain": "1.0.0"
+        },
+        "runtime": {
+          "MiniETicaret.Application.dll": {}
+        }
+      },
+      "MiniETicaret.Domain/1.0.0": {
+        "runtime": {
+          "MiniETicaret.Domain.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "MiniETicaret.Application/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "MiniETicaret.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
