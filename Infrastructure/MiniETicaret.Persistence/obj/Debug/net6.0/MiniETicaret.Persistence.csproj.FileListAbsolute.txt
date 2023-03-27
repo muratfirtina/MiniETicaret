@@ -15,3 +15,5 @@
 /Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Infrastructure/MiniETicaret.Persistence/obj/Debug/net6.0/refint/MiniETicaret.Persistence.dll
 /Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Infrastructure/MiniETicaret.Persistence/obj/Debug/net6.0/MiniETicaret.Persistence.pdb
 /Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Infrastructure/MiniETicaret.Persistence/obj/Debug/net6.0/ref/MiniETicaret.Persistence.dll
+/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Infrastructure/MiniETicaret.Persistence/bin/Debug/net6.0/MiniETicaret.Persistence.runtimeconfig.json
+/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Infrastructure/MiniETicaret.Persistence/obj/Debug/net6.0/MiniETicaret.Persistence.genruntimeconfig.cache
