@@ -913,12 +913,54 @@
           }
         }
       },
+      "Microsoft.Extensions.Configuration/8.0.0-preview.2.23128.3": {
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.Abstractions": "8.0.0-preview.2.23128.3",
+          "Microsoft.Extensions.Primitives": "8.0.0-preview.2.23128.3"
+        },
+        "runtime": {
+          "lib/net6.0/Microsoft.Extensions.Configuration.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.0.23.12803"
+          }
+        }
+      },
       "Microsoft.Extensions.Configuration.Abstractions/8.0.0-preview.2.23128.3": {
         "dependencies": {
           "Microsoft.Extensions.Primitives": "8.0.0-preview.2.23128.3"
         },
         "runtime": {
           "lib/net6.0/Microsoft.Extensions.Configuration.Abstractions.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.0.23.12803"
+          }
+        }
+      },
+      "Microsoft.Extensions.Configuration.FileExtensions/8.0.0-preview.2.23128.3": {
+        "dependencies": {
+          "Microsoft.Extensions.Configuration": "8.0.0-preview.2.23128.3",
+          "Microsoft.Extensions.Configuration.Abstractions": "8.0.0-preview.2.23128.3",
+          "Microsoft.Extensions.FileProviders.Abstractions": "8.0.0-preview.2.23128.3",
+          "Microsoft.Extensions.FileProviders.Physical": "8.0.0-preview.2.23128.3",
+          "Microsoft.Extensions.Primitives": "8.0.0-preview.2.23128.3"
+        },
+        "runtime": {
+          "lib/net6.0/Microsoft.Extensions.Configuration.FileExtensions.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.0.23.12803"
+          }
+        }
+      },
+      "Microsoft.Extensions.Configuration.Json/8.0.0-preview.2.23128.3": {
+        "dependencies": {
+          "Microsoft.Extensions.Configuration": "8.0.0-preview.2.23128.3",
+          "Microsoft.Extensions.Configuration.Abstractions": "8.0.0-preview.2.23128.3",
+          "Microsoft.Extensions.Configuration.FileExtensions": "8.0.0-preview.2.23128.3",
+          "Microsoft.Extensions.FileProviders.Abstractions": "8.0.0-preview.2.23128.3",
+          "System.Text.Json": "8.0.0-preview.2.23128.3"
+        },
+        "runtime": {
+          "lib/net6.0/Microsoft.Extensions.Configuration.Json.dll": {
             "assemblyVersion": "8.0.0.0",
             "fileVersion": "8.0.23.12803"
           }
@@ -950,6 +992,38 @@
         },
         "runtime": {
           "lib/net6.0/Microsoft.Extensions.DependencyModel.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.0.23.12803"
+          }
+        }
+      },
+      "Microsoft.Extensions.FileProviders.Abstractions/8.0.0-preview.2.23128.3": {
+        "dependencies": {
+          "Microsoft.Extensions.Primitives": "8.0.0-preview.2.23128.3"
+        },
+        "runtime": {
+          "lib/net6.0/Microsoft.Extensions.FileProviders.Abstractions.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.0.23.12803"
+          }
+        }
+      },
+      "Microsoft.Extensions.FileProviders.Physical/8.0.0-preview.2.23128.3": {
+        "dependencies": {
+          "Microsoft.Extensions.FileProviders.Abstractions": "8.0.0-preview.2.23128.3",
+          "Microsoft.Extensions.FileSystemGlobbing": "8.0.0-preview.2.23128.3",
+          "Microsoft.Extensions.Primitives": "8.0.0-preview.2.23128.3"
+        },
+        "runtime": {
+          "lib/net6.0/Microsoft.Extensions.FileProviders.Physical.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.0.23.12803"
+          }
+        }
+      },
+      "Microsoft.Extensions.FileSystemGlobbing/8.0.0-preview.2.23128.3": {
+        "runtime": {
+          "lib/net6.0/Microsoft.Extensions.FileSystemGlobbing.dll": {
             "assemblyVersion": "8.0.0.0",
             "fileVersion": "8.0.23.12803"
           }
@@ -2349,6 +2423,8 @@
         "dependencies": {
           "EntityFramework": "6.4.4",
           "Microsoft.EntityFrameworkCore": "8.0.0-preview.2.23128.3",
+          "Microsoft.Extensions.Configuration": "8.0.0-preview.2.23128.3",
+          "Microsoft.Extensions.Configuration.Json": "8.0.0-preview.2.23128.3",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0-preview.2.23128.3",
           "MiniETicaret.Application": "1.0.0",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "8.0.0-preview.2"
@@ -2610,12 +2686,33 @@
       "path": "microsoft.extensions.caching.memory/8.0.0-preview.2.23128.3",
       "hashPath": "microsoft.extensions.caching.memory.8.0.0-preview.2.23128.3.nupkg.sha512"
     },
+    "Microsoft.Extensions.Configuration/8.0.0-preview.2.23128.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-dS4afNApnpNVdxjrWC0e2Lkk1LXMFV5N5mPMaPFrynO45UHpxaoB9FmMpATcvRLSVBzoIfRYE5X1b7rpZcqYOg==",
+      "path": "microsoft.extensions.configuration/8.0.0-preview.2.23128.3",
+      "hashPath": "microsoft.extensions.configuration.8.0.0-preview.2.23128.3.nupkg.sha512"
+    },
     "Microsoft.Extensions.Configuration.Abstractions/8.0.0-preview.2.23128.3": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-Wt4g8AAXsVyzIQWaSYhONMnTjmQVQqAKbcGXa14d7tgaKiFFE0nYKzFtChQj9Tf3m3EI9HeqIAFz3ju5AjshtA==",
       "path": "microsoft.extensions.configuration.abstractions/8.0.0-preview.2.23128.3",
       "hashPath": "microsoft.extensions.configuration.abstractions.8.0.0-preview.2.23128.3.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Configuration.FileExtensions/8.0.0-preview.2.23128.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-0tRjekij2Nu0yChg0jskMKAFVboKfcgSJZlBvjml199wbvx5simg8PYvB2pg3jqT0JsByvwIxqEtXu8hZlQc1A==",
+      "path": "microsoft.extensions.configuration.fileextensions/8.0.0-preview.2.23128.3",
+      "hashPath": "microsoft.extensions.configuration.fileextensions.8.0.0-preview.2.23128.3.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Configuration.Json/8.0.0-preview.2.23128.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-BlwFzBs4HrkIkMPWY152L2B42/32/53x+OGZWIfdaPGNDJtSJfFocOIIszjIbYjnYiZJNLeXrfHtTtYDT5uaeA==",
+      "path": "microsoft.extensions.configuration.json/8.0.0-preview.2.23128.3",
+      "hashPath": "microsoft.extensions.configuration.json.8.0.0-preview.2.23128.3.nupkg.sha512"
     },
     "Microsoft.Extensions.DependencyInjection/8.0.0-preview.2.23128.3": {
       "type": "package",
@@ -2637,6 +2734,27 @@
       "sha512": "sha512-4aGdmIvVMcFa0+4IZTYYbPqqP1nXSOmjxI9F/UxU1eB6Gbxs/iwA7cKU6l9ykXFFhtVubsZIMOBU4zBwLEt+aA==",
       "path": "microsoft.extensions.dependencymodel/8.0.0-preview.2.23128.3",
       "hashPath": "microsoft.extensions.dependencymodel.8.0.0-preview.2.23128.3.nupkg.sha512"
+    },
+    "Microsoft.Extensions.FileProviders.Abstractions/8.0.0-preview.2.23128.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-e36LPYEOewFUVA9V2ucb3pBu2hboaKnsdT8UMdXYb6PNXn22XnFNMgkxsvbjqW+8w6WFRFqdpSfLsEkDQkIlpg==",
+      "path": "microsoft.extensions.fileproviders.abstractions/8.0.0-preview.2.23128.3",
+      "hashPath": "microsoft.extensions.fileproviders.abstractions.8.0.0-preview.2.23128.3.nupkg.sha512"
+    },
+    "Microsoft.Extensions.FileProviders.Physical/8.0.0-preview.2.23128.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Ky9YlpPfmmbjlowhwZLH8l0qUqlqGx+zQGsG+ZfcyA9G92X+nqivMvzSy4ZjzxdAwL5jBum4QJ1K0Y/hM0uHYg==",
+      "path": "microsoft.extensions.fileproviders.physical/8.0.0-preview.2.23128.3",
+      "hashPath": "microsoft.extensions.fileproviders.physical.8.0.0-preview.2.23128.3.nupkg.sha512"
+    },
+    "Microsoft.Extensions.FileSystemGlobbing/8.0.0-preview.2.23128.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-YfBY7fX0WRLa67zWQau09+zh0AQHBb7KmCuNd1OSCQoLGgKcHnu0IXoGm/Ueer0GhHreJFU7Gn3vwZr4YxwciQ==",
+      "path": "microsoft.extensions.filesystemglobbing/8.0.0-preview.2.23128.3",
+      "hashPath": "microsoft.extensions.filesystemglobbing.8.0.0-preview.2.23128.3.nupkg.sha512"
     },
     "Microsoft.Extensions.Logging/8.0.0-preview.2.23128.3": {
       "type": "package",

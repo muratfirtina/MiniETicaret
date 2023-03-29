@@ -1,8 +1,21 @@
 {
   "version": 2,
-  "dgSpecHash": "9nPERnwMMYlm/kv2CuXvO0doxda5kL+DPd5a+AhISpb5pCd3wh1ArxV499OwIijX3WcWpXEdgPfa7N0X02THZQ==",
+  "dgSpecHash": "yjtQxDezOFY/eDu+d0iIt/ugqz/8tCyAmcNEqrzgpqWPtMYG7a403+XhZB6kMOP3fk6nJHRvTjer7RMNg+Q2IQ==",
   "success": true,
   "projectFilePath": "/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Infrastructure/MiniETicaret.Infrastructure/MiniETicaret.Infrastructure.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "/Users/muratfirtina/.nuget/packages/microsoft.entityframeworkcore/8.0.0-preview.2.23128.3/microsoft.entityframeworkcore.8.0.0-preview.2.23128.3.nupkg.sha512",
+    "/Users/muratfirtina/.nuget/packages/microsoft.entityframeworkcore.abstractions/8.0.0-preview.2.23128.3/microsoft.entityframeworkcore.abstractions.8.0.0-preview.2.23128.3.nupkg.sha512",
+    "/Users/muratfirtina/.nuget/packages/microsoft.entityframeworkcore.analyzers/8.0.0-preview.2.23128.3/microsoft.entityframeworkcore.analyzers.8.0.0-preview.2.23128.3.nupkg.sha512",
+    "/Users/muratfirtina/.nuget/packages/microsoft.extensions.caching.abstractions/8.0.0-preview.2.23128.3/microsoft.extensions.caching.abstractions.8.0.0-preview.2.23128.3.nupkg.sha512",
+    "/Users/muratfirtina/.nuget/packages/microsoft.extensions.caching.memory/8.0.0-preview.2.23128.3/microsoft.extensions.caching.memory.8.0.0-preview.2.23128.3.nupkg.sha512",
+    "/Users/muratfirtina/.nuget/packages/microsoft.extensions.dependencyinjection/8.0.0-preview.2.23128.3/microsoft.extensions.dependencyinjection.8.0.0-preview.2.23128.3.nupkg.sha512",
+    "/Users/muratfirtina/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/8.0.0-preview.2.23128.3/microsoft.extensions.dependencyinjection.abstractions.8.0.0-preview.2.23128.3.nupkg.sha512",
+    "/Users/muratfirtina/.nuget/packages/microsoft.extensions.logging/8.0.0-preview.2.23128.3/microsoft.extensions.logging.8.0.0-preview.2.23128.3.nupkg.sha512",
+    "/Users/muratfirtina/.nuget/packages/microsoft.extensions.logging.abstractions/8.0.0-preview.2.23128.3/microsoft.extensions.logging.abstractions.8.0.0-preview.2.23128.3.nupkg.sha512",
+    "/Users/muratfirtina/.nuget/packages/microsoft.extensions.options/8.0.0-preview.2.23128.3/microsoft.extensions.options.8.0.0-preview.2.23128.3.nupkg.sha512",
+    "/Users/muratfirtina/.nuget/packages/microsoft.extensions.primitives/8.0.0-preview.2.23128.3/microsoft.extensions.primitives.8.0.0-preview.2.23128.3.nupkg.sha512",
+    "/Users/muratfirtina/.nuget/packages/system.runtime.compilerservices.unsafe/6.0.0/system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+  ],
   "logs": []
 }

@@ -10,7 +10,7 @@ public static class ServiceRegistration
     public static void AddPersistenceServices(this IServiceCollection services)
     {
         services.AddDbContext<MiniETicaretDbContext>(options =>
-            options.UseNpgsql("User ID=postgres;Password=1071;Host=localhost;Port=5432;Database=MiniETicaretDbContext;"));
+            options.UseNpgsql(Configuration.ConnectionString));
         services.AddSingleton<IProductService, ProductService>();
     }
 }

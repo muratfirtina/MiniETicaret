@@ -5,7 +5,7 @@ namespace MiniETicaret.Persistence.Concretes;
 
 public class MiniETicaretDbContext : DbContext
 {
-    public MiniETicaretDbContext(DbContextOptions<MiniETicaretDbContext> options) : base(options)
+    public MiniETicaretDbContext(DbContextOptions options) : base(options)
     {
     }
 
