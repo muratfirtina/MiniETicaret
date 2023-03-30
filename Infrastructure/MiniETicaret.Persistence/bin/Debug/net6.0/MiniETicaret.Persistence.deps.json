@@ -550,6 +550,7 @@
       },
       "MiniETicaret.Application/1.0.0": {
         "dependencies": {
+          "Microsoft.EntityFrameworkCore": "8.0.0-preview.2.23128.3",
           "MiniETicaret.Domain": "1.0.0"
         },
         "runtime": {

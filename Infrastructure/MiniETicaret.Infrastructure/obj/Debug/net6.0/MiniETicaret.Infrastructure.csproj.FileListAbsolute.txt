@@ -1,0 +1,17 @@
+/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Infrastructure/MiniETicaret.Infrastructure/bin/Debug/net6.0/MiniETicaret.Infrastructure.deps.json
+/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Infrastructure/MiniETicaret.Infrastructure/bin/Debug/net6.0/MiniETicaret.Infrastructure.dll
+/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Infrastructure/MiniETicaret.Infrastructure/bin/Debug/net6.0/MiniETicaret.Infrastructure.pdb
+/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Infrastructure/MiniETicaret.Infrastructure/bin/Debug/net6.0/MiniETicaret.Application.dll
+/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Infrastructure/MiniETicaret.Infrastructure/bin/Debug/net6.0/MiniETicaret.Domain.dll
+/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Infrastructure/MiniETicaret.Infrastructure/bin/Debug/net6.0/MiniETicaret.Application.pdb
+/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Infrastructure/MiniETicaret.Infrastructure/bin/Debug/net6.0/MiniETicaret.Domain.pdb
+/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Infrastructure/MiniETicaret.Infrastructure/obj/Debug/net6.0/MiniETicaret.Infrastructure.csproj.AssemblyReference.cache
+/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Infrastructure/MiniETicaret.Infrastructure/obj/Debug/net6.0/MiniETicaret.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Infrastructure/MiniETicaret.Infrastructure/obj/Debug/net6.0/MiniETicaret.Infrastructure.AssemblyInfoInputs.cache
+/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Infrastructure/MiniETicaret.Infrastructure/obj/Debug/net6.0/MiniETicaret.Infrastructure.AssemblyInfo.cs
+/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Infrastructure/MiniETicaret.Infrastructure/obj/Debug/net6.0/MiniETicaret.Infrastructure.csproj.CoreCompileInputs.cache
+/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Infrastructure/MiniETicaret.Infrastructure/obj/Debug/net6.0/MiniETicaret.Infrastructure.csproj.CopyComplete
+/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Infrastructure/MiniETicaret.Infrastructure/obj/Debug/net6.0/MiniETicaret.Infrastructure.dll
+/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Infrastructure/MiniETicaret.Infrastructure/obj/Debug/net6.0/refint/MiniETicaret.Infrastructure.dll
+/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Infrastructure/MiniETicaret.Infrastructure/obj/Debug/net6.0/MiniETicaret.Infrastructure.pdb
+/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Infrastructure/MiniETicaret.Infrastructure/obj/Debug/net6.0/ref/MiniETicaret.Infrastructure.dll
