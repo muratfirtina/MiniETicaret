@@ -2467,8 +2467,10 @@
     "net6.0": [
       "EntityFramework >= 6.4.4",
       "Microsoft.EntityFrameworkCore >= 8.0.0-preview.2.23128.3",
+      "Microsoft.EntityFrameworkCore.Abstractions >= 8.0.0-preview.2.23128.3",
       "Microsoft.EntityFrameworkCore.Tools >= 8.0.0-preview.2.23128.3",
       "Microsoft.Extensions.Configuration >= 8.0.0-preview.2.23128.3",
+      "Microsoft.Extensions.Configuration.Abstractions >= 8.0.0-preview.2.23128.3",
       "Microsoft.Extensions.Configuration.Json >= 8.0.0-preview.2.23128.3",
       "Microsoft.Extensions.DependencyInjection.Abstractions >= 8.0.0-preview.2.23128.3",
       "MiniETicaret.Application >= 1.0.0",
@@ -2524,6 +2526,10 @@
             "target": "Package",
             "version": "[8.0.0-preview.2.23128.3, )"
           },
+          "Microsoft.EntityFrameworkCore.Abstractions": {
+            "target": "Package",
+            "version": "[8.0.0-preview.2.23128.3, )"
+          },
           "Microsoft.EntityFrameworkCore.Tools": {
             "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
             "suppressParent": "All",
@@ -2531,6 +2537,10 @@
             "version": "[8.0.0-preview.2.23128.3, )"
           },
           "Microsoft.Extensions.Configuration": {
+            "target": "Package",
+            "version": "[8.0.0-preview.2.23128.3, )"
+          },
+          "Microsoft.Extensions.Configuration.Abstractions": {
             "target": "Package",
             "version": "[8.0.0-preview.2.23128.3, )"
           },
