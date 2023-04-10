@@ -33,7 +33,7 @@ namespace MiniETicaretAPI.Controllers
             return Ok(_productReadRepository.GetAll(false));
 
         }
-        [HttpGet("id")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> Get(string id)
         {
             return Ok(await _productReadRepository.GetByIdAsync(id,false));
@@ -63,7 +63,7 @@ namespace MiniETicaretAPI.Controllers
             return Ok();
         }
         
-        [HttpDelete("id")]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(string id)
         {
             await _productWriteRepository.RemoveAsync(id);

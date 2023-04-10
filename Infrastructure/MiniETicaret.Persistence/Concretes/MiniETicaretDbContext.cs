@@ -19,17 +19,12 @@ public class MiniETicaretDbContext : DbContext
         var entries = ChangeTracker.Entries<BaseEntity>();
         foreach (var entry in entries)
         {
-            switch (entry.State)
+            _ = entry.State switch
             {
-                case EntityState.Added:
-                    entry.Entity.CreatedDate = DateTime.UtcNow;
-                    //entry.Entity.CreatedBy = "Admin";
-                    break;
-                case EntityState.Modified:
-                    entry.Entity.UpdatedDate = DateTime.UtcNow;
-                    //entry.Entity.ModifiedBy = "Admin";
-                    break;
-            }
+                EntityState.Added => entry.Entity.CreatedDate = DateTime.UtcNow,
+                EntityState.Modified => entry.Entity.UpdatedDate = DateTime.UtcNow,
+                _ => DateTime.UtcNow
+            };
         }
         
         return base.SaveChangesAsync(cancellationToken);
