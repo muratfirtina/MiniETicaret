@@ -1,3 +1,6 @@
+using FluentValidation.AspNetCore;
+using MiniETicaret.Application.Validators.Products;
+using MiniETicaret.Infrastructure.Filters;
 using MiniETicaret.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,7 +12,9 @@ builder.Services.AddCors(options =>
         .AllowAnyHeader()
         .AllowCredentials()));
 
-builder.Services.AddControllers();
+builder.Services.AddControllers(options => options.Filters.Add<ValidationFilter>())
+    .AddFluentValidation(options => options.RegisterValidatorsFromAssemblyContaining<CreateProductValidator>())
+    .ConfigureApiBehaviorOptions(options => options.SuppressModelStateInvalidFilter = true);
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

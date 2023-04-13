@@ -1,9 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "yjtQxDezOFY/eDu+d0iIt/ugqz/8tCyAmcNEqrzgpqWPtMYG7a403+XhZB6kMOP3fk6nJHRvTjer7RMNg+Q2IQ==",
+  "dgSpecHash": "4NHOiXzlbQ1jZYdC49zxPZV3l8m/T5berqmEISioFEK1AN0mopF5pdvQ6lcJhr3yuz0xQv4EvAAn0g5KevXtcg==",
   "success": true,
   "projectFilePath": "/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Infrastructure/MiniETicaret.Infrastructure/MiniETicaret.Infrastructure.csproj",
   "expectedPackageFiles": [
+    "/Users/muratfirtina/.nuget/packages/fluentvalidation/11.5.2/fluentvalidation.11.5.2.nupkg.sha512",
+    "/Users/muratfirtina/.nuget/packages/fluentvalidation.aspnetcore/11.3.0/fluentvalidation.aspnetcore.11.3.0.nupkg.sha512",
+    "/Users/muratfirtina/.nuget/packages/fluentvalidation.dependencyinjectionextensions/11.5.2/fluentvalidation.dependencyinjectionextensions.11.5.2.nupkg.sha512",
     "/Users/muratfirtina/.nuget/packages/microsoft.entityframeworkcore/8.0.0-preview.2.23128.3/microsoft.entityframeworkcore.8.0.0-preview.2.23128.3.nupkg.sha512",
     "/Users/muratfirtina/.nuget/packages/microsoft.entityframeworkcore.abstractions/8.0.0-preview.2.23128.3/microsoft.entityframeworkcore.abstractions.8.0.0-preview.2.23128.3.nupkg.sha512",
     "/Users/muratfirtina/.nuget/packages/microsoft.entityframeworkcore.analyzers/8.0.0-preview.2.23128.3/microsoft.entityframeworkcore.analyzers.8.0.0-preview.2.23128.3.nupkg.sha512",

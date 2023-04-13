@@ -42,6 +42,18 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[11.5.2, )"
+            },
+            "FluentValidation.AspNetCore": {
+              "target": "Package",
+              "version": "[11.3.0, )"
+            },
+            "FluentValidation.DependencyInjectionExtensions": {
+              "target": "Package",
+              "version": "[11.5.2, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[8.0.0-preview.2.23128.3, )"
@@ -63,7 +75,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.202/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.203/RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -116,7 +128,64 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.202/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.203/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Infrastructure/MiniETicaret.Infrastructure/MiniETicaret.Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Infrastructure/MiniETicaret.Infrastructure/MiniETicaret.Infrastructure.csproj",
+        "projectName": "MiniETicaret.Infrastructure",
+        "projectPath": "/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Infrastructure/MiniETicaret.Infrastructure/MiniETicaret.Infrastructure.csproj",
+        "packagesPath": "/Users/muratfirtina/.nuget/packages/",
+        "outputPath": "/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Infrastructure/MiniETicaret.Infrastructure/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/muratfirtina/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Core/MiniETicaret.Application/MiniETicaret.Application.csproj": {
+                "projectPath": "/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Core/MiniETicaret.Application/MiniETicaret.Application.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.203/RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -213,7 +282,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.202/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.203/RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -241,6 +310,9 @@
             "projectReferences": {
               "/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Core/MiniETicaret.Application/MiniETicaret.Application.csproj": {
                 "projectPath": "/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Core/MiniETicaret.Application/MiniETicaret.Application.csproj"
+              },
+              "/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Infrastructure/MiniETicaret.Infrastructure/MiniETicaret.Infrastructure.csproj": {
+                "projectPath": "/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Infrastructure/MiniETicaret.Infrastructure/MiniETicaret.Infrastructure.csproj"
               },
               "/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Infrastructure/MiniETicaret.Persistence/MiniETicaret.Persistence.csproj": {
                 "projectPath": "/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Infrastructure/MiniETicaret.Persistence/MiniETicaret.Persistence.csproj"
@@ -292,7 +364,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.202/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.203/RuntimeIdentifierGraph.json"
         }
       }
     }

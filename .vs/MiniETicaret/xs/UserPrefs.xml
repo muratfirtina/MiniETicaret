@@ -1,19 +1,21 @@
 ﻿<Properties StartupConfiguration="{59CBD366-50C9-4321-B8D3-74555BC4F0D1}|Default">
-  <MonoDevelop.Ide.ItemProperties.Presentation.MiniETicaretAPI PreferredExecutionTarget="/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app" />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Presentation/MiniETicaretAPI/Controllers/ProductsController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Core/MiniETicaret.Domain/Entities/Product.cs">
     <Files>
       <File FileName="Presentation/MiniETicaretAPI/Program.cs" />
-      <File FileName="Presentation/MiniETicaretAPI/Controllers/ProductsController.cs" Line="1" Column="1" />
+      <File FileName="Presentation/MiniETicaretAPI/Controllers/ProductsController.cs" />
+      <File FileName="Core/MiniETicaret.Domain/Entities/Product.cs" Line="7" Column="22" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="MiniETicaret" expanded="True">
+            <Node name="Core" expanded="True">
+              <Node name="MiniETicaret.Domain" expanded="True">
+                <Node name="Entities" expanded="True" />
+              </Node>
+            </Node>
             <Node name="Presentation" expanded="True">
               <Node name="MiniETicaretAPI" expanded="True">
                 <Node name="Controllers" expanded="True" />
@@ -24,5 +26,9 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.ItemProperties.Presentation.MiniETicaretAPI PreferredExecutionTarget="/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
 </Properties>

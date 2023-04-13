@@ -1,10 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "c8vQ8FnkLlOwin9J/DVevo/EzUUrEPuXtd/QmShtbrS38d7Altj/c2SJa9jPVrinr4WUIp0atXlmxdKcrLFLPg==",
+  "dgSpecHash": "KW2quWoiNioHnU2P08MZ/P7hkPNeKLQL6x6qeydL0aDgeAVr4pMwRiQhGjtJnS/jL2du9GJBKcowRoKVsPO7CA==",
   "success": true,
   "projectFilePath": "/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Presentation/MiniETicaretAPI/MiniETicaretAPI.csproj",
   "expectedPackageFiles": [
     "/Users/muratfirtina/.nuget/packages/entityframework/6.4.4/entityframework.6.4.4.nupkg.sha512",
+    "/Users/muratfirtina/.nuget/packages/fluentvalidation/11.5.2/fluentvalidation.11.5.2.nupkg.sha512",
+    "/Users/muratfirtina/.nuget/packages/fluentvalidation.aspnetcore/11.3.0/fluentvalidation.aspnetcore.11.3.0.nupkg.sha512",
+    "/Users/muratfirtina/.nuget/packages/fluentvalidation.dependencyinjectionextensions/11.5.2/fluentvalidation.dependencyinjectionextensions.11.5.2.nupkg.sha512",
     "/Users/muratfirtina/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
     "/Users/muratfirtina/.nuget/packages/messagepack/2.1.152/messagepack.2.1.152.nupkg.sha512",
     "/Users/muratfirtina/.nuget/packages/messagepack.annotations/2.1.152/messagepack.annotations.2.1.152.nupkg.sha512",

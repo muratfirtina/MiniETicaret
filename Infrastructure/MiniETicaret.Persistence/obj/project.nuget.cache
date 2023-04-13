@@ -1,10 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "qXZPbbpBQkNHGC2SdaJsyq0PK9ZpCEJoGJckDUuZlRP/Hnr3lph4dFb+RXD0XPTTKelRcllhmgRJlRg8OduzlA==",
+  "dgSpecHash": "hPkMfAVlWBR8iWjAdhDXg+4zEYh4mgGbaBX/OwQ2+NwejlVVVNlL5rjWWbiBqVHALE05dUMgoa/TtP5sDLB5oQ==",
   "success": true,
   "projectFilePath": "/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Infrastructure/MiniETicaret.Persistence/MiniETicaret.Persistence.csproj",
   "expectedPackageFiles": [
     "/Users/muratfirtina/.nuget/packages/entityframework/6.4.4/entityframework.6.4.4.nupkg.sha512",
+    "/Users/muratfirtina/.nuget/packages/fluentvalidation/11.5.2/fluentvalidation.11.5.2.nupkg.sha512",
+    "/Users/muratfirtina/.nuget/packages/fluentvalidation.aspnetcore/11.3.0/fluentvalidation.aspnetcore.11.3.0.nupkg.sha512",
+    "/Users/muratfirtina/.nuget/packages/fluentvalidation.dependencyinjectionextensions/11.5.2/fluentvalidation.dependencyinjectionextensions.11.5.2.nupkg.sha512",
     "/Users/muratfirtina/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
     "/Users/muratfirtina/.nuget/packages/microsoft.csharp/4.7.0/microsoft.csharp.4.7.0.nupkg.sha512",
     "/Users/muratfirtina/.nuget/packages/microsoft.entityframeworkcore/8.0.0-preview.2.23128.3/microsoft.entityframeworkcore.8.0.0-preview.2.23128.3.nupkg.sha512",

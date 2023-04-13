@@ -286,3 +286,8 @@
 /Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Presentation/MiniETicaretAPI/bin/Debug/net6.0/Microsoft.Extensions.FileProviders.Abstractions.dll
 /Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Presentation/MiniETicaretAPI/bin/Debug/net6.0/Microsoft.Extensions.FileProviders.Physical.dll
 /Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Presentation/MiniETicaretAPI/bin/Debug/net6.0/Microsoft.Extensions.FileSystemGlobbing.dll
+/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Presentation/MiniETicaretAPI/bin/Debug/net6.0/FluentValidation.dll
+/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Presentation/MiniETicaretAPI/bin/Debug/net6.0/FluentValidation.AspNetCore.dll
+/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Presentation/MiniETicaretAPI/bin/Debug/net6.0/FluentValidation.DependencyInjectionExtensions.dll
+/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Presentation/MiniETicaretAPI/bin/Debug/net6.0/MiniETicaret.Infrastructure.dll
+/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Presentation/MiniETicaretAPI/bin/Debug/net6.0/MiniETicaret.Infrastructure.pdb
