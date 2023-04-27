@@ -1,11 +1,105 @@
 {
   "Version": 1,
-  "Hash": "8vHPHk25QQjkHL/FfFLzbQRGCA2iqTepYq+9SHSP3K8=",
+  "Hash": "xdKHje8uh+67/6FccU1W2xNjkaRhgOmnePLGrPMGQrc=",
   "Source": "MiniETicaretAPI",
   "BasePath": "_content/MiniETicaretAPI",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": []
+  "DiscoveryPatterns": [
+    {
+      "Name": "MiniETicaretAPI/wwwroot",
+      "Source": "MiniETicaretAPI",
+      "ContentRoot": "/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Presentation/MiniETicaretAPI/wwwroot/",
+      "BasePath": "_content/MiniETicaretAPI",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Presentation/MiniETicaretAPI/wwwroot/.DS_Store",
+      "SourceId": "MiniETicaretAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Presentation/MiniETicaretAPI/wwwroot/",
+      "BasePath": "_content/MiniETicaretAPI",
+      "RelativePath": ".DS_Store",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/.DS_Store"
+    },
+    {
+      "Identity": "/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Presentation/MiniETicaretAPI/wwwroot/resources/.DS_Store",
+      "SourceId": "MiniETicaretAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Presentation/MiniETicaretAPI/wwwroot/",
+      "BasePath": "_content/MiniETicaretAPI",
+      "RelativePath": "resources/.DS_Store",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/resources/.DS_Store"
+    },
+    {
+      "Identity": "/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Presentation/MiniETicaretAPI/wwwroot/resources/product-images/3f193e50-b492-4481-9d7d-149d6eba330e.jpg",
+      "SourceId": "MiniETicaretAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Presentation/MiniETicaretAPI/wwwroot/",
+      "BasePath": "_content/MiniETicaretAPI",
+      "RelativePath": "resources/product-images/3f193e50-b492-4481-9d7d-149d6eba330e.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/resources/product-images/3f193e50-b492-4481-9d7d-149d6eba330e.jpg"
+    },
+    {
+      "Identity": "/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Presentation/MiniETicaretAPI/wwwroot/resources/product-images/ekran-resmi-2022-11-25-22.54.55-bd8e4768-ca1f-410b-b032-bd302030883a.png",
+      "SourceId": "MiniETicaretAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Presentation/MiniETicaretAPI/wwwroot/",
+      "BasePath": "_content/MiniETicaretAPI",
+      "RelativePath": "resources/product-images/ekran-resmi-2022-11-25-22.54.55-bd8e4768-ca1f-410b-b032-bd302030883a.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/resources/product-images/ekran-resmi-2022-11-25-22.54.55-bd8e4768-ca1f-410b-b032-bd302030883a.png"
+    },
+    {
+      "Identity": "/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Presentation/MiniETicaretAPI/wwwroot/resources/product-images/furkiberna-öğrenci-belgesi-e2a4b748-bb6a-4e0e-ae21-ccab49ae2328.jpg",
+      "SourceId": "MiniETicaretAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Presentation/MiniETicaretAPI/wwwroot/",
+      "BasePath": "_content/MiniETicaretAPI",
+      "RelativePath": "resources/product-images/furkiberna-öğrenci-belgesi-e2a4b748-bb6a-4e0e-ae21-ccab49ae2328.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/resources/product-images/furkiberna-öğrenci-belgesi-e2a4b748-bb6a-4e0e-ae21-ccab49ae2328.jpg"
+    }
+  ]
 }
