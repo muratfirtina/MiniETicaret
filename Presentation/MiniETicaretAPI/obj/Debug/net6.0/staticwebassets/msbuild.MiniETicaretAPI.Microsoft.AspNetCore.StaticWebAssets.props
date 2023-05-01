@@ -32,12 +32,12 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\resources\.DS_Store))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\resources\product-images\3f193e50-b492-4481-9d7d-149d6eba330e.jpg))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\resources\product-images\fürkiberna-öğrenci-belgeşi̇ççöğğşüü-20230501211625.jpg))">
       <SourceType>Package</SourceType>
       <SourceId>MiniETicaretAPI</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/MiniETicaretAPI</BasePath>
-      <RelativePath>resources/product-images/3f193e50-b492-4481-9d7d-149d6eba330e.jpg</RelativePath>
+      <RelativePath>resources/product-images/fürkiberna-öğrenci-belgeşi̇ççöğğşüü-20230501211625.jpg</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
       <AssetRole>Primary</AssetRole>
@@ -46,39 +46,7 @@
       <AssetTraitValue></AssetTraitValue>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\resources\product-images\3f193e50-b492-4481-9d7d-149d6eba330e.jpg))</OriginalItemSpec>
-    </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\resources\product-images\ekran-resmi-2022-11-25-22.54.55-bd8e4768-ca1f-410b-b032-bd302030883a.png))">
-      <SourceType>Package</SourceType>
-      <SourceId>MiniETicaretAPI</SourceId>
-      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/MiniETicaretAPI</BasePath>
-      <RelativePath>resources/product-images/ekran-resmi-2022-11-25-22.54.55-bd8e4768-ca1f-410b-b032-bd302030883a.png</RelativePath>
-      <AssetKind>All</AssetKind>
-      <AssetMode>All</AssetMode>
-      <AssetRole>Primary</AssetRole>
-      <RelatedAsset></RelatedAsset>
-      <AssetTraitName></AssetTraitName>
-      <AssetTraitValue></AssetTraitValue>
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\resources\product-images\ekran-resmi-2022-11-25-22.54.55-bd8e4768-ca1f-410b-b032-bd302030883a.png))</OriginalItemSpec>
-    </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\resources\product-images\furkiberna-öğrenci-belgesi-e2a4b748-bb6a-4e0e-ae21-ccab49ae2328.jpg))">
-      <SourceType>Package</SourceType>
-      <SourceId>MiniETicaretAPI</SourceId>
-      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/MiniETicaretAPI</BasePath>
-      <RelativePath>resources/product-images/furkiberna-öğrenci-belgesi-e2a4b748-bb6a-4e0e-ae21-ccab49ae2328.jpg</RelativePath>
-      <AssetKind>All</AssetKind>
-      <AssetMode>All</AssetMode>
-      <AssetRole>Primary</AssetRole>
-      <RelatedAsset></RelatedAsset>
-      <AssetTraitName></AssetTraitName>
-      <AssetTraitValue></AssetTraitValue>
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\resources\product-images\furkiberna-öğrenci-belgesi-e2a4b748-bb6a-4e0e-ae21-ccab49ae2328.jpg))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\resources\product-images\fürkiberna-öğrenci-belgeşi̇ççöğğşüü-20230501211625.jpg))</OriginalItemSpec>
     </StaticWebAsset>
   </ItemGroup>
 </Project>

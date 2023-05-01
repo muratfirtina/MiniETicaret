@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MiniETicaret.Application.Repositories;
 using MiniETicaret.Application.RequestParameters;
+using MiniETicaret.Application.Services;
 using MiniETicaret.Application.ViewModels.Products;
 using MiniETicaret.Domain.Entities;
 
@@ -19,16 +20,18 @@ namespace MiniETicaretAPI.Controllers
         private readonly IProductWriteRepository _productWriteRepository;
         private readonly IProductReadRepository _productReadRepository;
         private readonly IWebHostEnvironment _webHostEnvironment;
+        readonly IFileService _fileService;
         
         
         public ProductsController(
             IProductWriteRepository productWriteRepository, 
             IProductReadRepository productReadRepository,
-            IWebHostEnvironment webHostEnvironment)
+            IWebHostEnvironment webHostEnvironment, IFileService fileService)
         {
             _productWriteRepository = productWriteRepository;
             _productReadRepository = productReadRepository;
             _webHostEnvironment = webHostEnvironment;
+            _fileService = fileService;
         }
 
         [HttpGet]
@@ -100,34 +103,10 @@ namespace MiniETicaretAPI.Controllers
             });
         }
         [HttpPost("[action]")]
-        [Consumes("multipart/form-data")]
         public async Task<IActionResult> Upload()
         {
             
-            string uploadPath = Path.Combine(_webHostEnvironment.WebRootPath, "resources", "product-images");
-            if (!Directory.Exists(uploadPath))
-            {
-                Directory.CreateDirectory(uploadPath);
-            }
-            var files = Request.Form.Files;
-            foreach (var file in files)
-            {
-                if (file.Length > 0)
-                {
-                    string noExtension = Path.GetFileNameWithoutExtension(file.FileName)
-                        .Replace(" ", "-").Replace("ğ", "g").Replace("ı", "i").Replace("ö", "o")
-                        .Replace("ü", "u").Replace("ş", "s").Replace("ç", "c").Replace("Ç", "c")
-                        .Replace("Ş", "s").Replace("Ğ", "g").Replace("Ü", "u").Replace("İ", "i")
-                        .Replace("Ö", "o");
-                    
-                    Guid guid = Guid.NewGuid();
-                    string fullPath = Path.Combine(uploadPath, $"{noExtension + "-"}{guid}{Path.GetExtension(file.FileName)}");
-                    using (var stream = new FileStream(fullPath, FileMode.Create, FileAccess.Write, FileShare.None, 1024 * 1024, useAsync:false))
-                    {
-                        await file.CopyToAsync(stream);
-                    }
-                }
-            }
+            await _fileService.UploadAsync("resources/product-images", Request.Form.Files);
             return Ok();
         }
     }

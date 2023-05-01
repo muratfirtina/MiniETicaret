@@ -1,5 +1,4 @@
 /Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Presentation/MiniETicaretAPI/bin/Debug/net6.0/appsettings.Development.json
-/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Presentation/MiniETicaretAPI/bin/Debug/net6.0/appsettings.json
 /Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Presentation/MiniETicaretAPI/bin/Debug/net6.0/MiniETicaretAPI
 /Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Presentation/MiniETicaretAPI/bin/Debug/net6.0/MiniETicaretAPI.deps.json
 /Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Presentation/MiniETicaretAPI/bin/Debug/net6.0/MiniETicaretAPI.runtimeconfig.json
@@ -292,3 +291,4 @@
 /Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Presentation/MiniETicaretAPI/bin/Debug/net6.0/MiniETicaret.Infrastructure.dll
 /Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Presentation/MiniETicaretAPI/bin/Debug/net6.0/MiniETicaret.Infrastructure.pdb
 /Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Presentation/MiniETicaretAPI/bin/Debug/net6.0/MiniETicaretAPI.staticwebassets.runtime.json
+/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Presentation/MiniETicaretAPI/bin/Debug/net6.0/appsettings.json

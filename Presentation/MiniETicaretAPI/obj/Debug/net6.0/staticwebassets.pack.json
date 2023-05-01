@@ -9,16 +9,8 @@
       "PackagePath": "staticwebassets/resources/.DS_Store"
     },
     {
-      "Id": "/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Presentation/MiniETicaretAPI/wwwroot/resources/product-images/3f193e50-b492-4481-9d7d-149d6eba330e.jpg",
-      "PackagePath": "staticwebassets/resources/product-images/3f193e50-b492-4481-9d7d-149d6eba330e.jpg"
-    },
-    {
-      "Id": "/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Presentation/MiniETicaretAPI/wwwroot/resources/product-images/ekran-resmi-2022-11-25-22.54.55-bd8e4768-ca1f-410b-b032-bd302030883a.png",
-      "PackagePath": "staticwebassets/resources/product-images/ekran-resmi-2022-11-25-22.54.55-bd8e4768-ca1f-410b-b032-bd302030883a.png"
-    },
-    {
-      "Id": "/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Presentation/MiniETicaretAPI/wwwroot/resources/product-images/furkiberna-öğrenci-belgesi-e2a4b748-bb6a-4e0e-ae21-ccab49ae2328.jpg",
-      "PackagePath": "staticwebassets/resources/product-images/furkiberna-öğrenci-belgesi-e2a4b748-bb6a-4e0e-ae21-ccab49ae2328.jpg"
+      "Id": "/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Presentation/MiniETicaretAPI/wwwroot/resources/product-images/fürkiberna-öğrenci-belgeşi̇ççöğğşüü-20230501211625.jpg",
+      "PackagePath": "staticwebassets/resources/product-images/fürkiberna-öğrenci-belgeşi̇ççöğğşüü-20230501211625.jpg"
     },
     {
       "Id": "obj/Debug/net6.0/staticwebassets/msbuild.MiniETicaretAPI.Microsoft.AspNetCore.StaticWebAssets.props",
