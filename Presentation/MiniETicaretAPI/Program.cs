@@ -2,12 +2,16 @@ using FluentValidation.AspNetCore;
 using MiniETicaret.Application.Validators.Products;
 using MiniETicaret.Infrastructure;
 using MiniETicaret.Infrastructure.Filters;
+using MiniETicaret.Infrastructure.Services.Storage.Local;
 using MiniETicaret.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddPersistenceServices();
 builder.Services.AddInfrastructureServices();
+
+builder.Services.AddStorage<LocalStorage>();
+
 builder.Services.AddCors(options =>
     options.AddDefaultPolicy(policy => policy.WithOrigins("http://localhost:4200", "https://localhost:4200")
         .AllowAnyMethod()
