@@ -24,7 +24,12 @@
     <ItemGroup>
       <Folder Include="Controllers" />
       <Folder Include="wwwroot" />
+      <Folder Include="wwwroot\resources\invoices" />
       <Folder Include="wwwroot\resources\product-images" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="wwwroot\resources\.DS_Store" />
     </ItemGroup>
 
 </Project>
