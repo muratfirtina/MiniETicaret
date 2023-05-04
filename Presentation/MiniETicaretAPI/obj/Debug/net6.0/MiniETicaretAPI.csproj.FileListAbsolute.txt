@@ -292,3 +292,8 @@
 /Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Presentation/MiniETicaretAPI/bin/Debug/net6.0/MiniETicaret.Infrastructure.pdb
 /Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Presentation/MiniETicaretAPI/bin/Debug/net6.0/MiniETicaretAPI.staticwebassets.runtime.json
 /Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Presentation/MiniETicaretAPI/bin/Debug/net6.0/appsettings.json
+/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Presentation/MiniETicaretAPI/bin/Debug/net6.0/Azure.Core.dll
+/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Presentation/MiniETicaretAPI/bin/Debug/net6.0/Azure.Storage.Blobs.dll
+/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Presentation/MiniETicaretAPI/bin/Debug/net6.0/Azure.Storage.Common.dll
+/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Presentation/MiniETicaretAPI/bin/Debug/net6.0/System.IO.Hashing.dll
+/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Presentation/MiniETicaretAPI/bin/Debug/net6.0/System.Memory.Data.dll

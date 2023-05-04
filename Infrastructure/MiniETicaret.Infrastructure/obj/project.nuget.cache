@@ -1,12 +1,16 @@
 {
   "version": 2,
-  "dgSpecHash": "4NHOiXzlbQ1jZYdC49zxPZV3l8m/T5berqmEISioFEK1AN0mopF5pdvQ6lcJhr3yuz0xQv4EvAAn0g5KevXtcg==",
+  "dgSpecHash": "mEPDcawAN8gmGsufm7PwCH8M4WbbSCeAkmBWLwO1aerojKztpyCDHChx6PVvhUWW8S8c7OgncvfWyKRT2ef4Mg==",
   "success": true,
   "projectFilePath": "/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Infrastructure/MiniETicaret.Infrastructure/MiniETicaret.Infrastructure.csproj",
   "expectedPackageFiles": [
+    "/Users/muratfirtina/.nuget/packages/azure.core/1.31.0/azure.core.1.31.0.nupkg.sha512",
+    "/Users/muratfirtina/.nuget/packages/azure.storage.blobs/12.16.0/azure.storage.blobs.12.16.0.nupkg.sha512",
+    "/Users/muratfirtina/.nuget/packages/azure.storage.common/12.15.0/azure.storage.common.12.15.0.nupkg.sha512",
     "/Users/muratfirtina/.nuget/packages/fluentvalidation/11.5.2/fluentvalidation.11.5.2.nupkg.sha512",
     "/Users/muratfirtina/.nuget/packages/fluentvalidation.aspnetcore/11.3.0/fluentvalidation.aspnetcore.11.3.0.nupkg.sha512",
     "/Users/muratfirtina/.nuget/packages/fluentvalidation.dependencyinjectionextensions/11.5.2/fluentvalidation.dependencyinjectionextensions.11.5.2.nupkg.sha512",
+    "/Users/muratfirtina/.nuget/packages/microsoft.bcl.asyncinterfaces/1.1.1/microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "/Users/muratfirtina/.nuget/packages/microsoft.entityframeworkcore/8.0.0-preview.2.23128.3/microsoft.entityframeworkcore.8.0.0-preview.2.23128.3.nupkg.sha512",
     "/Users/muratfirtina/.nuget/packages/microsoft.entityframeworkcore.abstractions/8.0.0-preview.2.23128.3/microsoft.entityframeworkcore.abstractions.8.0.0-preview.2.23128.3.nupkg.sha512",
     "/Users/muratfirtina/.nuget/packages/microsoft.entityframeworkcore.analyzers/8.0.0-preview.2.23128.3/microsoft.entityframeworkcore.analyzers.8.0.0-preview.2.23128.3.nupkg.sha512",
@@ -18,7 +22,14 @@
     "/Users/muratfirtina/.nuget/packages/microsoft.extensions.logging.abstractions/8.0.0-preview.2.23128.3/microsoft.extensions.logging.abstractions.8.0.0-preview.2.23128.3.nupkg.sha512",
     "/Users/muratfirtina/.nuget/packages/microsoft.extensions.options/8.0.0-preview.2.23128.3/microsoft.extensions.options.8.0.0-preview.2.23128.3.nupkg.sha512",
     "/Users/muratfirtina/.nuget/packages/microsoft.extensions.primitives/8.0.0-preview.2.23128.3/microsoft.extensions.primitives.8.0.0-preview.2.23128.3.nupkg.sha512",
-    "/Users/muratfirtina/.nuget/packages/system.runtime.compilerservices.unsafe/6.0.0/system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+    "/Users/muratfirtina/.nuget/packages/system.diagnostics.diagnosticsource/4.6.0/system.diagnostics.diagnosticsource.4.6.0.nupkg.sha512",
+    "/Users/muratfirtina/.nuget/packages/system.io.hashing/6.0.0/system.io.hashing.6.0.0.nupkg.sha512",
+    "/Users/muratfirtina/.nuget/packages/system.memory.data/1.0.2/system.memory.data.1.0.2.nupkg.sha512",
+    "/Users/muratfirtina/.nuget/packages/system.numerics.vectors/4.5.0/system.numerics.vectors.4.5.0.nupkg.sha512",
+    "/Users/muratfirtina/.nuget/packages/system.runtime.compilerservices.unsafe/6.0.0/system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
+    "/Users/muratfirtina/.nuget/packages/system.text.encodings.web/4.7.2/system.text.encodings.web.4.7.2.nupkg.sha512",
+    "/Users/muratfirtina/.nuget/packages/system.text.json/4.7.2/system.text.json.4.7.2.nupkg.sha512",
+    "/Users/muratfirtina/.nuget/packages/system.threading.tasks.extensions/4.5.4/system.threading.tasks.extensions.4.5.4.nupkg.sha512"
   ],
   "logs": []
 }

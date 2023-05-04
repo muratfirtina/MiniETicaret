@@ -4,7 +4,7 @@ using MiniETicaret.Application.Abstractions.Storage.Local;
 
 namespace MiniETicaret.Infrastructure.Services.Storage.Local;
 
-public class LocalStorage : ILocalStorage
+public class LocalStorage : FileService, ILocalStorage
 {
     private readonly IWebHostEnvironment _webHostEnvironment;
     public LocalStorage(IWebHostEnvironment webHostEnvironment)
@@ -22,8 +22,10 @@ public class LocalStorage : ILocalStorage
         List<(string fileName, string path)> datas = new ();
         foreach (IFormFile file in files)
         {
-            await CopyFileAsync(Path.Combine(uploadPath, file.FileName), file);
-            datas.Add((file.FileName, Path.Combine(path, file.FileName)));
+            string fileNewName = await FileRenameAsync(path, file.Name, HasFile);
+            
+            await CopyFileAsync(Path.Combine(uploadPath, fileNewName), file);
+            datas.Add((file.FileName, Path.Combine(path, fileNewName)));
         }
         return datas;
     }

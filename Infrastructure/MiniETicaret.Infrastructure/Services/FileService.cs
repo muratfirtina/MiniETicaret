@@ -8,8 +8,8 @@ namespace MiniETicaret.Infrastructure.Services;
 public class FileService
 
 {
-
-    private async Task<string> FileRenameAsync(string path,string fileName)
+    protected delegate bool HasFile(string pathOrContainerName, string fileName);
+    protected async Task<string> FileRenameAsync(string pathOrContainerName,string fileName, HasFile hasFileMethod)
     {
             string extension = Path.GetExtension(fileName);
             string oldName = Path.GetFileNameWithoutExtension(fileName);
@@ -22,9 +22,18 @@ public class FileService
             DateTime datetimenow = DateTime.UtcNow;
             string datetimeutcnow = datetimenow.ToString("yyyyMMddHHmmss");//dosya isminin sonuna eklenen tarih bilgisi
             string fullName = $"{regulatedFileName}-{datetimeutcnow}{extension}";//dosya ismi ve uzantısı birleştirilir ve yeni dosya ismi oluşturulur.
-            
-        
-        return fullName;
+
+            if (hasFileMethod(pathOrContainerName, fullName))
+            {
+                int i = 1;
+                while (hasFileMethod(pathOrContainerName, fullName))
+                {
+                    fullName = $"{regulatedFileName}-{datetimeutcnow}-{i}{extension}";
+                    i++;
+                }
+            }
+
+            return fullName;
     }
 
     

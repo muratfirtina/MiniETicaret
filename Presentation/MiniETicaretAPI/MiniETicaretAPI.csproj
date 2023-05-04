@@ -24,6 +24,7 @@
     <ItemGroup>
       <Folder Include="Controllers" />
       <Folder Include="wwwroot" />
+      <Folder Include="wwwroot\files" />
       <Folder Include="wwwroot\resources\files" />
       <Folder Include="wwwroot\resources\invoices" />
       <Folder Include="wwwroot\resources\product-images" />

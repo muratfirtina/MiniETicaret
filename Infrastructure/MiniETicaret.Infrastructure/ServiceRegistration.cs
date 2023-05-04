@@ -5,6 +5,7 @@ using MiniETicaret.Application.Repositories;
 using MiniETicaret.Infrastructure.Enums;
 using MiniETicaret.Infrastructure.Services;
 using MiniETicaret.Infrastructure.Services.Storage;
+using MiniETicaret.Infrastructure.Services.Storage.Azure;
 using MiniETicaret.Infrastructure.Services.Storage.Local;
 
 namespace MiniETicaret.Infrastructure;
@@ -15,7 +16,7 @@ public static class ServiceRegistration
     {
         serviceCollection.AddScoped<IStorageService, StorageService>();
     }
-    public static void AddStorage<T>(this IServiceCollection serviceCollection) where T : class, IStorage
+    public static void AddStorage<T>(this IServiceCollection serviceCollection) where T : FileService, IStorage
     {
         serviceCollection.AddScoped<IStorage, T>();
     }
@@ -27,7 +28,7 @@ public static class ServiceRegistration
                 serviceCollection.AddScoped<IStorage, LocalStorage>();
                 break;
             case StorageType.Azure:
-                //serviceCollection.AddScoped<IStorage, AzureStorage>();
+                serviceCollection.AddScoped<IStorage, AzureStorage>();
                 break;
             case StorageType.AWS:
                 //serviceCollection.AddScoped<IStorage, AWSStorage>();

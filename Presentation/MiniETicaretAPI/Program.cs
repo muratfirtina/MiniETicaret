@@ -2,6 +2,7 @@ using FluentValidation.AspNetCore;
 using MiniETicaret.Application.Validators.Products;
 using MiniETicaret.Infrastructure;
 using MiniETicaret.Infrastructure.Filters;
+using MiniETicaret.Infrastructure.Services.Storage.Azure;
 using MiniETicaret.Infrastructure.Services.Storage.Local;
 using MiniETicaret.Persistence;
 
@@ -11,6 +12,8 @@ builder.Services.AddPersistenceServices();
 builder.Services.AddInfrastructureServices();
 
 builder.Services.AddStorage<LocalStorage>();
+//builder.Services.AddStorage<AzureStorage>();
+
 
 builder.Services.AddCors(options =>
     options.AddDefaultPolicy(policy => policy.WithOrigins("http://localhost:4200", "https://localhost:4200")
