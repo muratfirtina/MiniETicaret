@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "OhzRVTSNOcFAgMKCSnO7hkiGJekh75whI8+sr8+ZhN0=",
+  "Hash": "sc/UVG6tRi4c0FSMQL0C++sJjxUwngG/Zm31v/M9+EQ=",
   "Source": "MiniETicaretAPI",
   "BasePath": "_content/MiniETicaretAPI",
   "Mode": "Default",
@@ -32,6 +32,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/.DS_Store"
+    },
+    {
+      "Identity": "/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Presentation/MiniETicaretAPI/wwwroot/files/ekran-resmi-2023-04-11-15-29-44-20230505082856.png",
+      "SourceId": "MiniETicaretAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Presentation/MiniETicaretAPI/wwwroot/",
+      "BasePath": "_content/MiniETicaretAPI",
+      "RelativePath": "files/ekran-resmi-2023-04-11-15-29-44-20230505082856.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/files/ekran-resmi-2023-04-11-15-29-44-20230505082856.png"
+    },
+    {
+      "Identity": "/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Presentation/MiniETicaretAPI/wwwroot/photo-images/ekran-resmi-2023-04-18-13-25-57-20230505152213.png",
+      "SourceId": "MiniETicaretAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Presentation/MiniETicaretAPI/wwwroot/",
+      "BasePath": "_content/MiniETicaretAPI",
+      "RelativePath": "photo-images/ekran-resmi-2023-04-18-13-25-57-20230505152213.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/photo-images/ekran-resmi-2023-04-18-13-25-57-20230505152213.png"
     }
   ]
 }

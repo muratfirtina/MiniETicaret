@@ -36,5 +36,5 @@ public class FileService
             return fullName;
     }
 
-    
+    //todo Buraya Resize gibi bazı fonksiyonlar eklenecek.
 }
