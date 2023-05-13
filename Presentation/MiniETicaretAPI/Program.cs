@@ -1,15 +1,20 @@
 using FluentValidation.AspNetCore;
+using Microsoft.EntityFrameworkCore;
+using MiniETicaret.Application;
 using MiniETicaret.Application.Validators.Products;
 using MiniETicaret.Infrastructure;
 using MiniETicaret.Infrastructure.Filters;
 using MiniETicaret.Infrastructure.Services.Storage.Azure;
 using MiniETicaret.Infrastructure.Services.Storage.Local;
 using MiniETicaret.Persistence;
+using MiniETicaret.Persistence.Concretes;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddPersistenceServices();
 builder.Services.AddInfrastructureServices();
+builder.Services.AddApplicationServices();
+
 
 //builder.Services.AddStorage<LocalStorage>();
 builder.Services.AddStorage<AzureStorage>();

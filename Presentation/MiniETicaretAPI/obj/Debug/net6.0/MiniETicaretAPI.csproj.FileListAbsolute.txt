@@ -297,3 +297,6 @@
 /Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Presentation/MiniETicaretAPI/bin/Debug/net6.0/Azure.Storage.Common.dll
 /Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Presentation/MiniETicaretAPI/bin/Debug/net6.0/System.IO.Hashing.dll
 /Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Presentation/MiniETicaretAPI/bin/Debug/net6.0/System.Memory.Data.dll
+/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Presentation/MiniETicaretAPI/bin/Debug/net6.0/MediatR.dll
+/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Presentation/MiniETicaretAPI/bin/Debug/net6.0/MediatR.Contracts.dll
+/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Presentation/MiniETicaretAPI/bin/Debug/net6.0/MediatR.Extensions.Microsoft.DependencyInjection.dll

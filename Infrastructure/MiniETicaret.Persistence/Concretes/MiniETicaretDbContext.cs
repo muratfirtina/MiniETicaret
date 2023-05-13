@@ -19,6 +19,7 @@ public class MiniETicaretDbContext : DbContext
 
     public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
     {
+        
         var entries = ChangeTracker.Entries<BaseEntity>();
         foreach (var entry in entries)
         {
@@ -32,4 +33,6 @@ public class MiniETicaretDbContext : DbContext
         
         return base.SaveChangesAsync(cancellationToken);
     }
+    
+    
 }

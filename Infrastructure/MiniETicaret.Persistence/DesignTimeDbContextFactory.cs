@@ -9,8 +9,11 @@ public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<MiniETicar
     public MiniETicaretDbContext CreateDbContext(string[] args)
     {
         var dbContextOptionsBuilder = new DbContextOptionsBuilder<MiniETicaretDbContext>();
-        dbContextOptionsBuilder.UseNpgsql(Configuration.ConnectionString);
-
+        dbContextOptionsBuilder.UseNpgsql(Configuration.ConnectionString).EnableSensitiveDataLogging();
+        
+        
         return new MiniETicaretDbContext(dbContextOptionsBuilder.Options);
     }
+    
+    
 }
