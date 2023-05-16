@@ -6,6 +6,7 @@ using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MiniETicaret.Application.Features.Commands.AppUser.CreateUser;
+using MiniETicaret.Application.Features.Commands.AppUser.LoginUser;
 
 namespace MiniETicaretAPI.Controllers
 {
@@ -25,6 +26,14 @@ namespace MiniETicaretAPI.Controllers
             var response = await _mediator.Send(createUserCommandRequest);
             return Ok(response);
         }
+        
+        [HttpPost("[action]")]
+        public async Task<IActionResult> Login(LoginUserCommandRequest loginUserCommandRequest)
+        {
+            var response = await _mediator.Send(loginUserCommandRequest);
+            return Ok(response);
+        }
+        
         
     }
 }
