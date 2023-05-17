@@ -1,12 +1,14 @@
 using Microsoft.Extensions.DependencyInjection;
 using MiniETicaret.Application.Abstractions.Storage;
 using MiniETicaret.Application.Abstractions.Storage.Local;
+using MiniETicaret.Application.Abstractions.Token;
 using MiniETicaret.Application.Repositories;
 using MiniETicaret.Infrastructure.Enums;
 using MiniETicaret.Infrastructure.Services;
 using MiniETicaret.Infrastructure.Services.Storage;
 using MiniETicaret.Infrastructure.Services.Storage.Azure;
 using MiniETicaret.Infrastructure.Services.Storage.Local;
+using MiniETicaret.Infrastructure.Services.Token;
 
 namespace MiniETicaret.Infrastructure;
 
@@ -15,6 +17,9 @@ public static class ServiceRegistration
     public static void AddInfrastructureServices(this IServiceCollection serviceCollection)
     {
         serviceCollection.AddScoped<IStorageService, StorageService>();
+        serviceCollection.AddScoped<ITokenHandler, TokenHandler>();
+        
+        
     }
     public static void AddStorage<T>(this IServiceCollection serviceCollection) where T : FileService, IStorage
     {

@@ -1,5 +1,7 @@
 using MediatR;
 using Microsoft.AspNetCore.Identity;
+using MiniETicaret.Application.Abstractions.Token;
+using MiniETicaret.Application.DTOs;
 using MiniETicaret.Application.Exceptions;
 
 namespace MiniETicaret.Application.Features.Commands.AppUser.LoginUser;
@@ -8,11 +10,13 @@ public class LoginUserCommandHandler: IRequestHandler<LoginUserCommandRequest, L
 {
     readonly UserManager<Domain.Entities.Identity.AppUser> _userManager;
     readonly SignInManager<Domain.Entities.Identity.AppUser> _signInManager;
+    readonly ITokenHandler _tokenHandler;
 
-    public LoginUserCommandHandler(UserManager<Domain.Entities.Identity.AppUser> userManager, SignInManager<Domain.Entities.Identity.AppUser> signInManager)
+    public LoginUserCommandHandler(UserManager<Domain.Entities.Identity.AppUser> userManager, SignInManager<Domain.Entities.Identity.AppUser> signInManager, ITokenHandler tokenHandler)
     {
         _userManager = userManager;
         _signInManager = signInManager;
+        _tokenHandler = tokenHandler;
     }
 
     public async Task<LoginUserCommandResponse> Handle(LoginUserCommandRequest request, CancellationToken cancellationToken)
@@ -21,13 +25,18 @@ public class LoginUserCommandHandler: IRequestHandler<LoginUserCommandRequest, L
         if (user == null)
             user = await _userManager.FindByEmailAsync(request.UsernameOrEmail);
         if (user == null)
-            throw new NotFoundUserExceptions("Username or password is wrong! Or email is wrong!");
+            throw new NotFoundUserExceptions();
         
         var result = await _signInManager.PasswordSignInAsync(user, request.Password, false, false);
         if (result.Succeeded)//Authentication başarılı
         {
-            //.....yetkileri belirleyeceğiz
+            Token token = _tokenHandler.CreateAccessToken(5);
+            return new LoginUserSuccessCommandResponse()
+            {
+                Token = token
+            };
         }
-        return new();
+        throw new AuthenticationErrorException();
+
     }
 }
