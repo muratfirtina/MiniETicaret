@@ -25,7 +25,7 @@ public class CreateUserCommandHandler:IRequestHandler<CreateUserCommandRequest,C
        
        CreateUserCommandResponse response = new(){ IsSuccess = result.Succeeded };
        if (result.Succeeded)
-           response.Message = "Kullanıcı başarıyla oluşturuldu.";
+           response.Message = "Kullanıcı başarıyla oluşturuldu."; //todo: dil desteği eklenecek
        else
            foreach (var error in result.Errors)
                response.Message += $"{error.Code} - {error.Description}\n";

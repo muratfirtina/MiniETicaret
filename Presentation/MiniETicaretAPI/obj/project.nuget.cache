@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "Bqd6x9W5rpDMzVmhAXfq+pOxyMQqKa7ROXAjyJeCVdWFRDWMMvrPDnUDCWWah1QsgDnRrEAjruW5B/2I1vZPCQ==",
+  "dgSpecHash": "8n3lYF24SxlPuIUNn7UTFca3xuueQ/6aIBn18gXRdxz0LYEthsuTZgPKqZvAaPAqkcWd12nrmLftkyEvmNrlew==",
   "success": true,
   "projectFilePath": "/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Presentation/MiniETicaretAPI/MiniETicaretAPI.csproj",
   "expectedPackageFiles": [
@@ -11,6 +11,9 @@
     "/Users/muratfirtina/.nuget/packages/fluentvalidation/11.5.2/fluentvalidation.11.5.2.nupkg.sha512",
     "/Users/muratfirtina/.nuget/packages/fluentvalidation.aspnetcore/11.3.0/fluentvalidation.aspnetcore.11.3.0.nupkg.sha512",
     "/Users/muratfirtina/.nuget/packages/fluentvalidation.dependencyinjectionextensions/11.5.2/fluentvalidation.dependencyinjectionextensions.11.5.2.nupkg.sha512",
+    "/Users/muratfirtina/.nuget/packages/google.apis/1.60.0/google.apis.1.60.0.nupkg.sha512",
+    "/Users/muratfirtina/.nuget/packages/google.apis.auth/1.60.0/google.apis.auth.1.60.0.nupkg.sha512",
+    "/Users/muratfirtina/.nuget/packages/google.apis.core/1.60.0/google.apis.core.1.60.0.nupkg.sha512",
     "/Users/muratfirtina/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
     "/Users/muratfirtina/.nuget/packages/mediatr/11.1.0/mediatr.11.1.0.nupkg.sha512",
     "/Users/muratfirtina/.nuget/packages/mediatr.contracts/1.0.1/mediatr.contracts.1.0.1.nupkg.sha512",
@@ -108,7 +111,7 @@
     "/Users/muratfirtina/.nuget/packages/microsoft.win32.systemevents/6.0.0/microsoft.win32.systemevents.6.0.0.nupkg.sha512",
     "/Users/muratfirtina/.nuget/packages/mono.texttemplating/2.2.1/mono.texttemplating.2.2.1.nupkg.sha512",
     "/Users/muratfirtina/.nuget/packages/netstandard.library/1.6.1/netstandard.library.1.6.1.nupkg.sha512",
-    "/Users/muratfirtina/.nuget/packages/newtonsoft.json/13.0.1/newtonsoft.json.13.0.1.nupkg.sha512",
+    "/Users/muratfirtina/.nuget/packages/newtonsoft.json/13.0.2/newtonsoft.json.13.0.2.nupkg.sha512",
     "/Users/muratfirtina/.nuget/packages/npgsql/8.0.0-preview.2/npgsql.8.0.0-preview.2.nupkg.sha512",
     "/Users/muratfirtina/.nuget/packages/npgsql.entityframeworkcore.postgresql/8.0.0-preview.2/npgsql.entityframeworkcore.postgresql.8.0.0-preview.2.nupkg.sha512",
     "/Users/muratfirtina/.nuget/packages/nuget.common/6.3.1/nuget.common.6.3.1.nupkg.sha512",
