@@ -6,6 +6,7 @@ using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MiniETicaret.Application.Features.Commands.AppUser.CreateUser;
+using MiniETicaret.Application.Features.Commands.AppUser.FacebookLogin;
 using MiniETicaret.Application.Features.Commands.AppUser.GoogleLogin;
 using MiniETicaret.Application.Features.Commands.AppUser.LoginUser;
 
@@ -39,6 +40,13 @@ namespace MiniETicaretAPI.Controllers
         public async Task<IActionResult> GoogleLogin(GoogleLoginCommandRequest googleLoginCommandRequest)
         {
             var response = await _mediator.Send(googleLoginCommandRequest);
+            return Ok(response);
+        }
+        
+        [HttpPost("facebook-login")]
+        public async Task<IActionResult> FacebookLogin(FacebookLoginCommandRequest facebookLoginCommandRequest)
+        {
+            var response = await _mediator.Send(facebookLoginCommandRequest);
             return Ok(response);
         }
     }
