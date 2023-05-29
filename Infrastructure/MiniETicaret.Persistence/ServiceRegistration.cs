@@ -1,9 +1,12 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using MiniETicaret.Application.Abstractions.Services;
+using MiniETicaret.Application.Abstractions.Services.Authentication;
 using MiniETicaret.Application.Repositories;
 using MiniETicaret.Domain.Entities.Identity;
 using MiniETicaret.Persistence.Concretes;
 using MiniETicaret.Persistence.Repositories;
+using MiniETicaret.Persistence.Services;
 
 namespace MiniETicaret.Persistence;
 
@@ -34,6 +37,11 @@ public static class ServiceRegistration
         services.AddScoped<IInvoiceFileWriteRepository, InvoiceFileWriteRepository>();
         services.AddScoped<IFileReadRepository, FileReadRepository>();
         services.AddScoped<IFileWriteRepository, FileWriteRepository>();
-   
+
+        services.AddScoped<IUserService, UserService>();
+        services.AddScoped<IAuthService, AuthService>();
+        services.AddScoped<IExternalAuthentication, AuthService>();
+        services.AddScoped<IInternalAuthentication, AuthService>();
+
     }
 }

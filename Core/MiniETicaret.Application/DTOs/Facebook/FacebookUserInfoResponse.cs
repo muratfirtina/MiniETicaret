@@ -10,5 +10,5 @@ public class FacebookUserInfoResponse
     public string Email { get; set; }
     
     [JsonPropertyName("name")]
-    public string Name { get; set; } 
+    public string? Name { get; set; } 
 }

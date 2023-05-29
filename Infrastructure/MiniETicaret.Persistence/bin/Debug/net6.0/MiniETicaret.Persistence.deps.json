@@ -9,6 +9,7 @@
       "MiniETicaret.Persistence/1.0.0": {
         "dependencies": {
           "EntityFramework": "6.4.4",
+          "Google.Apis.Auth": "1.60.0",
           "Microsoft.EntityFrameworkCore": "8.0.0-preview.2.23128.3",
           "Microsoft.EntityFrameworkCore.Abstractions": "8.0.0-preview.2.23128.3",
           "Microsoft.EntityFrameworkCore.Tools": "8.0.0-preview.2.23128.3",
@@ -855,7 +856,6 @@
           "FluentValidation": "11.5.2",
           "FluentValidation.AspNetCore": "11.3.0",
           "FluentValidation.DependencyInjectionExtensions": "11.5.2",
-          "Google.Apis.Auth": "1.60.0",
           "MediatR": "11.1.0",
           "MediatR.Extensions.Microsoft.DependencyInjection": "11.1.0",
           "Microsoft.AspNetCore.Http": "2.2.2",
