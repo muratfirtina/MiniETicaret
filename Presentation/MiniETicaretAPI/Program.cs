@@ -14,6 +14,7 @@ using MiniETicaret.Infrastructure.Services.Storage.Local;
 using MiniETicaret.Persistence;
 using MiniETicaret.Persistence.Concretes;
 using MiniETicaretAPI.Configurations.ColumnWriters;
+using MiniETicaretAPI.Extensions;
 using Serilog;
 using Serilog.Context;
 using Serilog.Core;
@@ -111,6 +112,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.ConfigureExceptionHandler<Program>(app.Services.GetRequiredService<ILogger<Program>>());
+
 app.UseStaticFiles();
 
 app.UseSerilogRequestLogging();
@@ -123,13 +126,7 @@ app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.Use(async (context, next) =>
-{
-    var userName = context.User?.Identity?.IsAuthenticated !=null || true ? context.User.Identity.Name : null;
-    LogContext.PushProperty("userName", userName);
-    await next();
-    
-});
+app.AddUserNameLogging();
 
 app.MapControllers();
 

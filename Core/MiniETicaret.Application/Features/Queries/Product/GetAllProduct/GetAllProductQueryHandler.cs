@@ -1,4 +1,5 @@
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using MiniETicaret.Application.Repositories;
 
@@ -18,8 +19,9 @@ public class GetAllProductQueryHandler : IRequestHandler<GetAllProductQueryReque
     public async Task<GetAllProductQueryResponse> Handle(GetAllProductQueryRequest request, CancellationToken cancellationToken)
     {
         _logger.LogInformation("Get All Product");
+        throw new Exception("Hata alındı");
         var totalCount = _productReadRepository.GetAll(false).Count();
-        var products = _productReadRepository.GetAll(false)
+        var products = await _productReadRepository.GetAll(false)
             .OrderBy(p => p.Id)
             .Skip(request.Page * request.Size)
             .Take(request.Size)
@@ -31,7 +33,7 @@ public class GetAllProductQueryHandler : IRequestHandler<GetAllProductQueryReque
                 p.Stock,
                 p.CreatedDate,
                 p.UpdatedDate
-            }).ToList();
+            }).ToListAsync();
         return new()
         {
             TotalCount = totalCount,
