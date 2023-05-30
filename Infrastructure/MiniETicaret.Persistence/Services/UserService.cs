@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using MiniETicaret.Application.Abstractions.Services;
 using MiniETicaret.Application.DTOs.User;
+using MiniETicaret.Application.Exceptions;
 using MiniETicaret.Domain.Entities.Identity;
 
 namespace MiniETicaret.Persistence.Services;
@@ -32,5 +33,18 @@ public class UserService:IUserService
                        response.Message += $"{error.Code} - {error.Description}\n";
                return response;
                
+    }
+
+    public async Task UpdateRefreshToken(string refreshToken, AppUser user, DateTime accessTokenDateTime, int refreshTokenLifetime)
+    {
+        if (user != null)
+        {
+            user.RefreshToken = refreshToken;
+            user.RefreshTokenEndDateTime = accessTokenDateTime.AddSeconds(refreshTokenLifetime);
+            await _userManager.UpdateAsync(user);
+        }
+        else
+            throw new NotFoundUserExceptions();
+
     }
 }

@@ -1,0 +1,8 @@
+using MiniETicaret.Application.DTOs;
+
+namespace MiniETicaret.Application.Features.Commands.AppUser.RefreshTokenLogin;
+
+public class RefreshTokenLoginCommandResponse
+{
+    public Token Token { get; set; }
+}

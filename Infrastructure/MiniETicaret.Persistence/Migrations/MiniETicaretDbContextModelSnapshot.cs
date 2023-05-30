@@ -236,7 +236,6 @@ namespace MiniETicaret.Persistence.Migrations
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("NameSurname")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("NormalizedEmail")
@@ -255,6 +254,12 @@ namespace MiniETicaret.Persistence.Migrations
 
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("boolean");
+
+                    b.Property<string>("RefreshToken")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime?>("RefreshTokenEndDateTime")
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("text");

@@ -16,6 +16,7 @@ public static class ServiceRegistration
     {
         services.AddDbContext<MiniETicaretDbContext>(options =>
             options.UseNpgsql(Configuration.ConnectionString));
+        
         services.AddIdentity<AppUser,AppRole>(options =>
         {
             options.Password.RequiredLength = 3;
