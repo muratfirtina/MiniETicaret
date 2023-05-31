@@ -330,3 +330,5 @@
 /Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Presentation/MiniETicaretAPI/bin/Debug/net6.0/Serilog.Sinks.Debug.dll
 /Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Presentation/MiniETicaretAPI/bin/Debug/net6.0/Serilog.Sinks.File.dll
 /Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Presentation/MiniETicaretAPI/bin/Debug/net6.0/Serilog.Sinks.Seq.dll
+/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Presentation/MiniETicaretAPI/bin/Debug/net6.0/MiniETicaret.SignalR.dll
+/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Presentation/MiniETicaretAPI/bin/Debug/net6.0/MiniETicaret.SignalR.pdb

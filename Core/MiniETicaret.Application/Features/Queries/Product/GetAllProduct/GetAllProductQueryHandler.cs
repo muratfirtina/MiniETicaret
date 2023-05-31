@@ -19,7 +19,6 @@ public class GetAllProductQueryHandler : IRequestHandler<GetAllProductQueryReque
     public async Task<GetAllProductQueryResponse> Handle(GetAllProductQueryRequest request, CancellationToken cancellationToken)
     {
         _logger.LogInformation("Get All Product");
-        throw new Exception("Hata alındı");
         var totalCount = _productReadRepository.GetAll(false).Count();
         var products = await _productReadRepository.GetAll(false)
             .OrderBy(p => p.Id)

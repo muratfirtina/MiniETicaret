@@ -16,6 +16,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentatio
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniETicaretAPI", "Presentation\MiniETicaretAPI\MiniETicaretAPI.csproj", "{59CBD366-50C9-4321-B8D3-74555BC4F0D1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniETicaret.SignalR", "Infrastructure\MiniETicaret.SignalR\MiniETicaret.SignalR.csproj", "{6765CA34-68AC-43E8-B8D8-1F2BD901087B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,7 @@ Global
 		{6D048292-0AC5-4245-B2A3-EB618ED4A825} = {45048ECF-1828-45F5-8BE7-E981216461FC}
 		{FFCFDF9F-B2B2-484C-A45D-CE5989276112} = {45048ECF-1828-45F5-8BE7-E981216461FC}
 		{59CBD366-50C9-4321-B8D3-74555BC4F0D1} = {A10CE5CD-6828-4842-BF68-0C3A808373EC}
+		{6765CA34-68AC-43E8-B8D8-1F2BD901087B} = {45048ECF-1828-45F5-8BE7-E981216461FC}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{F8E057C9-D9A2-4A52-B520-F91057A20AD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -49,5 +52,9 @@ Global
 		{59CBD366-50C9-4321-B8D3-74555BC4F0D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{59CBD366-50C9-4321-B8D3-74555BC4F0D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{59CBD366-50C9-4321-B8D3-74555BC4F0D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6765CA34-68AC-43E8-B8D8-1F2BD901087B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6765CA34-68AC-43E8-B8D8-1F2BD901087B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6765CA34-68AC-43E8-B8D8-1F2BD901087B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6765CA34-68AC-43E8-B8D8-1F2BD901087B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

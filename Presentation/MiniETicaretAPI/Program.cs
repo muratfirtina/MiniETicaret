@@ -13,6 +13,8 @@ using MiniETicaret.Infrastructure.Services.Storage.Azure;
 using MiniETicaret.Infrastructure.Services.Storage.Local;
 using MiniETicaret.Persistence;
 using MiniETicaret.Persistence.Concretes;
+using MiniETicaret.SignalR;
+using MiniETicaret.SignalR.Hubs;
 using MiniETicaretAPI.Configurations.ColumnWriters;
 using MiniETicaretAPI.Extensions;
 using Serilog;
@@ -25,6 +27,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddPersistenceServices();
 builder.Services.AddInfrastructureServices();
 builder.Services.AddApplicationServices();
+builder.Services.AddSignalRServices();
 
 
 //builder.Services.AddStorage<LocalStorage>();
@@ -129,5 +132,6 @@ app.UseAuthorization();
 app.AddUserNameLogging();
 
 app.MapControllers();
+app.MapHubs();
 
 app.Run();

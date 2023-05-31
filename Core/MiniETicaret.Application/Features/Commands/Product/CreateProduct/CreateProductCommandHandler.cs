@@ -1,4 +1,5 @@
 using MediatR;
+using MiniETicaret.Application.Abstractions.Hubs;
 using MiniETicaret.Application.Repositories;
 
 namespace MiniETicaret.Application.Features.Commands.Product.CreateProduct;
@@ -6,10 +7,11 @@ namespace MiniETicaret.Application.Features.Commands.Product.CreateProduct;
 public class CreateProductCommandHandler:IRequestHandler<CreateProductCommandRequest,CreateProductCommandResponse>
 {
     readonly IProductWriteRepository _productWriteRepository;
-
-    public CreateProductCommandHandler(IProductWriteRepository productWriteRepository)
+    readonly IProductHubService _productHubService;
+    public CreateProductCommandHandler(IProductWriteRepository productWriteRepository, IProductHubService productHubService)
     {
         _productWriteRepository = productWriteRepository;
+        _productHubService = productHubService;
     }
 
     public async Task<CreateProductCommandResponse> Handle(CreateProductCommandRequest request,
@@ -22,6 +24,7 @@ public class CreateProductCommandHandler:IRequestHandler<CreateProductCommandReq
             Stock = request.Stock
         });
         await _productWriteRepository.SaveAsync();
+        await _productHubService.ProductAddedMessageAsync($"{request.Name} adlı ürün eklendi.");
         return new();
     }
 }

@@ -4787,6 +4787,22 @@
         "runtime": {
           "bin/placeholder/MiniETicaret.Persistence.dll": {}
         }
+      },
+      "MiniETicaret.SignalR/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "MiniETicaret.Application": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/MiniETicaret.SignalR.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MiniETicaret.SignalR.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       }
     }
   },
@@ -12923,6 +12939,11 @@
       "type": "project",
       "path": "../../Infrastructure/MiniETicaret.Persistence/MiniETicaret.Persistence.csproj",
       "msbuildProject": "../../Infrastructure/MiniETicaret.Persistence/MiniETicaret.Persistence.csproj"
+    },
+    "MiniETicaret.SignalR/1.0.0": {
+      "type": "project",
+      "path": "../../Infrastructure/MiniETicaret.SignalR/MiniETicaret.SignalR.csproj",
+      "msbuildProject": "../../Infrastructure/MiniETicaret.SignalR/MiniETicaret.SignalR.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -12933,6 +12954,7 @@
       "MiniETicaret.Application >= 1.0.0",
       "MiniETicaret.Infrastructure >= 1.0.0",
       "MiniETicaret.Persistence >= 1.0.0",
+      "MiniETicaret.SignalR >= 1.0.0",
       "Serilog.AspNetCore >= 7.0.0",
       "Serilog.Sinks.PostgreSQL >= 2.3.0",
       "Serilog.Sinks.Seq >= 5.2.2",
@@ -12972,6 +12994,9 @@
             },
             "/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Infrastructure/MiniETicaret.Persistence/MiniETicaret.Persistence.csproj": {
               "projectPath": "/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Infrastructure/MiniETicaret.Persistence/MiniETicaret.Persistence.csproj"
+            },
+            "/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Infrastructure/MiniETicaret.SignalR/MiniETicaret.SignalR.csproj": {
+              "projectPath": "/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Infrastructure/MiniETicaret.SignalR/MiniETicaret.SignalR.csproj"
             }
           }
         }

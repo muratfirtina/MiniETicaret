@@ -24,6 +24,7 @@
       <ProjectReference Include="..\..\Core\MiniETicaret.Application\MiniETicaret.Application.csproj" />
       <ProjectReference Include="..\..\Infrastructure\MiniETicaret.Infrastructure\MiniETicaret.Infrastructure.csproj" />
       <ProjectReference Include="..\..\Infrastructure\MiniETicaret.Persistence\MiniETicaret.Persistence.csproj" />
+      <ProjectReference Include="..\..\Infrastructure\MiniETicaret.SignalR\MiniETicaret.SignalR.csproj" />
     </ItemGroup>
 
     <ItemGroup>

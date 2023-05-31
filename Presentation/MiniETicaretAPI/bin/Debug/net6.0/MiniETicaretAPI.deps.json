@@ -14,6 +14,7 @@
           "MiniETicaret.Application": "1.0.0",
           "MiniETicaret.Infrastructure": "1.0.0",
           "MiniETicaret.Persistence": "1.0.0",
+          "MiniETicaret.SignalR": "1.0.0",
           "Serilog.AspNetCore": "7.0.0",
           "Serilog.Sinks.PostgreSQL": "2.3.0",
           "Serilog.Sinks.Seq": "5.2.2",
@@ -3036,6 +3037,14 @@
         "runtime": {
           "MiniETicaret.Persistence.dll": {}
         }
+      },
+      "MiniETicaret.SignalR/1.0.0": {
+        "dependencies": {
+          "MiniETicaret.Application": "1.0.0"
+        },
+        "runtime": {
+          "MiniETicaret.SignalR.dll": {}
+        }
       }
     }
   },
@@ -4762,6 +4771,11 @@
       "sha512": ""
     },
     "MiniETicaret.Persistence/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "MiniETicaret.SignalR/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

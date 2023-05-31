@@ -135,8 +135,8 @@ public class AuthService : IAuthService
         AppUser? user = await _userManager.Users.FirstOrDefaultAsync(u => u.RefreshToken == refreshToken);
         if (user != null && user?.RefreshTokenEndDateTime > DateTime.UtcNow)
         {
-            Token token = _tokenHandler.CreateAccessToken(15, user);
-            await _userService.UpdateRefreshToken(token.RefreshToken, user, token.Expiration,refreshTokenLifetime:15);
+            Token token = _tokenHandler.CreateAccessToken(900, user);
+            await _userService.UpdateRefreshToken(token.RefreshToken, user, token.Expiration,refreshTokenLifetime:1200);
             return token;
         }
         else

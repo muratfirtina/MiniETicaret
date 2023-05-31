@@ -526,6 +526,7 @@ FodyWeavers.xsd
 /MiniETicaret.sln
 /Presentation/MiniETicaretAPI/appsettings.json
 /Presentation/MiniETicaretAPI/bin/Debug/net6.0/appsettings.json
+/Presentation/MiniETicaretAPI/logs/log.txt
 ### VisualStudio Patch ###
 # Additional files built by Visual Studio
 
