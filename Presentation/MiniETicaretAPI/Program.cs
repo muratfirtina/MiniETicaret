@@ -12,7 +12,7 @@ using MiniETicaret.Infrastructure.Filters;
 using MiniETicaret.Infrastructure.Services.Storage.Azure;
 using MiniETicaret.Infrastructure.Services.Storage.Local;
 using MiniETicaret.Persistence;
-using MiniETicaret.Persistence.Concretes;
+using MiniETicaret.Persistence.Contexts;
 using MiniETicaret.SignalR;
 using MiniETicaret.SignalR.Hubs;
 using MiniETicaretAPI.Configurations.ColumnWriters;
@@ -24,6 +24,7 @@ using Serilog.Sinks.PostgreSQL;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddHttpContextAccessor();
 builder.Services.AddPersistenceServices();
 builder.Services.AddInfrastructureServices();
 builder.Services.AddApplicationServices();

@@ -19,11 +19,13 @@ public class GetAllProductQueryHandler : IRequestHandler<GetAllProductQueryReque
     public async Task<GetAllProductQueryResponse> Handle(GetAllProductQueryRequest request, CancellationToken cancellationToken)
     {
         _logger.LogInformation("Get All Product");
-        var totalCount = _productReadRepository.GetAll(false).Count();
+        
+        var totalProductCount = _productReadRepository.GetAll(false).Count();
         var products = await _productReadRepository.GetAll(false)
             .OrderBy(p => p.Id)
             .Skip(request.Page * request.Size)
             .Take(request.Size)
+            .Include(p => p.ProductImageFiles)
             .Select(p => new
             {
                 p.Id,
@@ -31,11 +33,12 @@ public class GetAllProductQueryHandler : IRequestHandler<GetAllProductQueryReque
                 p.Price,
                 p.Stock,
                 p.CreatedDate,
-                p.UpdatedDate
+                p.UpdatedDate,
+                p.ProductImageFiles
             }).ToListAsync();
         return new()
         {
-            TotalCount = totalCount,
+            TotalProductCount = totalProductCount,
             Products = products
 
         };

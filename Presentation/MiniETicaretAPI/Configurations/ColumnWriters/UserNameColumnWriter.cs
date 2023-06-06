@@ -10,7 +10,7 @@ public class UserNameColumnWriter: ColumnWriterBase
     {
     }
 
-    public override object? GetValue(LogEvent logEvent, IFormatProvider formatProvider = null)
+    public override object? GetValue(LogEvent logEvent, IFormatProvider? formatProvider = null)
     {
         var (userName,value) = logEvent.Properties.FirstOrDefault(p => p.Key == "userName");
         return value?.ToString() ?? null;

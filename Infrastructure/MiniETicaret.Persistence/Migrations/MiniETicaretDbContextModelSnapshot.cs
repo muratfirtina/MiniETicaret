@@ -3,7 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using MiniETicaret.Persistence.Concretes;
+using MiniETicaret.Persistence.Contexts;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
@@ -126,6 +126,59 @@ namespace MiniETicaret.Persistence.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
+                });
+
+            modelBuilder.Entity("MiniETicaret.Domain.Entities.Cart", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime>("UpdatedDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Carts");
+                });
+
+            modelBuilder.Entity("MiniETicaret.Domain.Entities.CartItem", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("CartId")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid>("ProductId")
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("UpdatedDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CartId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("CartItems");
                 });
 
             modelBuilder.Entity("MiniETicaret.Domain.Entities.Customer", b =>
@@ -286,7 +339,6 @@ namespace MiniETicaret.Persistence.Migrations
             modelBuilder.Entity("MiniETicaret.Domain.Entities.Order", b =>
                 {
                     b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
                     b.Property<string>("Address")
@@ -384,6 +436,9 @@ namespace MiniETicaret.Persistence.Migrations
                 {
                     b.HasBaseType("MiniETicaret.Domain.Entities.File");
 
+                    b.Property<bool>("Showcase")
+                        .HasColumnType("boolean");
+
                     b.HasDiscriminator().HasValue("ProductImageFile");
                 });
 
@@ -438,6 +493,36 @@ namespace MiniETicaret.Persistence.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("MiniETicaret.Domain.Entities.Cart", b =>
+                {
+                    b.HasOne("MiniETicaret.Domain.Entities.Identity.AppUser", "User")
+                        .WithMany("Carts")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("MiniETicaret.Domain.Entities.CartItem", b =>
+                {
+                    b.HasOne("MiniETicaret.Domain.Entities.Cart", "Cart")
+                        .WithMany("CartItems")
+                        .HasForeignKey("CartId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MiniETicaret.Domain.Entities.Product", "Product")
+                        .WithMany("CartItems")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Cart");
+
+                    b.Navigation("Product");
+                });
+
             modelBuilder.Entity("MiniETicaret.Domain.Entities.Order", b =>
                 {
                     b.HasOne("MiniETicaret.Domain.Entities.Customer", "Customer")
@@ -445,6 +530,14 @@ namespace MiniETicaret.Persistence.Migrations
                         .HasForeignKey("CustomerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("MiniETicaret.Domain.Entities.Cart", "Cart")
+                        .WithOne("Order")
+                        .HasForeignKey("MiniETicaret.Domain.Entities.Order", "Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Cart");
 
                     b.Navigation("Customer");
                 });
@@ -479,9 +572,27 @@ namespace MiniETicaret.Persistence.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("MiniETicaret.Domain.Entities.Cart", b =>
+                {
+                    b.Navigation("CartItems");
+
+                    b.Navigation("Order")
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("MiniETicaret.Domain.Entities.Customer", b =>
                 {
                     b.Navigation("Orders");
+                });
+
+            modelBuilder.Entity("MiniETicaret.Domain.Entities.Identity.AppUser", b =>
+                {
+                    b.Navigation("Carts");
+                });
+
+            modelBuilder.Entity("MiniETicaret.Domain.Entities.Product", b =>
+                {
+                    b.Navigation("CartItems");
                 });
 #pragma warning restore 612, 618
         }

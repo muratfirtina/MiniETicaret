@@ -4,7 +4,7 @@ using MiniETicaret.Application.Abstractions.Services;
 using MiniETicaret.Application.Abstractions.Services.Authentication;
 using MiniETicaret.Application.Repositories;
 using MiniETicaret.Domain.Entities.Identity;
-using MiniETicaret.Persistence.Concretes;
+using MiniETicaret.Persistence.Contexts;
 using MiniETicaret.Persistence.Repositories;
 using MiniETicaret.Persistence.Services;
 
@@ -38,11 +38,16 @@ public static class ServiceRegistration
         services.AddScoped<IInvoiceFileWriteRepository, InvoiceFileWriteRepository>();
         services.AddScoped<IFileReadRepository, FileReadRepository>();
         services.AddScoped<IFileWriteRepository, FileWriteRepository>();
+        services.AddScoped<ICartReadRepository, CartReadRepository>();
+        services.AddScoped<ICartWriteRepository, CartWriteRepository>();
+        services.AddScoped<ICartItemReadRepository, CartItemReadRepository>();
+        services.AddScoped<ICartItemWriteRepository, CartItemWriteRepository>();
 
         services.AddScoped<IUserService, UserService>();
         services.AddScoped<IAuthService, AuthService>();
         services.AddScoped<IExternalAuthentication, AuthService>();
         services.AddScoped<IInternalAuthentication, AuthService>();
+        services.AddScoped<ICartService, CartService>();
 
     }
 }

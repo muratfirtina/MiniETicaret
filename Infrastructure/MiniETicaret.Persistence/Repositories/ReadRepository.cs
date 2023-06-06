@@ -2,7 +2,7 @@ using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
 using MiniETicaret.Application.Repositories;
 using MiniETicaret.Domain.Entities.Common;
-using MiniETicaret.Persistence.Concretes;
+using MiniETicaret.Persistence.Contexts;
 
 namespace MiniETicaret.Persistence.Repositories;
 

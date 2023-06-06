@@ -1,5 +1,5 @@
 using MiniETicaret.Application.Repositories;
-using MiniETicaret.Persistence.Concretes;
+using MiniETicaret.Persistence.Contexts;
 using File = MiniETicaret.Domain.Entities.File;
 
 namespace MiniETicaret.Persistence.Repositories;

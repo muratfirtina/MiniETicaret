@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using MiniETicaret.Application.Repositories;
 using MiniETicaret.Domain.Entities.Common;
-using MiniETicaret.Persistence.Concretes;
+using MiniETicaret.Persistence.Contexts;
 
 namespace MiniETicaret.Persistence.Repositories;
 

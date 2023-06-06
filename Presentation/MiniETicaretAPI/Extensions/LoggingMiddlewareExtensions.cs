@@ -8,7 +8,7 @@ static public class LoggingMiddlewareExtensions
     {
         app.Use(async (context, next) =>
         {
-            var username = context.User?.Identity?.IsAuthenticated != null || true ? context.User.Identity.Name : null;
+            var username = context.User?.Identity?.IsAuthenticated != null || true ? context.User?.Identity?.Name : null;
             LogContext.PushProperty("userName", username);
             await next.Invoke();
         });
