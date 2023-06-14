@@ -289,6 +289,7 @@ namespace MiniETicaret.Persistence.Migrations
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("NameSurname")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("NormalizedEmail")

@@ -32,7 +32,7 @@ public class CartService:ICartService
     }
     private async Task<Cart?> ContextUser()
     {
-        var userName = _httpContextAccessor.HttpContext?.User.Identity?.Name;
+        var userName = _httpContextAccessor.HttpContext?.User?.Identity?.Name;
         if (!string.IsNullOrEmpty(userName))
         {
             AppUser? user = await _userManager.Users
@@ -84,7 +84,7 @@ public class CartService:ICartService
         Cart? cart = await ContextUser();
         if (cart != null)
         {
-            CartItem? _cartItem = await _cartItemReadRepository
+            CartItem _cartItem = await _cartItemReadRepository
                 .GetSingleAsync(ci => ci.CartId == cart.Id && ci.ProductId == Guid.Parse(cartItem.ProductId));
             if(_cartItem != null)
                 _cartItem.Quantity++;

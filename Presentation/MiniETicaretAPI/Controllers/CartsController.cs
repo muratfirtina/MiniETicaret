@@ -29,7 +29,7 @@ namespace MiniETicaretAPI.Controllers
         [HttpGet]
         public async Task<IActionResult> GetCartItems([FromQuery]GetCartItemsQueryRequest getCartItemsQueryRequest)
         {
-            List<GetCartItemsQueryResponse> response = await _mediator.Send(new GetCartItemsQueryRequest());
+            List<GetCartItemsQueryResponse> response = await _mediator.Send(getCartItemsQueryRequest);
             return Ok(response);
         }
         [HttpPost]
@@ -45,7 +45,7 @@ namespace MiniETicaretAPI.Controllers
             UpdateQuantityCommandResponse response = await _mediator.Send(updateQuantityCommandRequest);
             return Ok(response);
         }
-        [HttpDelete("{cartItemId}")]
+        [HttpDelete("{CartItemId}")]
         public async Task<IActionResult> RemoveCartItem([FromRoute]RemoveCartItemCommandRequest removeCartItemCommandRequest)
         {
             RemoveCartItemCommandResponse response = await _mediator.Send(removeCartItemCommandRequest);

@@ -34,21 +34,21 @@ public class MiniETicaretDbContext : IdentityDbContext<AppUser,AppRole,string>
         base.OnModelCreating(builder);
     }
 
-    public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
+    public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
     {   
         
-        var entries = ChangeTracker.Entries<BaseEntity>();
-        foreach (var entry in entries)
+        var datas = ChangeTracker.Entries<BaseEntity>();
+        foreach (var data in datas)
         {
-            _ = entry.State switch
+            _ = data.State switch
             {
-                EntityState.Added => entry.Entity.CreatedDate = DateTime.UtcNow,
-                EntityState.Modified => entry.Entity.UpdatedDate = DateTime.UtcNow,
+                EntityState.Added => data.Entity.CreatedDate = DateTime.UtcNow,
+                EntityState.Modified => data.Entity.UpdatedDate = DateTime.UtcNow,
                 _ => DateTime.UtcNow
             };
         }
         
-        return base.SaveChangesAsync(cancellationToken);
+        return await base.SaveChangesAsync(cancellationToken);
     }
     
     

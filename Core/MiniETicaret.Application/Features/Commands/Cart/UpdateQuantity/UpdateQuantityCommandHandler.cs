@@ -14,7 +14,7 @@ public class UpdateQuantityCommandHandler: IRequestHandler<UpdateQuantityCommand
 
     public async Task<UpdateQuantityCommandResponse> Handle(UpdateQuantityCommandRequest request, CancellationToken cancellationToken)
     {
-        _cartService.UpdateQuantityAsync(new()
+        await _cartService.UpdateQuantityAsync(new()
         {
             CartItemId = request.CartItemId,
             Quantity = request.Quantity
