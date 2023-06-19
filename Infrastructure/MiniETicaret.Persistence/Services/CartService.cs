@@ -73,6 +73,7 @@ public class CartService:ICartService
         Cart? result = await _cartReadRepository.Table
             .Include(c => c.CartItems)
             .ThenInclude(ci => ci.Product)
+            .ThenInclude(p=>p.ProductImageFiles)
             .FirstOrDefaultAsync(c => c.Id == cart.Id);
         return result.CartItems
             .ToList();

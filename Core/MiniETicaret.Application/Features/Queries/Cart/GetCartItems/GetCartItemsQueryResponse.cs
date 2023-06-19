@@ -6,6 +6,7 @@ public class GetCartItemsQueryResponse
     public string ProductName { get; set; }
     public float UnitPrice { get; set; }
     public int Quantity { get; set; }
+    public List<string> ProductImageUrls { get; set; }
     
     
 }

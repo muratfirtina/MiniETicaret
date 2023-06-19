@@ -9,5 +9,5 @@ public class CartItem:BaseEntity
     public Cart Cart { get; set; }
     public Product Product { get; set; }
     public int Quantity { get; set; }
-    
+    public ICollection<ProductImageFile> ProductImageFiles { get; set; }
 }
