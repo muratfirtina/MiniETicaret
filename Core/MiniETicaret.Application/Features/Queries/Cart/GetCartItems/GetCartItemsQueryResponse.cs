@@ -7,6 +7,6 @@ public class GetCartItemsQueryResponse
     public float UnitPrice { get; set; }
     public int Quantity { get; set; }
     public List<string> ProductImageUrls { get; set; }
-    
+    public bool IsChecked { get; set; }
     
 }

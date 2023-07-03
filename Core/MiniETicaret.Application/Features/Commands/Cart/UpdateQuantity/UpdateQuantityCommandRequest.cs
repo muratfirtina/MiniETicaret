@@ -7,4 +7,5 @@ public class UpdateQuantityCommandRequest : IRequest<UpdateQuantityCommandRespon
     public string CartItemId { get; set; }
     public int Quantity { get; set; }
     
+    
 }

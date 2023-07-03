@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MiniETicaret.Application.Features.Commands.Cart.AddItemToCart;
 using MiniETicaret.Application.Features.Commands.Cart.RemoveCartItem;
+using MiniETicaret.Application.Features.Commands.Cart.UpdateCartItem;
 using MiniETicaret.Application.Features.Commands.Cart.UpdateQuantity;
 using MiniETicaret.Application.Features.Queries.Cart.GetCartItems;
 
@@ -49,6 +50,12 @@ namespace MiniETicaretAPI.Controllers
         public async Task<IActionResult> RemoveCartItem([FromRoute]RemoveCartItemCommandRequest removeCartItemCommandRequest)
         {
             RemoveCartItemCommandResponse response = await _mediator.Send(removeCartItemCommandRequest);
+            return Ok(response);
+        }
+        [HttpPut("UpdateCartItem")]
+        public async Task<IActionResult> UpdateCartItem(UpdateCartItemCommandRequest updateCartItemCommandRequest)
+        {
+            UpdateCartItemCommandResponse response = await _mediator.Send(updateCartItemCommandRequest);
             return Ok(response);
         }
     }

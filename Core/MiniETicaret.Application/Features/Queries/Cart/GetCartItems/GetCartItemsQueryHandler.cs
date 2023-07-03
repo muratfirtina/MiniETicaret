@@ -21,7 +21,8 @@ public class GetCartItemsQueryHandler: IRequestHandler<GetCartItemsQueryRequest,
             ProductName = ci.Product.Name,
             Quantity = ci.Quantity,
             UnitPrice = ci.Product.Price,
-            ProductImageUrls = ci.Product.ProductImageFiles.Select(pif => pif.Path).ToList()
+            ProductImageUrls = ci.Product.ProductImageFiles.Select(pif => pif.Path).ToList(),
+            IsChecked = ci.IsChecked
             
         }).ToList();
     }

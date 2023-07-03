@@ -87,19 +87,25 @@ public class CartService:ICartService
         {
             CartItem _cartItem = await _cartItemReadRepository
                 .GetSingleAsync(ci => ci.CartId == cart.Id && ci.ProductId == Guid.Parse(cartItem.ProductId));
-            if(_cartItem != null)
+            if (_cartItem != null)
+            {
                 _cartItem.Quantity++;
+                if (!cartItem.IsChecked) // Eğer işaret kaldırıldıysa
+                    _cartItem.IsChecked = false;
+            }
             else
+            {
                 await _cartItemWriteRepository.AddAsync(new()
                 {
                     CartId = cart.Id,
                     ProductId = Guid.Parse(cartItem.ProductId),
-                    Quantity = cartItem.Quantity
+                    Quantity = cartItem.Quantity,
+                    IsChecked = cartItem.IsChecked // Varsayılan olarak true
                 });
-            
+            }
+        
             await _cartItemWriteRepository.SaveAsync();
         }
-        
     }
 
     public async Task UpdateQuantityAsync(VM_Update_CartItem cartItem)
@@ -118,6 +124,15 @@ public class CartService:ICartService
         if (cartItem != null)
         {
             _cartItemWriteRepository.Remove(cartItem);
+            await _cartItemWriteRepository.SaveAsync();
+        }
+    }
+    public async Task UpdateCartItemAsync(VM_Update_CartItem cartItem)
+    {
+        CartItem? _cartItem = await _cartItemReadRepository.GetByIdAsync(cartItem.CartItemId);
+        if (_cartItem != null)
+        {
+            _cartItem.IsChecked = cartItem.IsChecked; // Checkbox durumu da güncelleniyor
             await _cartItemWriteRepository.SaveAsync();
         }
     }

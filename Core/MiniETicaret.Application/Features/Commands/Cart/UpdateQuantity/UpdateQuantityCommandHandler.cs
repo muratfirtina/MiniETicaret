@@ -17,7 +17,8 @@ public class UpdateQuantityCommandHandler: IRequestHandler<UpdateQuantityCommand
         await _cartService.UpdateQuantityAsync(new()
         {
             CartItemId = request.CartItemId,
-            Quantity = request.Quantity
+            Quantity = request.Quantity,
+            
 
         });
         return new();

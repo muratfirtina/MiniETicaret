@@ -17,7 +17,8 @@ public class AddItemToCartCommandHandler : IRequestHandler<AddItemToCartCommandR
         await _cartService.AddItemToCartAsync(new()
         {
             ProductId = request.ProductId,
-            Quantity = request.Quantity
+            Quantity = request.Quantity,
+            IsChecked = request.IsChecked
         });
         return new();
     }

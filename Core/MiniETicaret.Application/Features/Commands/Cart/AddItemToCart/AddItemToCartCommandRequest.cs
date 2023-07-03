@@ -6,4 +6,5 @@ public class AddItemToCartCommandRequest : IRequest<AddItemToCartCommandResponse
 {
     public string ProductId { get; set; }
     public int Quantity { get; set; }
+    public bool IsChecked { get; set; } = true;
 }
