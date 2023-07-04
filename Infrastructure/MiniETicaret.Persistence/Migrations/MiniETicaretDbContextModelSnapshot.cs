@@ -352,9 +352,6 @@ namespace MiniETicaret.Persistence.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<Guid>("CustomerId")
-                        .HasColumnType("uuid");
-
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("text");
@@ -363,8 +360,6 @@ namespace MiniETicaret.Persistence.Migrations
                         .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CustomerId");
 
                     b.ToTable("Orders");
                 });
@@ -394,21 +389,6 @@ namespace MiniETicaret.Persistence.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Products");
-                });
-
-            modelBuilder.Entity("OrderProduct", b =>
-                {
-                    b.Property<Guid>("OrdersId")
-                        .HasColumnType("uuid");
-
-                    b.Property<Guid>("ProductsId")
-                        .HasColumnType("uuid");
-
-                    b.HasKey("OrdersId", "ProductsId");
-
-                    b.HasIndex("ProductsId");
-
-                    b.ToTable("OrderProduct");
                 });
 
             modelBuilder.Entity("ProductProductImageFile", b =>
@@ -534,12 +514,6 @@ namespace MiniETicaret.Persistence.Migrations
 
             modelBuilder.Entity("MiniETicaret.Domain.Entities.Order", b =>
                 {
-                    b.HasOne("MiniETicaret.Domain.Entities.Customer", "Customer")
-                        .WithMany("Orders")
-                        .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("MiniETicaret.Domain.Entities.Cart", "Cart")
                         .WithOne("Order")
                         .HasForeignKey("MiniETicaret.Domain.Entities.Order", "Id")
@@ -547,23 +521,6 @@ namespace MiniETicaret.Persistence.Migrations
                         .IsRequired();
 
                     b.Navigation("Cart");
-
-                    b.Navigation("Customer");
-                });
-
-            modelBuilder.Entity("OrderProduct", b =>
-                {
-                    b.HasOne("MiniETicaret.Domain.Entities.Order", null)
-                        .WithMany()
-                        .HasForeignKey("OrdersId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("MiniETicaret.Domain.Entities.Product", null)
-                        .WithMany()
-                        .HasForeignKey("ProductsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("ProductProductImageFile", b =>
@@ -599,11 +556,6 @@ namespace MiniETicaret.Persistence.Migrations
             modelBuilder.Entity("MiniETicaret.Domain.Entities.CartItem", b =>
                 {
                     b.Navigation("ProductImageFiles");
-                });
-
-            modelBuilder.Entity("MiniETicaret.Domain.Entities.Customer", b =>
-                {
-                    b.Navigation("Orders");
                 });
 
             modelBuilder.Entity("MiniETicaret.Domain.Entities.Identity.AppUser", b =>

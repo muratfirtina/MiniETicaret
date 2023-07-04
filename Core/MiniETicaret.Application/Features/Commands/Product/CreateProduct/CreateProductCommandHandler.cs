@@ -35,7 +35,7 @@ public class CreateProductCommandHandler:IRequestHandler<CreateProductCommandReq
             Stock = request.Stock
         });
         await _productWriteRepository.SaveAsync();
-        await _productHubService.ProductAddedMessageAsync($"{request.Name} adlı ürün eklendi.");
+        await _productHubService.ProductAddedMessageAsync($"{request.Name} added.");
         return new();
     }
 }

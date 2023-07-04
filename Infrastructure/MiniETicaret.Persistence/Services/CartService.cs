@@ -136,4 +136,14 @@ public class CartService:ICartService
             await _cartItemWriteRepository.SaveAsync();
         }
     }
+
+    public async Task<Cart?> GetUserActiveCart()
+    {
+        Cart? cart = await ContextUser();
+        return await _cartReadRepository.Table
+            .Include(c => c.CartItems)
+            .ThenInclude(ci => ci.Product)
+            .ThenInclude(p => p.ProductImageFiles)
+            .FirstOrDefaultAsync(c => c.Id == cart.Id);
+    }
 }
