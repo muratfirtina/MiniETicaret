@@ -1,3 +1,5 @@
+using System.Globalization;
+using Microsoft.EntityFrameworkCore;
 using MiniETicaret.Application.Abstractions.Services;
 using MiniETicaret.Application.DTOs.Order;
 using MiniETicaret.Application.Repositories;
@@ -8,12 +10,14 @@ namespace MiniETicaret.Persistence.Services;
 public class OrderService: IOrderService
 {
     readonly IOrderWriteRepository _orderWriteRepository;
+    readonly IOrderReadRepository _orderReadRepository;
     readonly ICartService _cartService;
 
-    public OrderService(IOrderWriteRepository orderWriteRepository, ICartService cartService)
+    public OrderService(IOrderWriteRepository orderWriteRepository, ICartService cartService, IOrderReadRepository orderReadRepository)
     {
         _orderWriteRepository = orderWriteRepository;
         _cartService = cartService;
+        _orderReadRepository = orderReadRepository;
     }
 
     public async Task CreateOrderAsync(CreateOrder createOrder)
@@ -28,9 +32,12 @@ public class OrderService: IOrderService
         }
 
         // Yeni bir sipariş oluştur
+        var orderCode = (new Random().NextDouble() * 10000).ToString(CultureInfo.InvariantCulture);
+        orderCode = orderCode.Substring(orderCode.IndexOf(".", StringComparison.Ordinal) + 1, orderCode.Length - orderCode.IndexOf(".", StringComparison.Ordinal) - 1);
         Order newOrder = new Order
         {
             Id = Guid.Parse(createOrder.CartId),
+            OrderCode = orderCode,
             Description = createOrder.Description,
             Address = createOrder.Address,
             Cart = cart
@@ -68,5 +75,55 @@ public class OrderService: IOrderService
         await _orderWriteRepository.SaveAsync();
     }
 
+    public async Task<ListOrder> GetAllOrdersAsync(int page, int size)
+    {
+        var query = _orderReadRepository.Table.Include(o => o.Cart)
+            .ThenInclude(c => c.User)
+            .Include(o => o.Cart)
+            .ThenInclude(c => c.CartItems)
+            .ThenInclude(ci => ci.Product);
 
+
+
+        var data = query.OrderBy(o=>o.CreatedDate).Skip(page * size).Take(size);
+        
+        return new()
+        {
+            TotalOrderCount = await query.CountAsync(),
+            Orders = await data.Select(o=> new 
+            {
+                Id = o.Id,
+                OrderCode = o.OrderCode,
+                UserName = o.Cart.User.UserName,
+                TotalPrice = o.Cart.CartItems.Sum(ci => ci.Product.Price * ci.Quantity),
+                CreatedDate = o.CreatedDate,
+                
+            }).ToListAsync()
+        };
+
+    }
+
+    public async Task<SingleOrder> GetOrderByIdAsync(string id)
+    {
+        var data = await _orderReadRepository.Table
+            .Include(o => o.Cart)
+            .ThenInclude(c => c.CartItems)
+            .ThenInclude(ci => ci.Product)
+            .FirstOrDefaultAsync(o => o.Id == Guid.Parse(id));
+        return new()
+        {
+            Id = data.Id.ToString(),
+            OrderCode = data.OrderCode,
+            Address = data.Address,
+            Description = data.Description,
+            CreatedDate = data.CreatedDate,
+            CartItems = data.Cart.CartItems.Select(ci => new
+            {
+                ci.Product.Name,
+                ci.Product.Price,
+                ci.Quantity,
+            })
+        };
+        
+    }
 }

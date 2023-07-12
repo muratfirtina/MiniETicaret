@@ -26,6 +26,10 @@ public class MiniETicaretDbContext : IdentityDbContext<AppUser,AppRole,string>
         builder.Entity<Order>()
             .HasKey(o => o.Id);
         
+        builder.Entity<Order>()
+            .HasIndex(o=>o.OrderCode)
+            .IsUnique();
+        
         builder.Entity<Cart>()
             .HasOne(c => c.Order)
             .WithOne(o => o.Cart)
