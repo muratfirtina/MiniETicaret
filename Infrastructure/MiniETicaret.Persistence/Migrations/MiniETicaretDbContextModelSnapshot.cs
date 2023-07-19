@@ -184,6 +184,29 @@ namespace MiniETicaret.Persistence.Migrations
                     b.ToTable("CartItems");
                 });
 
+            modelBuilder.Entity("MiniETicaret.Domain.Entities.CompletedOrder", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid>("OrderId")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("UpdatedDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrderId")
+                        .IsUnique();
+
+                    b.ToTable("CompletedOrders");
+                });
+
             modelBuilder.Entity("MiniETicaret.Domain.Entities.Customer", b =>
                 {
                     b.Property<Guid>("Id")
@@ -519,6 +542,17 @@ namespace MiniETicaret.Persistence.Migrations
                     b.Navigation("Product");
                 });
 
+            modelBuilder.Entity("MiniETicaret.Domain.Entities.CompletedOrder", b =>
+                {
+                    b.HasOne("MiniETicaret.Domain.Entities.Order", "Order")
+                        .WithOne("CompletedOrder")
+                        .HasForeignKey("MiniETicaret.Domain.Entities.CompletedOrder", "OrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Order");
+                });
+
             modelBuilder.Entity("MiniETicaret.Domain.Entities.Order", b =>
                 {
                     b.HasOne("MiniETicaret.Domain.Entities.Cart", "Cart")
@@ -568,6 +602,12 @@ namespace MiniETicaret.Persistence.Migrations
             modelBuilder.Entity("MiniETicaret.Domain.Entities.Identity.AppUser", b =>
                 {
                     b.Navigation("Carts");
+                });
+
+            modelBuilder.Entity("MiniETicaret.Domain.Entities.Order", b =>
+                {
+                    b.Navigation("CompletedOrder")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("MiniETicaret.Domain.Entities.Product", b =>

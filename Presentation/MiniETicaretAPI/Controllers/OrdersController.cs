@@ -6,6 +6,7 @@ using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using MiniETicaret.Application.Features.Commands.Order.CompleteOrder;
 using MiniETicaret.Application.Features.Commands.Order.CreateOrder;
 using MiniETicaret.Application.Features.Queries.Order.GetAllOrders;
 using MiniETicaret.Application.Features.Queries.Order.GetOrderById;
@@ -42,6 +43,13 @@ public class OrdersController : ControllerBase
     public async Task<IActionResult> GetOrderById([FromRoute] GetOrderByIdQueryRequest getOrderByIdQueryRequest)
     {
         GetOrderByIdQueryResponse response = await _mediator.Send(getOrderByIdQueryRequest);
+        return Ok(response);
+    }
+
+    [HttpGet("complete-order/{Id}")]
+    public async Task<IActionResult> CompleteOrder( [FromRoute] CompleteOrderCommandRequest completeOrderCommandRequest)
+    {
+        CompleteOrderCommandResponse response = await _mediator.Send(completeOrderCommandRequest);
         return Ok(response);
     }
 }

@@ -20,6 +20,7 @@ public class MiniETicaretDbContext : IdentityDbContext<AppUser,AppRole,string>
     public DbSet<InvoiceFile> InvoiceFiles { get; set; }
     public DbSet<Cart> Carts { get; set; }
     public DbSet<CartItem> CartItems { get; set; }
+    public DbSet<CompletedOrder> CompletedOrders { get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
@@ -34,6 +35,11 @@ public class MiniETicaretDbContext : IdentityDbContext<AppUser,AppRole,string>
             .HasOne(c => c.Order)
             .WithOne(o => o.Cart)
             .HasForeignKey<Order>(o => o.Id);
+        
+        builder.Entity<Order>()
+            .HasOne(o => o.CompletedOrder)
+            .WithOne(c => c.Order)
+            .HasForeignKey<CompletedOrder>(c => c.OrderId);
         
         base.OnModelCreating(builder);
     }

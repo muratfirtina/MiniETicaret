@@ -1,8 +1,12 @@
+using System.Text;
+using System.Text.Encodings.Web;
 using System.Text.Json;
 using Google.Apis.Auth;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using MiniETicaret.Application.Abstractions.Helpers;
 using MiniETicaret.Application.Abstractions.Services;
 using MiniETicaret.Application.Abstractions.Token;
 using MiniETicaret.Application.DTOs;
@@ -21,14 +25,16 @@ public class AuthService : IAuthService
     readonly ITokenHandler _tokenHandler;
     readonly SignInManager<AppUser> _signInManager;
     readonly IUserService _userService;
+    readonly IMailService _mailService;
 
-    public AuthService(IHttpClientFactory httpClientFactory, IConfiguration configuration, UserManager<AppUser> userManager, ITokenHandler tokenHandler, SignInManager<AppUser> signInManager, IUserService userService)
+    public AuthService(IHttpClientFactory httpClientFactory, IConfiguration configuration, UserManager<AppUser> userManager, ITokenHandler tokenHandler, SignInManager<AppUser> signInManager, IUserService userService, IMailService mailService)
     {
         _configuration = configuration;
         _userManager = userManager;
         _tokenHandler = tokenHandler;
         _signInManager = signInManager;
         _userService = userService;
+        _mailService = mailService;
         _httpClient = httpClientFactory.CreateClient();
     }
     async Task<Token>CreateUserExternalLoginAsync(AppUser user,string email, string name, int accessTokenLifetime, UserLoginInfo info)
@@ -56,7 +62,7 @@ public class AuthService : IAuthService
             await _userManager.AddLoginAsync(user, info);
 
             Token token = _tokenHandler.CreateAccessToken(accessTokenLifetime, user);
-            await _userService.UpdateRefreshToken(token.RefreshToken, user, token.Expiration,refreshTokenLifetime:5);
+            await _userService.UpdateRefreshTokenAsync(token.RefreshToken, user, token.Expiration,refreshTokenLifetime:5);
             return token;
         }
         throw new Exception("Invalid external authentication.");
@@ -86,7 +92,7 @@ public class AuthService : IAuthService
                 = JsonSerializer.Deserialize<FacebookUserInfoResponse>(userInfoResponse);
             
             var info = new UserLoginInfo("FACEBOOK",validation.Data.UserId, "FACEBOOK");
-            Domain.Entities.Identity.AppUser user =
+            AppUser user =
                 await _userManager.FindByLoginAsync(info.LoginProvider, info.ProviderKey);
 
             return await CreateUserExternalLoginAsync(user,facebookUserInfo.Email,facebookUserInfo.Name,accessTokenLifetime,info);
@@ -104,7 +110,7 @@ public class AuthService : IAuthService
         };
         var payload = await GoogleJsonWebSignature.ValidateAsync(idToken, settins);
         var info = new UserLoginInfo("GOOGLE", payload.Subject, "GOOGLE");
-        Domain.Entities.Identity.AppUser user =
+        AppUser user =
             await _userManager.FindByLoginAsync(info.LoginProvider, info.ProviderKey);
         
         return await CreateUserExternalLoginAsync(user,payload.Email,payload.Name,accessTokenLifetime,info);
@@ -124,7 +130,7 @@ public class AuthService : IAuthService
         if (result.Succeeded)//Authentication başarılı
         {
             Token token = _tokenHandler.CreateAccessToken(accessTokenLifetime, user);
-            await _userService.UpdateRefreshToken(token.RefreshToken, user, token.Expiration,refreshTokenLifetime:15);
+            await _userService.UpdateRefreshTokenAsync(token.RefreshToken, user, token.Expiration,refreshTokenLifetime:15);
             return token;
         }
         throw new AuthenticationErrorException();
@@ -136,11 +142,38 @@ public class AuthService : IAuthService
         if (user != null && user?.RefreshTokenEndDateTime > DateTime.UtcNow)
         {
             Token token = _tokenHandler.CreateAccessToken(900, user);
-            await _userService.UpdateRefreshToken(token.RefreshToken, user, token.Expiration,refreshTokenLifetime:1200);
+            await _userService.UpdateRefreshTokenAsync(token.RefreshToken, user, token.Expiration,refreshTokenLifetime:1200);
             return token;
         }
         else
             throw new AuthenticationErrorException();
 
+    }
+
+    public async Task PasswordResetAsync(string email)
+    {
+        AppUser user = await _userManager.FindByEmailAsync(email);
+        if (user != null)
+        {
+            string resetToken = await _userManager.GeneratePasswordResetTokenAsync(user);
+
+            resetToken = resetToken.UrlEncode();
+
+            await _mailService.SendPasswordResetEmailAsync(user.Email, user.Id, resetToken);
+        }
+    }
+
+    public async Task<bool> VerifyResetPasswordTokenAsync(string userId, string resetToken)
+    {
+        AppUser user = await _userManager.FindByIdAsync(userId);
+        if (user != null)
+        {
+            resetToken = resetToken.UrlDecode();
+             
+            return await _userManager.VerifyUserTokenAsync(
+                user,_userManager.Options.Tokens.PasswordResetTokenProvider, "ResetPassword", resetToken);
+                
+        }
+        return false;
     }
 }

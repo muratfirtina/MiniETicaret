@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using MiniETicaret.Application.Abstractions.Services;
@@ -6,6 +7,7 @@ using MiniETicaret.Application.Repositories;
 using MiniETicaret.Domain.Entities.Identity;
 using MiniETicaret.Persistence.Contexts;
 using MiniETicaret.Persistence.Repositories;
+using MiniETicaret.Persistence.Repositories.CopmletedOrder;
 using MiniETicaret.Persistence.Services;
 
 namespace MiniETicaret.Persistence;
@@ -25,7 +27,8 @@ public static class ServiceRegistration
             options.Password.RequireUppercase = false;
             options.Password.RequireLowercase = false;
             options.User.RequireUniqueEmail = true;
-        }).AddEntityFrameworkStores<MiniETicaretDbContext>();
+        }).AddEntityFrameworkStores<MiniETicaretDbContext>()
+        .AddDefaultTokenProviders();
         services.AddScoped<ICustomerReadRepository, CustomerReadRepository>();
         services.AddScoped<ICustomerWriteRepository, CustomerWriteRepository>();
         services.AddScoped<IOrderReadRepository, OrderReadRepository>();
@@ -42,6 +45,8 @@ public static class ServiceRegistration
         services.AddScoped<ICartWriteRepository, CartWriteRepository>();
         services.AddScoped<ICartItemReadRepository, CartItemReadRepository>();
         services.AddScoped<ICartItemWriteRepository, CartItemWriteRepository>();
+        services.AddScoped<ICompletedOrderReadRepository, CompletedOrderReadRepository>();
+        services.AddScoped<ICompletedOrderWriteRepository, CompletedOrderWriteRepository>();
 
         services.AddScoped<IUserService, UserService>();
         services.AddScoped<IAuthService, AuthService>();

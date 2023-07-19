@@ -1,4 +1,5 @@
 using Microsoft.Extensions.DependencyInjection;
+using MiniETicaret.Application.Abstractions.Services;
 using MiniETicaret.Application.Abstractions.Storage;
 using MiniETicaret.Application.Abstractions.Storage.Local;
 using MiniETicaret.Application.Abstractions.Token;
@@ -18,6 +19,7 @@ public static class ServiceRegistration
     {
         serviceCollection.AddScoped<IStorageService, StorageService>();
         serviceCollection.AddScoped<ITokenHandler, TokenHandler>();
+        serviceCollection.AddScoped<IMailService, MailService>();
         
         
     }

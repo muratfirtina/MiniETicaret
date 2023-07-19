@@ -22,7 +22,9 @@ public class GetOrderByIdQueryHandler: IRequestHandler<GetOrderByIdQueryRequest,
            CartItems = data.CartItems,
            Description = data.Description,
            CreatedDate = data.CreatedDate,
-           OrderCode = data.OrderCode
+           OrderCode = data.OrderCode,
+           Completed = data.Completed
+           
        };
 
     }

@@ -8,7 +8,9 @@ using Microsoft.AspNetCore.Mvc;
 using MiniETicaret.Application.Features.Commands.AppUser.FacebookLogin;
 using MiniETicaret.Application.Features.Commands.AppUser.GoogleLogin;
 using MiniETicaret.Application.Features.Commands.AppUser.LoginUser;
+using MiniETicaret.Application.Features.Commands.AppUser.PasswordReset;
 using MiniETicaret.Application.Features.Commands.AppUser.RefreshTokenLogin;
+using MiniETicaret.Application.Features.Commands.AppUser.VerifyResetPasswordToken;
 
 namespace MiniETicaretAPI.Controllers
 {
@@ -51,5 +53,20 @@ namespace MiniETicaretAPI.Controllers
             var response = await _mediator.Send(facebookLoginCommandRequest);
             return Ok(response);
         }
+
+        [HttpPost("password-reset")]
+        public async Task<IActionResult> PasswordReset(PasswordResetCommandRequest passwordResetCommandRequest)
+        {
+            var response = await _mediator.Send(passwordResetCommandRequest);
+            return Ok(response);
+        }
+        
+        [HttpPost("verify-reset-password-token")]
+        public async Task<IActionResult> VerifyResetPasswordToken([FromBody]VerifyResetPasswordTokenCommandRequest verifyResetPasswordTokenCommandRequest)
+        {
+            var response = await _mediator.Send(verifyResetPasswordTokenCommandRequest);
+            return Ok(response);
+        }
+        
     }
 }

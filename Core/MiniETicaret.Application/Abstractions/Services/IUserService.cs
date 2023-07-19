@@ -6,5 +6,6 @@ namespace MiniETicaret.Application.Abstractions.Services;
 public interface IUserService
 {
     Task<CreateUserResponse> CreateAsync(CreateUser model);
-    Task UpdateRefreshToken(string refreshToken, AppUser user, DateTime accessTokenDateTime, int refreshTokenLifetime);
+    Task UpdateRefreshTokenAsync(string refreshToken, AppUser user, DateTime accessTokenDateTime, int refreshTokenLifetime);
+    Task UpdateForgotPasswordAsync(string userId, string resetToken, string newPassword);
 }

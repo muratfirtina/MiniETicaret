@@ -1,4 +1,6 @@
+using System.Text;
 using Microsoft.AspNetCore.Identity;
+using MiniETicaret.Application.Abstractions.Helpers;
 using MiniETicaret.Application.Abstractions.Services;
 using MiniETicaret.Application.DTOs.User;
 using MiniETicaret.Application.Exceptions;
@@ -27,7 +29,7 @@ public class UserService:IUserService
                
                CreateUserResponse response = new(){ IsSuccess = result.Succeeded };
                if (result.Succeeded)
-                   response.Message = "Kullanıcı başarıyla oluşturuldu."; //todo: dil desteği eklenecek
+                   response.Message = "User Created Successful."; //todo: dil desteği eklenecek
                else
                    foreach (var error in result.Errors)
                        response.Message += $"{error.Code} - {error.Description}\n";
@@ -35,7 +37,7 @@ public class UserService:IUserService
                
     }
 
-    public async Task UpdateRefreshToken(string refreshToken, AppUser user, DateTime accessTokenDateTime, int refreshTokenLifetime)
+    public async Task UpdateRefreshTokenAsync(string refreshToken, AppUser user, DateTime accessTokenDateTime, int refreshTokenLifetime)
     {
         if (user != null)
         {
@@ -46,5 +48,21 @@ public class UserService:IUserService
         else
             throw new NotFoundUserExceptions();
 
+    }
+
+    public async Task UpdateForgotPasswordAsync(string userId, string resetToken, string newPassword)
+    {
+        AppUser user = await _userManager.FindByIdAsync(userId);
+        if (user != null)
+        {
+            resetToken = resetToken.UrlDecode();
+            
+            IdentityResult result = await _userManager.ResetPasswordAsync(user, resetToken, newPassword);
+            if (result.Succeeded)
+                await _userManager.UpdateSecurityStampAsync(user);
+            else
+                throw new ResetPasswordException();
+        }
+        
     }
 }
