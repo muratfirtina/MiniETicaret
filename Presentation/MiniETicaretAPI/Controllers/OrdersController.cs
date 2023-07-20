@@ -6,6 +6,9 @@ using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using MiniETicaret.Application.Consts;
+using MiniETicaret.Application.CustomAttributes;
+using MiniETicaret.Application.Enums;
 using MiniETicaret.Application.Features.Commands.Order.CompleteOrder;
 using MiniETicaret.Application.Features.Commands.Order.CreateOrder;
 using MiniETicaret.Application.Features.Queries.Order.GetAllOrders;
@@ -26,6 +29,7 @@ public class OrdersController : ControllerBase
     }
 
     [HttpPost]
+    [AuthorizeDefinition(Menu = AuthorizeDefinitionConstants.Orders, ActionType = ActionType.Writing, Definition = "Create Order")]
     public async Task<IActionResult> CreateOrder(CreateOrderCommandRequest createOrderCommandRequest)
     {
         CreateOrderCommandResponse response = await _mediator.Send(createOrderCommandRequest);
@@ -33,6 +37,7 @@ public class OrdersController : ControllerBase
     }
     
     [HttpGet]
+    [AuthorizeDefinition(Menu = AuthorizeDefinitionConstants.Orders, ActionType = ActionType.Reading, Definition = "Get All Orders")]
     public async Task<IActionResult> GetAllOrders([FromQuery] GetAllOrdersQueryRequest getAllOrdersQueryRequest)
     {
         GetAllOrdersQueryResponse response = await _mediator.Send(getAllOrdersQueryRequest);
@@ -40,6 +45,7 @@ public class OrdersController : ControllerBase
     }
     
     [HttpGet("{id}")]
+    [AuthorizeDefinition(Menu = AuthorizeDefinitionConstants.Orders, ActionType = ActionType.Reading, Definition = "Get Order By Id")]
     public async Task<IActionResult> GetOrderById([FromRoute] GetOrderByIdQueryRequest getOrderByIdQueryRequest)
     {
         GetOrderByIdQueryResponse response = await _mediator.Send(getOrderByIdQueryRequest);
@@ -47,6 +53,7 @@ public class OrdersController : ControllerBase
     }
 
     [HttpGet("complete-order/{Id}")]
+    [AuthorizeDefinition(Menu = AuthorizeDefinitionConstants.Orders, ActionType = ActionType.Updating, Definition = "Complete Order")]
     public async Task<IActionResult> CompleteOrder( [FromRoute] CompleteOrderCommandRequest completeOrderCommandRequest)
     {
         CompleteOrderCommandResponse response = await _mediator.Send(completeOrderCommandRequest);

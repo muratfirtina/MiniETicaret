@@ -1,11 +1,13 @@
 using Microsoft.Extensions.DependencyInjection;
 using MiniETicaret.Application.Abstractions.Services;
+using MiniETicaret.Application.Abstractions.Services.Configurations;
 using MiniETicaret.Application.Abstractions.Storage;
 using MiniETicaret.Application.Abstractions.Storage.Local;
 using MiniETicaret.Application.Abstractions.Token;
 using MiniETicaret.Application.Repositories;
 using MiniETicaret.Infrastructure.Enums;
 using MiniETicaret.Infrastructure.Services;
+using MiniETicaret.Infrastructure.Services.Configurations;
 using MiniETicaret.Infrastructure.Services.Storage;
 using MiniETicaret.Infrastructure.Services.Storage.Azure;
 using MiniETicaret.Infrastructure.Services.Storage.Local;
@@ -20,6 +22,7 @@ public static class ServiceRegistration
         serviceCollection.AddScoped<IStorageService, StorageService>();
         serviceCollection.AddScoped<ITokenHandler, TokenHandler>();
         serviceCollection.AddScoped<IMailService, MailService>();
+        serviceCollection.AddScoped<IApplicationService, ApplicationService>();
         
         
     }
