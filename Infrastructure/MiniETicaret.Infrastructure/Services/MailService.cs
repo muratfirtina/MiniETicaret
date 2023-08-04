@@ -55,7 +55,7 @@ public class MailService : IMailService
         body += "İyi günler dileriz.";
             await SendEmailAsync(to, subject, body);
     }
-    public Task SendCompletedOrderEmailAsync(string to, string orderCode, string orderDescription, string orderAddress, DateTime orderCreatedDate, string userName, List<OrderCartItemDTO> orderCartItems, float orderTotalPrice)
+    public Task SendCompletedOrderEmailAsync(string to, string orderCode, string orderDescription, string orderAddress, DateTime orderCreatedDate, string userName, List<OrderCartItemDto> orderCartItems, float orderTotalPrice)
     {
         string subject = "Siparişiniz Tamamlandı";
         string body = $"Merhaba {userName},<br><br>";

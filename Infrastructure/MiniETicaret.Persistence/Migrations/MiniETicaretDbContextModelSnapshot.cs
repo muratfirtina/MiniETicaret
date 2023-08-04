@@ -17,7 +17,7 @@ namespace MiniETicaret.Persistence.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.0-preview.2.23128.3")
+                .HasAnnotation("ProductVersion", "6.0.2")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
@@ -239,8 +239,7 @@ namespace MiniETicaret.Persistence.Migrations
 
                     b.Property<string>("Discriminator")
                         .IsRequired()
-                        .HasMaxLength(21)
-                        .HasColumnType("character varying(21)");
+                        .HasColumnType("text");
 
                     b.Property<string>("FileName")
                         .IsRequired()
@@ -259,8 +258,6 @@ namespace MiniETicaret.Persistence.Migrations
                     b.ToTable("Files");
 
                     b.HasDiscriminator<string>("Discriminator").HasValue("File");
-
-                    b.UseTphMappingStrategy();
                 });
 
             modelBuilder.Entity("MiniETicaret.Domain.Entities.Identity.AppRole", b =>

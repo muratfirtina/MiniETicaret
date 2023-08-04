@@ -47,6 +47,7 @@ public static class ServiceRegistration
         services.AddScoped<ICartItemWriteRepository, CartItemWriteRepository>();
         services.AddScoped<ICompletedOrderReadRepository, CompletedOrderReadRepository>();
         services.AddScoped<ICompletedOrderWriteRepository, CompletedOrderWriteRepository>();
+        
 
         services.AddScoped<IUserService, UserService>();
         services.AddScoped<IAuthService, AuthService>();
@@ -54,5 +55,8 @@ public static class ServiceRegistration
         services.AddScoped<IInternalAuthentication, AuthService>();
         services.AddScoped<ICartService, CartService>();
         services.AddScoped<IOrderService, OrderService>();
+        services.AddScoped<IRoleService, RoleService>();
+        
+        
     }
 }

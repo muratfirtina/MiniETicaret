@@ -25,6 +25,7 @@ public static class ServiceRegistration
         serviceCollection.AddScoped<IApplicationService, ApplicationService>();
         
         
+        
     }
     public static void AddStorage<T>(this IServiceCollection serviceCollection) where T : FileService, IStorage
     {

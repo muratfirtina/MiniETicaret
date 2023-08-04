@@ -163,7 +163,7 @@ public class OrderService: IOrderService
         
     }
 
-    public async Task<(bool, CompleteOrderDTO)> CompleteOrderAsync(string id)
+    public async Task<(bool, CompleteOrderDto)> CompleteOrderAsync(string id)
     {
         Order? order = await _orderReadRepository.Table.Include(o => o.Cart)
             .ThenInclude(c => c.User)
@@ -177,7 +177,7 @@ public class OrderService: IOrderService
         {
             await _completedOrderWriteRepository.AddAsync(new() { OrderId = Guid.Parse(id) });
 
-            var orderCartItems = order.Cart.CartItems.Select(ci => new OrderCartItemDTO
+            var orderCartItems = order.Cart.CartItems.Select(ci => new OrderCartItemDto
             {
                 Name = ci.Product?.Name ?? string.Empty,
                 Price = ci.Product?.Price ?? 0,
@@ -185,7 +185,7 @@ public class OrderService: IOrderService
                 TotalPrice = (ci.Product?.Price ?? 0) * ci.Quantity,
                 ProductImageFiles = ci.Product?.ProductImageFiles
                     .Where(pif => pif.Showcase) // Filter the showcase images
-                    .Select(pif => new ProductImageFileDTO
+                    .Select(pif => new ProductImageFileDto
                     {
                         Path = pif.Path
                     })

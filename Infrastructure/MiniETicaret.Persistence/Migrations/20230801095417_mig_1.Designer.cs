@@ -12,15 +12,14 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MiniETicaret.Persistence.Migrations
 {
     [DbContext(typeof(MiniETicaretDbContext))]
-    [Migration("20230710092903_mig_8")]
-    partial class mig_8
+    [Migration("20230801095417_mig_1")]
+    partial class mig_1
     {
-        /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.0-preview.2.23128.3")
+                .HasAnnotation("ProductVersion", "6.0.2")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
@@ -187,6 +186,29 @@ namespace MiniETicaret.Persistence.Migrations
                     b.ToTable("CartItems");
                 });
 
+            modelBuilder.Entity("MiniETicaret.Domain.Entities.CompletedOrder", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid>("OrderId")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("UpdatedDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrderId")
+                        .IsUnique();
+
+                    b.ToTable("CompletedOrders");
+                });
+
             modelBuilder.Entity("MiniETicaret.Domain.Entities.Customer", b =>
                 {
                     b.Property<Guid>("Id")
@@ -219,8 +241,7 @@ namespace MiniETicaret.Persistence.Migrations
 
                     b.Property<string>("Discriminator")
                         .IsRequired()
-                        .HasMaxLength(21)
-                        .HasColumnType("character varying(21)");
+                        .HasColumnType("text");
 
                     b.Property<string>("FileName")
                         .IsRequired()
@@ -239,8 +260,6 @@ namespace MiniETicaret.Persistence.Migrations
                     b.ToTable("Files");
 
                     b.HasDiscriminator<string>("Discriminator").HasValue("File");
-
-                    b.UseTphMappingStrategy();
                 });
 
             modelBuilder.Entity("MiniETicaret.Domain.Entities.Identity.AppRole", b =>
@@ -522,6 +541,17 @@ namespace MiniETicaret.Persistence.Migrations
                     b.Navigation("Product");
                 });
 
+            modelBuilder.Entity("MiniETicaret.Domain.Entities.CompletedOrder", b =>
+                {
+                    b.HasOne("MiniETicaret.Domain.Entities.Order", "Order")
+                        .WithOne("CompletedOrder")
+                        .HasForeignKey("MiniETicaret.Domain.Entities.CompletedOrder", "OrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Order");
+                });
+
             modelBuilder.Entity("MiniETicaret.Domain.Entities.Order", b =>
                 {
                     b.HasOne("MiniETicaret.Domain.Entities.Cart", "Cart")
@@ -571,6 +601,12 @@ namespace MiniETicaret.Persistence.Migrations
             modelBuilder.Entity("MiniETicaret.Domain.Entities.Identity.AppUser", b =>
                 {
                     b.Navigation("Carts");
+                });
+
+            modelBuilder.Entity("MiniETicaret.Domain.Entities.Order", b =>
+                {
+                    b.Navigation("CompletedOrder")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("MiniETicaret.Domain.Entities.Product", b =>

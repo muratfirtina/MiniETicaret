@@ -130,7 +130,7 @@ public class AuthService : IAuthService
         if (result.Succeeded)//Authentication başarılı
         {
             Token token = _tokenHandler.CreateAccessToken(accessTokenLifetime, user);
-            await _userService.UpdateRefreshTokenAsync(token.RefreshToken, user, token.Expiration,refreshTokenLifetime:15);
+            await _userService.UpdateRefreshTokenAsync(token.RefreshToken, user, token.Expiration,refreshTokenLifetime:12000);
             return token;
         }
         throw new AuthenticationErrorException();
@@ -141,8 +141,8 @@ public class AuthService : IAuthService
         AppUser? user = await _userManager.Users.FirstOrDefaultAsync(u => u.RefreshToken == refreshToken);
         if (user != null && user?.RefreshTokenEndDateTime > DateTime.UtcNow)
         {
-            Token token = _tokenHandler.CreateAccessToken(900, user);
-            await _userService.UpdateRefreshTokenAsync(token.RefreshToken, user, token.Expiration,refreshTokenLifetime:1200);
+            Token token = _tokenHandler.CreateAccessToken(8000, user);
+            await _userService.UpdateRefreshTokenAsync(token.RefreshToken, user, token.Expiration,refreshTokenLifetime:12000);
             return token;
         }
         else
