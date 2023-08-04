@@ -18,7 +18,7 @@ public class RoleService : IRoleService
 
     public async Task<bool> CreateRoleAsync(string roleName)
     {
-       IdentityResult result = await _roleManager.CreateAsync(new AppRole
+        IdentityResult result = await _roleManager.CreateAsync(new AppRole
         {
             Id = Guid.NewGuid().ToString(),
             Name = roleName
@@ -41,19 +41,28 @@ public class RoleService : IRoleService
         return result.Succeeded;
     }
 
-    public (object,int) GetRolesAsync(int page, int size)
+    public async Task<ListRoleDto> GetRolesAsync(int page, int size)
     {
         var query = _roleManager.Roles;
-
-        IQueryable<AppRole> rolesQuery = null;
-
+        IQueryable<AppRole>? rolesQuery;
         if (page != -1 && size != -1)
             rolesQuery = query.Skip(page * size).Take(size);
         else
+        {
             rolesQuery = query;
+        }
 
-        return (rolesQuery.Select(r => new { r.Id, r.Name }), query.Count());
+        return await Task.FromResult(new ListRoleDto()
+        {
+            TotalCount = query.Count(),
+            Roles = rolesQuery.Select(x => new RoleDto()
+            {
+                RoleId = x.Id,
+                RoleName = x.Name
+            }).ToList()
+        });
     }
+
 
     public async Task<(string roleId, string roleName)> GetRoleByIdAsync(string roleId)
     {
