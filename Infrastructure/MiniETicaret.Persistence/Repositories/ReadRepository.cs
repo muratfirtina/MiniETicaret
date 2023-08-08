@@ -50,11 +50,20 @@ public class ReadRepository<T> : IReadRepository<T> where T : BaseEntity
                 query = Table.AsNoTracking();
             return await query.FirstOrDefaultAsync(data => id != null && data.Id == Guid.Parse(id));
         }
-    public async Task<bool> ExistsAsync(Expression<Func<T, bool>> method, bool tracking = true)
+    public async Task<bool> ExistAsync(Expression<Func<T, bool>> method, bool tracking = true) 
+        //=> await Table.AnyAsync(method);
     {
         var query = Table.AsQueryable();
         if (!tracking)
             query = query.AsNoTracking();
         return await query.AnyAsync(method);
     }
+    public async Task<bool> ExistByIdAsync(string? id, bool tracking = true)
+        //=> await Table.AnyAsync(data => id != null && data.Id == Guid.Parse(id));
+    {
+        var query = Table.AsQueryable();
+        if (!tracking)
+            query = query.AsNoTracking();
+        return await query.AnyAsync(data => id != null && data.Id == Guid.Parse(id));
+    }   
 }

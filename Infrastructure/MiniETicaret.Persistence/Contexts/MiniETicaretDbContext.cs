@@ -21,6 +21,8 @@ public class MiniETicaretDbContext : IdentityDbContext<AppUser,AppRole,string>
     public DbSet<Cart> Carts { get; set; }
     public DbSet<CartItem> CartItems { get; set; }
     public DbSet<CompletedOrder> CompletedOrders { get; set; }
+    public DbSet<ACMenu> AcMenus { get; set; }
+    public DbSet<Endpoint> Endpoints { get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {

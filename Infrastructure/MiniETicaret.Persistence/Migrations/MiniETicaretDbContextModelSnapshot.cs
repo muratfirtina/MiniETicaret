@@ -22,6 +22,21 @@ namespace MiniETicaret.Persistence.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
+            modelBuilder.Entity("AppRoleEndpoint", b =>
+                {
+                    b.Property<Guid>("EndpointsId")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("RolesId")
+                        .HasColumnType("text");
+
+                    b.HasKey("EndpointsId", "RolesId");
+
+                    b.HasIndex("RolesId");
+
+                    b.ToTable("AppRoleEndpoint");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.Property<int>("Id")
@@ -128,6 +143,27 @@ namespace MiniETicaret.Persistence.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("MiniETicaret.Domain.Entities.ACMenu", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("UpdatedDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AcMenus");
+                });
+
             modelBuilder.Entity("MiniETicaret.Domain.Entities.Cart", b =>
                 {
                     b.Property<Guid>("Id")
@@ -226,6 +262,44 @@ namespace MiniETicaret.Persistence.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Customers");
+                });
+
+            modelBuilder.Entity("MiniETicaret.Domain.Entities.Endpoint", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("AcMenuId")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("ActionType")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Definition")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("HttpType")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("UpdatedDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AcMenuId");
+
+                    b.ToTable("Endpoints");
                 });
 
             modelBuilder.Entity("MiniETicaret.Domain.Entities.File", b =>
@@ -458,6 +532,21 @@ namespace MiniETicaret.Persistence.Migrations
                     b.HasDiscriminator().HasValue("ProductImageFile");
                 });
 
+            modelBuilder.Entity("AppRoleEndpoint", b =>
+                {
+                    b.HasOne("MiniETicaret.Domain.Entities.Endpoint", null)
+                        .WithMany()
+                        .HasForeignKey("EndpointsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MiniETicaret.Domain.Entities.Identity.AppRole", null)
+                        .WithMany()
+                        .HasForeignKey("RolesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("MiniETicaret.Domain.Entities.Identity.AppRole", null)
@@ -550,6 +639,17 @@ namespace MiniETicaret.Persistence.Migrations
                     b.Navigation("Order");
                 });
 
+            modelBuilder.Entity("MiniETicaret.Domain.Entities.Endpoint", b =>
+                {
+                    b.HasOne("MiniETicaret.Domain.Entities.ACMenu", "AcMenu")
+                        .WithMany("Endpoints")
+                        .HasForeignKey("AcMenuId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AcMenu");
+                });
+
             modelBuilder.Entity("MiniETicaret.Domain.Entities.Order", b =>
                 {
                     b.HasOne("MiniETicaret.Domain.Entities.Cart", "Cart")
@@ -581,6 +681,11 @@ namespace MiniETicaret.Persistence.Migrations
                     b.HasOne("MiniETicaret.Domain.Entities.CartItem", null)
                         .WithMany("ProductImageFiles")
                         .HasForeignKey("CartItemId");
+                });
+
+            modelBuilder.Entity("MiniETicaret.Domain.Entities.ACMenu", b =>
+                {
+                    b.Navigation("Endpoints");
                 });
 
             modelBuilder.Entity("MiniETicaret.Domain.Entities.Cart", b =>

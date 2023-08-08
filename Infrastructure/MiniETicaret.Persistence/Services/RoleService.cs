@@ -44,13 +44,17 @@ public class RoleService : IRoleService
     public async Task<ListRoleDto> GetRolesAsync(int page, int size)
     {
         var query = _roleManager.Roles;
+
         IQueryable<AppRole>? rolesQuery;
-        if (page != -1 && size != -1)
-            rolesQuery = query.Skip(page * size).Take(size);
-        else
+        if (page == -1 && size == -1)
         {
             rolesQuery = query;
         }
+        else
+        {
+            rolesQuery = query.Skip(page * size).Take(size);
+        }
+
 
         return await Task.FromResult(new ListRoleDto()
         {
