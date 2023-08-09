@@ -10,7 +10,7 @@ using MiniETicaret.Domain.Entities.Identity;
 
 namespace MiniETicaret.Persistence.Services;
 
-public class AuthorizationEndpointService: IAuthorizationEndpointService
+public class AuthorizationEndpointService : IAuthorizationEndpointService
 {
     readonly IApplicationService _applicationService;
     readonly IEndpointReadRepository _endpointReadRepository;
@@ -20,7 +20,10 @@ public class AuthorizationEndpointService: IAuthorizationEndpointService
     readonly RoleManager<AppRole> _roleManager;
 
 
-    public AuthorizationEndpointService(IApplicationService applicationService, IEndpointReadRepository endpointReadRepository, IEndpointWriteRepository endpointWriteRepository, IAcMenuReadRepository acMenuReadRepository, IAcMenuWriteRepository acMenuWriteRepository, RoleManager<AppRole> roleManager)
+    public AuthorizationEndpointService(IApplicationService applicationService,
+        IEndpointReadRepository endpointReadRepository, IEndpointWriteRepository endpointWriteRepository,
+        IAcMenuReadRepository acMenuReadRepository, IAcMenuWriteRepository acMenuWriteRepository,
+        RoleManager<AppRole> roleManager)
     {
         _applicationService = applicationService;
         _endpointReadRepository = endpointReadRepository;
@@ -42,14 +45,15 @@ public class AuthorizationEndpointService: IAuthorizationEndpointService
             });
             await _acMenuWriteRepository.SaveAsync();
         }
+
         ACMenu acMenu = await _acMenuReadRepository.GetSingleAsync(x => x.Name == menu);
 
         bool _endpoint = await _endpointReadRepository.ExistAsync(x => x.AcMenu == acMenu && x.Code == code);
         if (!_endpoint)
         {
             var action = _applicationService.GetAuthorizeDefinitionEnpoints(type)
-                .FirstOrDefault(m=>m.Name == menu)?.Actions.FirstOrDefault(a => a.Code == code);
-            
+                .FirstOrDefault(m => m.Name == menu)?.Actions.FirstOrDefault(a => a.Code == code);
+
             await _endpointWriteRepository.AddAsync(new()
             {
                 Id = Guid.NewGuid(),
@@ -58,15 +62,14 @@ public class AuthorizationEndpointService: IAuthorizationEndpointService
                 HttpType = action.HttpType,
                 Definition = action.Definition,
                 AcMenu = acMenu
-                
             });
             await _endpointWriteRepository.SaveAsync();
         }
-        
+
         Endpoint? endpoint = await _endpointReadRepository.Table
             .Include(e => e.AcMenu)
             .Include(e => e.Roles)
-            .FirstOrDefaultAsync(e => e.Code == code && e.AcMenu.Name == menu );
+            .FirstOrDefaultAsync(e => e.Code == code && e.AcMenu.Name == menu);
 
         foreach (var role in endpoint?.Roles)
             endpoint.Roles.Remove(role);
@@ -80,22 +83,22 @@ public class AuthorizationEndpointService: IAuthorizationEndpointService
                 endpoint.Roles.Add(role);
             }
         }
-        
+
         await _endpointWriteRepository.SaveAsync();
-        
     }
 
     public async Task<List<RoleDto>?> GetRolesToEndpointAsync(string code, string menu)
     {
-       Endpoint? endpoint = await _endpointReadRepository.Table
+        Endpoint? endpoint = await _endpointReadRepository.Table
             .Include(e => e.AcMenu)
             .Include(e => e.Roles)
             .FirstOrDefaultAsync(e => e.Code == code && e.AcMenu.Name == menu);
-       
-        return endpoint?.Roles.Select(x => new RoleDto()
-        {
-            RoleName = x.Name,
-            RoleId = x.Id.ToString()
-        }).ToList();
+        if (endpoint != null)
+            return endpoint?.Roles.Select(x => new RoleDto()
+            {
+                RoleName = x.Name,
+                RoleId = x.Id.ToString()
+            }).ToList();
+        return new List<RoleDto>();
     }
 }
