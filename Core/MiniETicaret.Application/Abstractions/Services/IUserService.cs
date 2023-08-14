@@ -11,5 +11,6 @@ public interface IUserService
     Task UpdateForgotPasswordAsync(string userId, string resetToken, string newPassword);
     Task<ListUserDto> GetAllUsersAsync(int page, int size);
     Task AssignRoleToUserAsync(string userId, List<RoleDto> roles);
-    public Task<List<RoleDto>> GetRolesToUserAsync(string userId);
+    public Task<List<RoleDto>> GetRolesToUserAsync(string userIdOrName);
+    Task<bool>HasRolePermissionToEndpointAsync(string name, string code);
 }

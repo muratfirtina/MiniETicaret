@@ -17,6 +17,7 @@ using MiniETicaret.SignalR;
 using MiniETicaret.SignalR.Hubs;
 using MiniETicaretAPI.Configurations.ColumnWriters;
 using MiniETicaretAPI.Extensions;
+using MiniETicaretAPI.Filters;
 using Serilog;
 using Serilog.Context;
 using Serilog.Core;
@@ -41,7 +42,11 @@ builder.Services.AddCors(options =>
         .AllowAnyHeader()
         .AllowCredentials()));
 
-builder.Services.AddControllers(options => options.Filters.Add<ValidationFilter>())
+builder.Services.AddControllers(options =>
+    {
+        options.Filters.Add<ValidationFilter>();
+        options.Filters.Add<RolePermissionFilter>();
+    })
     .AddFluentValidation(options => options.RegisterValidatorsFromAssemblyContaining<CreateProductValidator>())
     .ConfigureApiBehaviorOptions(options => options.SuppressModelStateInvalidFilter = true);
 

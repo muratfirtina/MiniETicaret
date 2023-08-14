@@ -33,7 +33,7 @@ public class OrderService: IOrderService
         var selectedCartItems = cart?.CartItems.Where(ci => ci.IsChecked).ToList();
         if (selectedCartItems != null && selectedCartItems.Count == 0)
         {
-            throw new Exception("Sipariş vermek için seçili ürün bulunamadı.");
+            throw new Exception("Sipariş vermek için seçili ürün bulunamadı.");//todo: dil desteği eklenecek
         }
 
         // Yeni bir sipariş oluştur
