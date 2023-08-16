@@ -23,6 +23,7 @@ public static class ServiceRegistration
         serviceCollection.AddScoped<ITokenHandler, TokenHandler>();
         serviceCollection.AddScoped<IMailService, MailService>();
         serviceCollection.AddScoped<IApplicationService, ApplicationService>();
+        serviceCollection.AddScoped<IQrCodeService, QrCodeService>();
         
         
         

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "z+UI25Dx/KZpSwxWFEf3vZ4zOzu2SDBnW1XUycYaresw6z9bQToKpdPAGoge7vP0Ks6GCp/hGqTHhZEXg6cUrg==",
+  "dgSpecHash": "ZajlJIhfEyuwumImtIzuuaCqo4je28Ts6UQc9k1xEcVDtVssDMKr3fLZjjr8P5i9E9LDDDZBBzbPigr4ndluQQ==",
   "success": true,
   "projectFilePath": "/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Presentation/MiniETicaretAPI/MiniETicaretAPI.csproj",
   "expectedPackageFiles": [
@@ -123,6 +123,7 @@
     "/Users/muratfirtina/.nuget/packages/nuget.projectmodel/6.3.1/nuget.projectmodel.6.3.1.nupkg.sha512",
     "/Users/muratfirtina/.nuget/packages/nuget.protocol/6.3.1/nuget.protocol.6.3.1.nupkg.sha512",
     "/Users/muratfirtina/.nuget/packages/nuget.versioning/6.3.1/nuget.versioning.6.3.1.nupkg.sha512",
+    "/Users/muratfirtina/.nuget/packages/qrcoder/1.4.3/qrcoder.1.4.3.nupkg.sha512",
     "/Users/muratfirtina/.nuget/packages/runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl/4.3.0/runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "/Users/muratfirtina/.nuget/packages/runtime.fedora.23-x64.runtime.native.system.security.cryptography.openssl/4.3.0/runtime.fedora.23-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "/Users/muratfirtina/.nuget/packages/runtime.fedora.24-x64.runtime.native.system.security.cryptography.openssl/4.3.0/runtime.fedora.24-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",

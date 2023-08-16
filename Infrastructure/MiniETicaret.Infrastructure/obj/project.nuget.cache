@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "u7NaTCeRkVM0ezhoxA+yOrzLMgVL11tfIvKP1de6JxmrgiwJbUWiSGmiG0SZRKpaZylC1ph04UPKwUTzx2syLw==",
+  "dgSpecHash": "kx6PKzupwu/CPpmKk1Z5Q7eu6ceeEmBK3sQ3xwr+dnf4sHoTnWMzpJE2Jfhowr/znS+rZTg0YbHaNkSNO2WNDA==",
   "success": true,
   "projectFilePath": "/Users/muratfirtina/Projects/GitHub/MiniEticaret/MiniETicaret/Infrastructure/MiniETicaret.Infrastructure/MiniETicaret.Infrastructure.csproj",
   "expectedPackageFiles": [
@@ -60,6 +60,7 @@
     "/Users/muratfirtina/.nuget/packages/microsoft.net.http.headers/2.2.0/microsoft.net.http.headers.2.2.0.nupkg.sha512",
     "/Users/muratfirtina/.nuget/packages/microsoft.netcore.platforms/2.0.0/microsoft.netcore.platforms.2.0.0.nupkg.sha512",
     "/Users/muratfirtina/.nuget/packages/microsoft.win32.registry/4.5.0/microsoft.win32.registry.4.5.0.nupkg.sha512",
+    "/Users/muratfirtina/.nuget/packages/qrcoder/1.4.3/qrcoder.1.4.3.nupkg.sha512",
     "/Users/muratfirtina/.nuget/packages/system.buffers/4.5.0/system.buffers.4.5.0.nupkg.sha512",
     "/Users/muratfirtina/.nuget/packages/system.collections.immutable/6.0.0/system.collections.immutable.6.0.0.nupkg.sha512",
     "/Users/muratfirtina/.nuget/packages/system.diagnostics.diagnosticsource/6.0.0/system.diagnostics.diagnosticsource.6.0.0.nupkg.sha512",

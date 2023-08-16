@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using MiniETicaret.Application.Abstractions.Services;
 using MiniETicaret.Application.Abstractions.Storage;
 using MiniETicaret.Application.Consts;
 using MiniETicaret.Application.CustomAttributes;
@@ -35,12 +36,11 @@ namespace MiniETicaretAPI.Controllers
     {
 
         readonly IMediator _mediator;
-        
-        
-        public ProductsController(IMediator mediator)
+        readonly IProductService _productService;
+        public ProductsController(IMediator mediator, IProductService productService)
         {
-            
             _mediator = mediator;
+            _productService = productService;
         }
 
         [HttpGet]
@@ -122,5 +122,13 @@ namespace MiniETicaretAPI.Controllers
             ChangeShowcaseCommandResponse response = await _mediator.Send(changeShowcaseCommandRequest);
             return Ok();
         }
+        
+        [HttpGet("qrcode/{productId}")]
+        public async Task<IActionResult> GetQrCodeToProduct([FromRoute] string productId)
+        {
+            var data = await _productService.QrCodeToProductAsync(productId);
+            return File(data, "image/png");
+        }
+        
     }
 }
