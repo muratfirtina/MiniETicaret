@@ -16,6 +16,7 @@ using MiniETicaret.Application.Enums;
 using MiniETicaret.Application.Features.Commands.Product.CreateProduct;
 using MiniETicaret.Application.Features.Commands.Product.RemoveProduct;
 using MiniETicaret.Application.Features.Commands.Product.UpdateProduct;
+using MiniETicaret.Application.Features.Commands.Product.UpdateStockWithQrCode;
 using MiniETicaret.Application.Features.Commands.ProductImageFile.ChangeShowcaseImage;
 using MiniETicaret.Application.Features.Commands.ProductImageFile.RemoveProductImage;
 using MiniETicaret.Application.Features.Commands.ProductImageFile.UploadProductImage;
@@ -111,7 +112,7 @@ namespace MiniETicaretAPI.Controllers
         {
             removeProductImageCommandRequest.ImageId = imageId;
             RemoveProductImageCommandResponse response = await _mediator.Send(removeProductImageCommandRequest);
-            return Ok();
+            return Ok(response);
         }
 
         [HttpGet("[action]")]
@@ -120,7 +121,7 @@ namespace MiniETicaretAPI.Controllers
         public async Task<IActionResult> ChangeShowcaseImage([FromQuery] ChangeShowcaseCommandRequest changeShowcaseCommandRequest)
         {
             ChangeShowcaseCommandResponse response = await _mediator.Send(changeShowcaseCommandRequest);
-            return Ok();
+            return Ok(response);
         }
         
         [HttpGet("qrcode/{productId}")]
@@ -128,6 +129,13 @@ namespace MiniETicaretAPI.Controllers
         {
             var data = await _productService.QrCodeToProductAsync(productId);
             return File(data, "image/png");
+        }
+        
+        [HttpPut("qrcode")]
+        public async Task<IActionResult> UpdateStockWithQrCode(UpdateStockQrCodeToProductRequest updateStockQrCodeToProductRequest)
+        {
+            UpdateStockQrCodeToProductResponse response = await _mediator.Send(updateStockQrCodeToProductRequest);
+            return Ok(response);
         }
         
     }
