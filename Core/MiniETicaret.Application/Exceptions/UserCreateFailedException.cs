@@ -2,7 +2,7 @@ namespace MiniETicaret.Application.Exceptions;
 
 public class UserCreateFailedException : Exception
 {
-    public UserCreateFailedException() : base("Kullanıcı oluşturulurken bir hata oluştu.")
+    public UserCreateFailedException() : base("User create failed.")
     {
         
     }

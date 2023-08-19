@@ -28,7 +28,7 @@ public class UserService : IUserService
 
     public async Task<CreateUserResponse> CreateAsync(CreateUser model)
     {
-        IdentityResult result = await _userManager.CreateAsync(new()
+        IdentityResult result = await _userManager.CreateAsync(new AppUser
         {
             Id = Guid.NewGuid().ToString(),
             Email = model.Email,
@@ -36,14 +36,24 @@ public class UserService : IUserService
             UserName = model.UserName
         }, model.Password);
 
-        CreateUserResponse response = new() { IsSuccess = result.Succeeded };
+        CreateUserResponse response = new CreateUserResponse { IsSuccess = result.Succeeded };
         if (result.Succeeded)
-            response.Message = "User Created Successful."; //todo: dil desteği eklenecek
+        {
+            AppUser user = await _userManager.FindByEmailAsync(model.Email);
+            await _userManager.AddToRoleAsync(user, "User");
+
+            response.Message = "Created successfully.";
+        }
         else
+        {
             foreach (var error in result.Errors)
+            {
                 response.Message += $"{error.Code} - {error.Description}\n";
+            }
+        }
         return response;
     }
+
 
     public async Task UpdateRefreshTokenAsync(string refreshToken, AppUser user, DateTime accessTokenDateTime,
         int refreshTokenLifetime)
@@ -113,7 +123,7 @@ public class UserService : IUserService
 
     public async Task<List<RoleDto>> GetRolesToUserAsync(string userIdOrName)
     {
-        //kullanıcıların rollerini getirir.
+        
         AppUser user = await _userManager.FindByIdAsync(userIdOrName);
         if (user == null)
             user = await _userManager.FindByNameAsync(userIdOrName);
