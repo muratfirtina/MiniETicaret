@@ -12,6 +12,7 @@ namespace MiniETicaret.Persistence.Services;
 public class CartService:ICartService
 
 {
+    readonly IProductReadRepository _productReadRepository;
     readonly IHttpContextAccessor _httpContextAccessor;
     readonly UserManager<AppUser> _userManager;
     readonly IOrderReadRepository _orderReadRepository;
@@ -19,8 +20,9 @@ public class CartService:ICartService
     readonly ICartReadRepository _cartReadRepository;
     readonly ICartItemWriteRepository _cartItemWriteRepository;
     readonly ICartItemReadRepository _cartItemReadRepository;
+    readonly IProductService _productService;
 
-    public CartService(IHttpContextAccessor httpContextAccessor, UserManager<AppUser> userManager, IOrderReadRepository orderReadRepository, ICartWriteRepository cartWriteRepository, ICartItemWriteRepository cartItemWriteRepository, ICartItemReadRepository cartItemReadRepository, ICartReadRepository cartReadRepository)
+    public CartService(IHttpContextAccessor httpContextAccessor, UserManager<AppUser> userManager, IOrderReadRepository orderReadRepository, ICartWriteRepository cartWriteRepository, ICartItemWriteRepository cartItemWriteRepository, ICartItemReadRepository cartItemReadRepository, ICartReadRepository cartReadRepository, IProductReadRepository productReadRepository, IProductService productService)
     {
         _httpContextAccessor = httpContextAccessor;
         _userManager = userManager;
@@ -29,6 +31,8 @@ public class CartService:ICartService
         _cartItemWriteRepository = cartItemWriteRepository;
         _cartItemReadRepository = cartItemReadRepository;
         _cartReadRepository = cartReadRepository;
+        _productReadRepository = productReadRepository;
+        _productService = productService;
     }
     private async Task<Cart?> ContextUser()
     {
@@ -83,39 +87,70 @@ public class CartService:ICartService
     public async Task AddItemToCartAsync(VM_Create_CartItem cartItem)
     {
         Cart? cart = await ContextUser();
-        if (cart != null)
+
+        // Ürünün stoğunu kontrol etmek için, stoğun güncel durumunu alın
+        int productStock = await _productService.GetProductStockAsync(cartItem.ProductId);
+
+        if (productStock <= 0)
         {
-            CartItem _cartItem = await _cartItemReadRepository
-                .GetSingleAsync(ci => ci.CartId == cart.Id && ci.ProductId == Guid.Parse(cartItem.ProductId));
-            if (_cartItem != null)
+            throw new Exception("Product stock is not enough.");
+        }
+
+        CartItem _cartItem = await _cartItemReadRepository
+            .GetSingleAsync(ci => ci.CartId == cart.Id && ci.ProductId == Guid.Parse(cartItem.ProductId));
+    
+        if (_cartItem != null)
+        {
+            if (_cartItem.Quantity < productStock)
             {
                 _cartItem.Quantity++;
+            
                 if (!cartItem.IsChecked) // Eğer işaret kaldırıldıysa
                     _cartItem.IsChecked = false;
             }
             else
             {
-                await _cartItemWriteRepository.AddAsync(new()
-                {
-                    CartId = cart.Id,
-                    ProductId = Guid.Parse(cartItem.ProductId),
-                    Quantity = cartItem.Quantity,
-                    IsChecked = cartItem.IsChecked // Varsayılan olarak true
-                });
+                throw new Exception("Product stock is not enough.");
             }
-        
-            await _cartItemWriteRepository.SaveAsync();
         }
+        else
+        {
+            await _cartItemWriteRepository.AddAsync(new CartItem
+            {
+                CartId = cart.Id,
+                ProductId = Guid.Parse(cartItem.ProductId),
+                Quantity = 1,
+                IsChecked = cartItem.IsChecked // Varsayılan olarak true
+            });
+        }
+
+        await _cartItemWriteRepository.SaveAsync();
     }
+
 
     public async Task UpdateQuantityAsync(VM_Update_CartItem cartItem)
     {
         CartItem? _cartItem = await _cartItemReadRepository.GetByIdAsync(cartItem.CartItemId);
-        if (_cartItem != null)
+        
+        Product? product = await _productReadRepository.GetByIdAsync(_cartItem.ProductId.ToString());
+        
+        // Eğer stoktan fazla ürün eklenmek isteniyorsa veya 1 den küçük bir değer girilirse hata fırlatılıyor.
+        if (cartItem.Quantity > product.Stock || cartItem.Quantity < 1)
+            throw new Exception("Invalid quantity.");
+
+        if (cartItem.Quantity == 0)
+        {
+            await RemoveCartItemAsync(cartItem.CartItemId);
+            
+        }
+        else
         {
             _cartItem.Quantity = cartItem.Quantity;
             await _cartItemWriteRepository.SaveAsync();
         }
+        
+        
+        
     }
 
     public async Task RemoveCartItemAsync(string cartItemId)

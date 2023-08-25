@@ -1,46 +1,32 @@
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using MiniETicaret.Application.Abstractions.Services;
 using MiniETicaret.Application.Repositories;
 
 namespace MiniETicaret.Application.Features.Queries.Product.GetAllProduct;
 
 public class GetAllProductQueryHandler : IRequestHandler<GetAllProductQueryRequest, GetAllProductQueryResponse>
 {
-    readonly IProductReadRepository _productReadRepository;
-    readonly ILogger<GetAllProductQueryHandler> _logger;
+    readonly IProductService _productService;
+    //readonly ILogger<GetAllProductQueryHandler> _logger;
 
-    public GetAllProductQueryHandler(IProductReadRepository productReadRepository, ILogger<GetAllProductQueryHandler> logger)
+    public GetAllProductQueryHandler(ILogger<GetAllProductQueryHandler> logger, IProductService productService)
     {
-        _productReadRepository = productReadRepository;
-        _logger = logger;
+        _productService = productService;
+        
+        //_logger = logger;
     }
 
     public async Task<GetAllProductQueryResponse> Handle(GetAllProductQueryRequest request, CancellationToken cancellationToken)
     {
-        _logger.LogInformation("Get All Product");
+       // _logger.LogInformation("Get All Product");
         
-        var totalProductCount = _productReadRepository.GetAll(false).Count();
-        var products = await _productReadRepository.GetAll(false)
-            .OrderBy(p => p.Id)
-            .Skip(request.Page * request.Size)
-            .Take(request.Size)
-            .Include(p => p.ProductImageFiles)
-            .Select(p => new
-            {
-                p.Id,
-                p.Name,
-                p.Price,
-                p.Stock,
-                p.CreatedDate,
-                p.UpdatedDate,
-                p.ProductImageFiles
-            }).ToListAsync();
-        return new()
-        {
-            TotalProductCount = totalProductCount,
-            Products = products
-
-        };
+       var data = await _productService.GetAllProductsAsync(request.Page, request.Size);
+       return new()
+       {
+           Products = data.Products,
+           TotalProductCount = data.TotalProductCount
+       };
     }
 }

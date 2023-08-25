@@ -4,6 +4,7 @@ using MiniETicaret.Application.Abstractions.Services;
 using MiniETicaret.Application.DTOs.Order;
 using MiniETicaret.Application.DTOs.ProductImage;
 using MiniETicaret.Application.Repositories;
+using MiniETicaret.Application.ViewModels.Products;
 using MiniETicaret.Domain.Entities;
 
 namespace MiniETicaret.Persistence.Services;
@@ -15,20 +16,22 @@ public class OrderService: IOrderService
     readonly ICompletedOrderWriteRepository _completedOrderWriteRepository;
     readonly ICompletedOrderReadRepository _completedOrderReadRepository;
     readonly ICartService _cartService;
+    readonly IProductService _productService;
 
-    public OrderService(IOrderWriteRepository orderWriteRepository, ICartService cartService, IOrderReadRepository orderReadRepository, ICompletedOrderWriteRepository completedOrderWriteRepository, ICompletedOrderReadRepository completedOrderReadRepository)
+    public OrderService(IOrderWriteRepository orderWriteRepository, ICartService cartService, IOrderReadRepository orderReadRepository, ICompletedOrderWriteRepository completedOrderWriteRepository, ICompletedOrderReadRepository completedOrderReadRepository, IProductService productService)
     {
         _orderWriteRepository = orderWriteRepository;
         _cartService = cartService;
         _orderReadRepository = orderReadRepository;
         _completedOrderWriteRepository = completedOrderWriteRepository;
         _completedOrderReadRepository = completedOrderReadRepository;
+        _productService = productService;
     }
 
     public async Task CreateOrderAsync(CreateOrder createOrder)
     {
         Cart? cart = await _cartService.GetUserActiveCart();
-
+        
         // Seçili olan ürünleri siparişe bağla
         var selectedCartItems = cart?.CartItems.Where(ci => ci.IsChecked).ToList();
         if (selectedCartItems != null && selectedCartItems.Count == 0)
@@ -36,6 +39,16 @@ public class OrderService: IOrderService
             throw new Exception("Sipariş vermek için seçili ürün bulunamadı.");//todo: dil desteği eklenecek
         }
 
+        // Seçili ürünlerin stok kontrolü
+        foreach (var cartItem in selectedCartItems)
+        {
+            if (cartItem.Quantity > cartItem.Product.Stock)
+            {
+                throw new Exception($"{cartItem.Product.Name} ürününden {cartItem.Quantity} adet sipariş verilemez. Stokta {cartItem.Product.Stock} adet ürün bulunmaktadır.");//todo: dil desteği eklenecek
+            }
+            
+        }
+        
         // Yeni bir sipariş oluştur
         var orderCode = (new Random().NextDouble() * 10000).ToString(CultureInfo.InvariantCulture);
         orderCode = orderCode.Substring(orderCode.IndexOf(".", StringComparison.Ordinal) + 1, orderCode.Length - orderCode.IndexOf(".", StringComparison.Ordinal) - 1);
@@ -67,7 +80,7 @@ public class OrderService: IOrderService
             cart.User.Carts.Add(newCart); // Yeni kartı kullanıcıya ekle
         }
 
-        // Seçili ürünleri siparişe bağla
+        // Seçili ürünleri siparişe bağla. Bu bloğa gerek olmayabilir. sonra tekrar bakılacak
         if (selectedCartItems != null)
             foreach (var cartItem in selectedCartItems)
             {
@@ -78,6 +91,14 @@ public class OrderService: IOrderService
         // Siparişi kaydet
         await _orderWriteRepository.AddAsync(newOrder);
         await _orderWriteRepository.SaveAsync();
+        
+        //Siparişi verilen ürünlerin sipariş miktarı kadar stoktan düşürülmesi
+        foreach (var cartItem in selectedCartItems)
+        {
+            await _productService.UpdateProductOrderStockAsync(cartItem.ProductId.ToString(), cartItem.Quantity);
+            
+        }
+        
     }
 
     public async Task<ListOrder> GetAllOrdersAsync(int page, int size)

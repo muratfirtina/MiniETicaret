@@ -1,6 +1,7 @@
 using FluentValidation;
 using MediatR;
 using MiniETicaret.Application.Abstractions.Hubs;
+using MiniETicaret.Application.Abstractions.Services;
 using MiniETicaret.Application.Repositories;
 using MiniETicaret.Application.ViewModels.Products;
 
@@ -8,15 +9,16 @@ namespace MiniETicaret.Application.Features.Commands.Product.CreateProduct;
 
 public class CreateProductCommandHandler:IRequestHandler<CreateProductCommandRequest,CreateProductCommandResponse>
 {
-    readonly IProductWriteRepository _productWriteRepository;
+    readonly IProductService _productService;
     readonly IProductHubService _productHubService;
     readonly IValidator<VM_Create_Product> _validator;
 
-    public CreateProductCommandHandler(IProductWriteRepository productWriteRepository, IProductHubService productHubService, IValidator<VM_Create_Product> validator)
+    public CreateProductCommandHandler(IProductHubService productHubService, IValidator<VM_Create_Product> validator, IProductService productService)
     {
-        _productWriteRepository = productWriteRepository;
+        
         _productHubService = productHubService;
         _validator = validator;
+        _productService = productService;
     }
 
     public async Task<CreateProductCommandResponse> Handle(CreateProductCommandRequest request,
@@ -28,14 +30,14 @@ public class CreateProductCommandHandler:IRequestHandler<CreateProductCommandReq
             var validationErrors = validationResult.Errors.Select(error => error.ErrorMessage);
             throw new ArgumentException(string.Join(Environment.NewLine, validationErrors));
         }
-        await _productWriteRepository.AddAsync(new()
+        await _productService.CreateProductAsync(new()
         {
             Name = request.Name,
             Price = request.Price,
             Stock = request.Stock
         });
-        await _productWriteRepository.SaveAsync();
         await _productHubService.ProductAddedMessageAsync($"{request.Name} added.");
         return new();
+        
     }
 }
