@@ -17,13 +17,10 @@ public class OrderService : IOrderService
     readonly ICompletedOrderReadRepository _completedOrderReadRepository;
     readonly ICartService _cartService;
     readonly IProductService _productService;
-    readonly ICartItemReadRepository _cartItemReadRepository;
-    readonly ICartItemWriteRepository _cartItemWriteRepository;
 
     public OrderService(IOrderWriteRepository orderWriteRepository, ICartService cartService,
         IOrderReadRepository orderReadRepository, ICompletedOrderWriteRepository completedOrderWriteRepository,
-        ICompletedOrderReadRepository completedOrderReadRepository, IProductService productService,
-        ICartItemReadRepository cartItemReadRepository, ICartItemWriteRepository cartItemWriteRepository)
+        ICompletedOrderReadRepository completedOrderReadRepository, IProductService productService)
     {
         _orderWriteRepository = orderWriteRepository;
         _cartService = cartService;
@@ -31,8 +28,7 @@ public class OrderService : IOrderService
         _completedOrderWriteRepository = completedOrderWriteRepository;
         _completedOrderReadRepository = completedOrderReadRepository;
         _productService = productService;
-        _cartItemReadRepository = cartItemReadRepository;
-        _cartItemWriteRepository = cartItemWriteRepository;
+
     }
 
     public async Task CreateOrderAsync(CreateOrder createOrder)
@@ -236,21 +232,36 @@ public class OrderService : IOrderService
 
     public async Task<bool> RemoveOrderItemAsync(string? cartItemId)
     {
-        //gelen cartItemId değerini bul ve sil.
-        CartItem? cartItem = await _cartItemReadRepository.Table.Include(ci => ci.Cart)
+        //order ların içinde gelen cartItemId ye sahip olan cartItem ı bul
+        Order? order = await _orderReadRepository.Table.Include(o => o.Cart)
             .ThenInclude(c => c.CartItems)
-            .FirstOrDefaultAsync(ci => ci.Id == Guid.Parse(cartItemId));
+            .FirstOrDefaultAsync(o => o.Cart.CartItems.Any(ci => ci.Id == Guid.Parse(cartItemId)));
+        
+        //ürünün stok miktarını arttır
+        await _productService.UpdateProductOrderStockAsync(order.Cart.CartItems
+            .FirstOrDefault(ci => ci.Id == Guid.Parse(cartItemId)).ProductId.ToString(), -order.Cart.CartItems
+            .FirstOrDefault(ci => ci.Id == Guid.Parse(cartItemId)).Quantity);
+        
+        //cartItem ı order dan sil
+        order?.Cart.CartItems.Remove(order.Cart.CartItems.FirstOrDefault(ci => ci.Id == Guid.Parse(cartItemId)));
 
-        //ürünün çıkarılması durumunda ürünlerin stoklarına çıkarılan sipariş miktarı kadar eklenmesi.
-        await _productService.UpdateProductOrderStockAsync(cartItem.ProductId.ToString(), -cartItem.Quantity);
-
-        //sipariş ile o cartItem arasındaki ilişkinin kaldırılması
-        cartItem.Cart.CartItems.Remove(cartItem);
-
-
-        await _cartItemWriteRepository.RemoveAsync(cartItemId);
-        await _cartItemWriteRepository.SaveAsync();
+        //order içinde cartItem kalmadıysa order ı sil
+        if (order?.Cart.CartItems.Count <1)
+        {
+            await DeleteOrder(order.Id.ToString());
+        }
+        //cart içinde cartItem kalmadıysa cart ı sil
+        if (order?.Cart.CartItems.Count <1)
+        {
+            await _cartService.RemoveCartAsync(order.Cart.Id.ToString());
+        }
+        
+        //order ı güncelle
+        await _orderWriteRepository.SaveAsync();
         return true;
+        
+        
+
     }
 
     public async Task<bool> DeleteOrder(string id)
@@ -268,6 +279,9 @@ public class OrderService : IOrderService
 
         //siparişler ile cart arasındaki ilişkinin kaldırılması
         _order.Cart.CartItems.Clear();
+        
+        //cart ın kullanıcı ile ilişkisinin kaldırılması
+        //_order.Cart.User.Carts.Remove(_order.Cart);
 
         await _orderWriteRepository.RemoveAsync(id);
         await _orderWriteRepository.SaveAsync();

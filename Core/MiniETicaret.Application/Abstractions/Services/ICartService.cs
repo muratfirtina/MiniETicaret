@@ -11,6 +11,7 @@ public interface ICartService
     public Task RemoveCartItemAsync(string cartItemId);
     public Task UpdateCartItemAsync(VM_Update_CartItem cartItem);
     public Task<Cart?> GetUserActiveCart();
+    Task<bool>RemoveCartAsync(string cartId);
 
 
 

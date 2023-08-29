@@ -181,4 +181,15 @@ public class CartService:ICartService
             .ThenInclude(p => p.ProductImageFiles)
             .FirstOrDefaultAsync(c => c.Id == cart.Id);
     }
+    
+    public async Task<bool> RemoveCartAsync(string cartId)
+    {
+        Cart? cart = await _cartReadRepository.GetByIdAsync(cartId);
+        if (cart != null)
+        {
+            _cartWriteRepository.Remove(cart);
+            await _cartWriteRepository.SaveAsync();
+        }
+        return true;
+    }
 }
