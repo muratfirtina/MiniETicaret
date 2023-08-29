@@ -19,7 +19,7 @@ public class CompleteOrderCommandHandler: IRequestHandler<CompleteOrderCommandRe
     {
         (bool succeeded, CompleteOrderDto dto)  = await _orderService.CompleteOrderAsync(request.Id);
         if (succeeded)
-            _mailService.SendCompletedOrderEmailAsync(dto.EMail, dto.OrderCode, dto.OrderDescription, dto.OrderAddress, dto.OrderCreatedDate, dto.UserName, dto.OrderCartItems, dto.OrderTotalPrice);
+            _mailService.SendCompletedOrderEmailAsync(dto.Email, dto.OrderCode, dto.OrderDescription, dto.OrderAddress, dto.OrderCreatedDate, dto.UserName, dto.OrderCartItems, dto.OrderTotalPrice);
         
         return new ();
     }

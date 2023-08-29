@@ -9,7 +9,7 @@ using MiniETicaret.Domain.Entities;
 
 namespace MiniETicaret.Persistence.Services;
 
-public class OrderService: IOrderService
+public class OrderService : IOrderService
 {
     readonly IOrderWriteRepository _orderWriteRepository;
     readonly IOrderReadRepository _orderReadRepository;
@@ -17,8 +17,13 @@ public class OrderService: IOrderService
     readonly ICompletedOrderReadRepository _completedOrderReadRepository;
     readonly ICartService _cartService;
     readonly IProductService _productService;
+    readonly ICartItemReadRepository _cartItemReadRepository;
+    readonly ICartItemWriteRepository _cartItemWriteRepository;
 
-    public OrderService(IOrderWriteRepository orderWriteRepository, ICartService cartService, IOrderReadRepository orderReadRepository, ICompletedOrderWriteRepository completedOrderWriteRepository, ICompletedOrderReadRepository completedOrderReadRepository, IProductService productService)
+    public OrderService(IOrderWriteRepository orderWriteRepository, ICartService cartService,
+        IOrderReadRepository orderReadRepository, ICompletedOrderWriteRepository completedOrderWriteRepository,
+        ICompletedOrderReadRepository completedOrderReadRepository, IProductService productService,
+        ICartItemReadRepository cartItemReadRepository, ICartItemWriteRepository cartItemWriteRepository)
     {
         _orderWriteRepository = orderWriteRepository;
         _cartService = cartService;
@@ -26,17 +31,19 @@ public class OrderService: IOrderService
         _completedOrderWriteRepository = completedOrderWriteRepository;
         _completedOrderReadRepository = completedOrderReadRepository;
         _productService = productService;
+        _cartItemReadRepository = cartItemReadRepository;
+        _cartItemWriteRepository = cartItemWriteRepository;
     }
 
     public async Task CreateOrderAsync(CreateOrder createOrder)
     {
         Cart? cart = await _cartService.GetUserActiveCart();
-        
+
         // Seçili olan ürünleri siparişe bağla
         var selectedCartItems = cart?.CartItems.Where(ci => ci.IsChecked).ToList();
         if (selectedCartItems != null && selectedCartItems.Count == 0)
         {
-            throw new Exception("Sipariş vermek için seçili ürün bulunamadı.");//todo: dil desteği eklenecek
+            throw new Exception("Sipariş vermek için seçili ürün bulunamadı."); //todo: dil desteği eklenecek
         }
 
         // Seçili ürünlerin stok kontrolü
@@ -44,14 +51,15 @@ public class OrderService: IOrderService
         {
             if (cartItem.Quantity > cartItem.Product.Stock)
             {
-                throw new Exception($"{cartItem.Product.Name} ürününden {cartItem.Quantity} adet sipariş verilemez. Stokta {cartItem.Product.Stock} adet ürün bulunmaktadır.");//todo: dil desteği eklenecek
+                throw new Exception(
+                    $"{cartItem.Product.Name} ürününden {cartItem.Quantity} adet sipariş verilemez. Stokta {cartItem.Product.Stock} adet ürün bulunmaktadır."); //todo: dil desteği eklenecek
             }
-            
         }
-        
+
         // Yeni bir sipariş oluştur
         var orderCode = (new Random().NextDouble() * 10000).ToString(CultureInfo.InvariantCulture);
-        orderCode = orderCode.Substring(orderCode.IndexOf(".", StringComparison.Ordinal) + 1, orderCode.Length - orderCode.IndexOf(".", StringComparison.Ordinal) - 1);
+        orderCode = orderCode.Substring(orderCode.IndexOf(".", StringComparison.Ordinal) + 1,
+            orderCode.Length - orderCode.IndexOf(".", StringComparison.Ordinal) - 1);
         Order newOrder = new Order
         {
             Id = Guid.Parse(createOrder.CartId),
@@ -91,14 +99,12 @@ public class OrderService: IOrderService
         // Siparişi kaydet
         await _orderWriteRepository.AddAsync(newOrder);
         await _orderWriteRepository.SaveAsync();
-        
+
         //Siparişi verilen ürünlerin sipariş miktarı kadar stoktan düşürülmesi
         foreach (var cartItem in selectedCartItems)
         {
             await _productService.UpdateProductOrderStockAsync(cartItem.ProductId.ToString(), cartItem.Quantity);
-            
         }
-        
     }
 
     public async Task<ListOrder> GetAllOrdersAsync(int page, int size)
@@ -110,9 +116,8 @@ public class OrderService: IOrderService
             .ThenInclude(ci => ci.Product);
 
 
+        var data = query.OrderBy(o => o.CreatedDate).Skip(page * size).Take(size);
 
-        var data = query.OrderBy(o=>o.CreatedDate).Skip(page * size).Take(size);
-        
         var data2 = from order in data
             join completedOrder in _completedOrderReadRepository.Table
                 on order.Id equals completedOrder.OrderId into co
@@ -125,11 +130,11 @@ public class OrderService: IOrderService
                 Cart = order.Cart,
                 Completed = _co != null ? true : false
             };
-        
+
         return new()
         {
             TotalOrderCount = await query.CountAsync(),
-            Orders = await data2.Select(o=> new 
+            Orders = await data2.Select(o => new
             {
                 Id = o.Id,
                 OrderCode = o.OrderCode,
@@ -137,10 +142,8 @@ public class OrderService: IOrderService
                 TotalPrice = o.Cart.CartItems.Sum(ci => ci.Product.Price * ci.Quantity),
                 CreatedDate = o.CreatedDate,
                 o.Completed
-                
             }).ToListAsync()
         };
-
     }
 
     public async Task<SingleOrder> GetOrderByIdAsync(string id)
@@ -149,22 +152,22 @@ public class OrderService: IOrderService
             .Include(o => o.Cart)
             .ThenInclude(c => c.CartItems)
             .ThenInclude(ci => ci.Product);
-            //.FirstOrDefaultAsync(o => o.Id == Guid.Parse(id));
-            
-            var data2 = await (from order in data
-                join completedOrder in _completedOrderReadRepository.Table
-                    on order.Id equals completedOrder.OrderId into co
-                from _co in co.DefaultIfEmpty()
-                select new
-                {
-                    Id = order.Id,
-                    CreatedDate = order.CreatedDate,
-                    OrderCode = order.OrderCode,
-                    Cart = order.Cart,
-                    Completed = _co != null ? true : false,
-                    Address = order.Address,
-                    Description = order.Description
-                }).FirstOrDefaultAsync(o => o.Id == Guid.Parse(id));
+        //.FirstOrDefaultAsync(o => o.Id == Guid.Parse(id));
+
+        var data2 = await (from order in data
+            join completedOrder in _completedOrderReadRepository.Table
+                on order.Id equals completedOrder.OrderId into co
+            from _co in co.DefaultIfEmpty()
+            select new
+            {
+                Id = order.Id,
+                CreatedDate = order.CreatedDate,
+                OrderCode = order.OrderCode,
+                Cart = order.Cart,
+                Completed = _co != null ? true : false,
+                Address = order.Address,
+                Description = order.Description
+            }).FirstOrDefaultAsync(o => o.Id == Guid.Parse(id));
 
         return new()
         {
@@ -176,12 +179,12 @@ public class OrderService: IOrderService
             Completed = data2.Completed,
             CartItems = data2.Cart.CartItems.Select(ci => new
             {
+                ci.Id,
                 ci.Product.Name,
                 ci.Product.Price,
                 ci.Quantity,
             })
         };
-        
     }
 
     public async Task<(bool, CompleteOrderDto)> CompleteOrderAsync(string id)
@@ -222,7 +225,7 @@ public class OrderService: IOrderService
                 OrderDescription = order.Description,
                 UserName = order.Cart.User.UserName,
                 OrderCreatedDate = order.CreatedDate,
-                EMail = order.Cart.User.Email,
+                Email = order.Cart.User.Email,
                 OrderCartItems = orderCartItems,
                 OrderTotalPrice = orderTotalPrice
             });
@@ -231,7 +234,43 @@ public class OrderService: IOrderService
         return (false, null);
     }
 
+    public async Task<bool> RemoveOrderItemAsync(string? cartItemId)
+    {
+        //gelen cartItemId değerini bul ve sil.
+        CartItem? cartItem = await _cartItemReadRepository.Table.Include(ci => ci.Cart)
+            .ThenInclude(c => c.CartItems)
+            .FirstOrDefaultAsync(ci => ci.Id == Guid.Parse(cartItemId));
+
+        //ürünün çıkarılması durumunda ürünlerin stoklarına çıkarılan sipariş miktarı kadar eklenmesi.
+        await _productService.UpdateProductOrderStockAsync(cartItem.ProductId.ToString(), -cartItem.Quantity);
+
+        //sipariş ile o cartItem arasındaki ilişkinin kaldırılması
+        cartItem.Cart.CartItems.Remove(cartItem);
 
 
-    
+        await _cartItemWriteRepository.RemoveAsync(cartItemId);
+        await _cartItemWriteRepository.SaveAsync();
+        return true;
+    }
+
+    public async Task<bool> DeleteOrder(string id)
+    {
+        Order _order = await _orderReadRepository.Table.Include(o => o.Cart)
+            .ThenInclude(c => c.CartItems)
+            .ThenInclude(ci => ci.Product)
+            .FirstOrDefaultAsync(o => o.Id == Guid.Parse(id));
+
+        //Siparişin iptal edilmesi durumunda ürünlerin stoklarına iptal edilen sipariş miktarı kadar eklenmesi.
+        foreach (var cartItem in _order.Cart.CartItems)
+        {
+            await _productService.UpdateProductOrderStockAsync(cartItem.ProductId.ToString(), -cartItem.Quantity);
+        }
+
+        //siparişler ile cart arasındaki ilişkinin kaldırılması
+        _order.Cart.CartItems.Clear();
+
+        await _orderWriteRepository.RemoveAsync(id);
+        await _orderWriteRepository.SaveAsync();
+        return true;
+    }
 }

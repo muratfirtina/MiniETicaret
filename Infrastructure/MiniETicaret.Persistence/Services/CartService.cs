@@ -71,7 +71,7 @@ public class CartService:ICartService
         throw new Exception("Unexpected error occured.");
     }
 
-    public async Task<List<CartItem>> GetCartItemsAsync()
+    public async Task<List<CartItem?>> GetCartItemsAsync()
     {
         Cart? cart = await ContextUser();
         Cart? result = await _cartReadRepository.Table

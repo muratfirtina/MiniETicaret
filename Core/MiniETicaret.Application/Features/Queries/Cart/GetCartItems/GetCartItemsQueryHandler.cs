@@ -1,5 +1,6 @@
 using MediatR;
 using MiniETicaret.Application.Abstractions.Services;
+using MiniETicaret.Domain.Entities;
 
 namespace MiniETicaret.Application.Features.Queries.Cart.GetCartItems;
 

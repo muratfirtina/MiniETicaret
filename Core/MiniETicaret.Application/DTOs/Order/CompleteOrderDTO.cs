@@ -9,6 +9,6 @@ public class CompleteOrderDto
     public DateTime OrderCreatedDate { get; set; }
     public string UserName { get; set; }
     public List<OrderCartItemDto> OrderCartItems { get; set; }
-    public string EMail { get; set; }
+    public string Email { get; set; }
 
 }

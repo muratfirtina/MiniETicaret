@@ -11,6 +11,8 @@ using MiniETicaret.Application.CustomAttributes;
 using MiniETicaret.Application.Enums;
 using MiniETicaret.Application.Features.Commands.Order.CompleteOrder;
 using MiniETicaret.Application.Features.Commands.Order.CreateOrder;
+using MiniETicaret.Application.Features.Commands.Order.RemoveOrder;
+using MiniETicaret.Application.Features.Commands.Order.RemoveOrderItem;
 using MiniETicaret.Application.Features.Queries.Order.GetAllOrders;
 using MiniETicaret.Application.Features.Queries.Order.GetOrderById;
 
@@ -57,6 +59,24 @@ public class OrdersController : ControllerBase
     public async Task<IActionResult> CompleteOrder( [FromRoute] CompleteOrderCommandRequest completeOrderCommandRequest)
     {
         CompleteOrderCommandResponse response = await _mediator.Send(completeOrderCommandRequest);
+        return Ok(response);
+    }
+    
+    
+    [HttpDelete("remove-order-item/{cartItemId}")]
+    [AuthorizeDefinition(Menu = AuthorizeDefinitionConstants.Orders, ActionType = ActionType.Deleting, Definition = "Remove Order Item")]
+    public async Task<IActionResult> RemoveOrderItem([FromRoute]RemoveOrderItemCommandRequest removeOrderItemCommandRequest)
+    {
+        RemoveOrderItemCommandResponse response = await _mediator.Send(removeOrderItemCommandRequest);
+    
+        return Ok(response);
+    }
+    
+    [HttpDelete("{id}")]
+    [AuthorizeDefinition(Menu = AuthorizeDefinitionConstants.Orders, ActionType = ActionType.Deleting, Definition = "Remove Order")]
+    public async Task<IActionResult> RemoveOrder([FromRoute] RemoveOrderCommandRequest removeOrderCommandRequest)
+    {
+        RemoveOrderCommandResponse response = await _mediator.Send(removeOrderCommandRequest);
         return Ok(response);
     }
 }
