@@ -7,4 +7,5 @@ public static class AuthorizeDefinitionConstants
     public const string Products = "Products";
     public const string ApplicationServices = "Application Services";
     public const string Users = "Users";
+    public const string Categories = "Categories";
 }

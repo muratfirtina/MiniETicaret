@@ -14,13 +14,15 @@ public class ProductService : IProductService
     readonly IProductReadRepository _productReadRepository;
     readonly IProductWriteRepository _productWriteRepository;
     readonly IQrCodeService _qrCodeService;
+    readonly ICategoryService _categoryService;
 
     public ProductService(IProductReadRepository productReadRepository, IQrCodeService qrCodeService,
-        IProductWriteRepository productWriteRepository)
+        IProductWriteRepository productWriteRepository, ICategoryService categoryService)
     {
         _productReadRepository = productReadRepository;
         _qrCodeService = qrCodeService;
         _productWriteRepository = productWriteRepository;
+        _categoryService = categoryService;
     }
 
     public async Task<ListProductDto> GetAllProductsAsync(int page, int size)
@@ -65,25 +67,32 @@ public class ProductService : IProductService
         var product = await _productReadRepository.ExistAsync(p => p.Name == createProductmodel.Name);
         if (product)
             throw new Exception("Product already exists.");
-        //bu isimde bir product yoksa yeni bir bir productdto oluştur.
+        
         var productDto = new ProductDto
         {
             Id = Guid.NewGuid().ToString(),
             Name = createProductmodel.Name,
             Price = createProductmodel.Price,
-            Stock = createProductmodel.Stock
+            Stock = createProductmodel.Stock,
+            CategoryName = createProductmodel.CategoryName,
+            CategoryId = (await _categoryService.GetCategoryIdByNameAsync(createProductmodel.CategoryName)).Id
+            
+            
         };
-        //productdto'yu product nesnesine çevir.
+        
         var newProduct = new Product
         {
+            Id = Guid.Parse(productDto.Id),
             Name = productDto.Name,
             Price = productDto.Price,
-            Stock = productDto.Stock
+            Stock = productDto.Stock,
+            CategoryId = Guid.Parse(productDto.CategoryId)
+            
         };
-        //product nesnesini veritabanına kaydet.
+        
         await _productWriteRepository.AddAsync(newProduct);
         await _productWriteRepository.SaveAsync();
-        //productdto'yu geri döndür.
+        
         return productDto;
     }
 

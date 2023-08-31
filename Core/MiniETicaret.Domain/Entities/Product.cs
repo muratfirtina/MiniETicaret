@@ -11,5 +11,8 @@ public class Product : BaseEntity
     //public ICollection<Order> Orders { get; set; }
     public ICollection<ProductImageFile> ProductImageFiles { get; set; }
     public ICollection<CartItem> CartItems { get; set; }
+    public Guid? CategoryId { get; set; }
+    public Category? Category { get; set; }
+    
     
 }

@@ -34,7 +34,8 @@ public class CreateProductCommandHandler:IRequestHandler<CreateProductCommandReq
         {
             Name = request.Name,
             Price = request.Price,
-            Stock = request.Stock
+            Stock = request.Stock,
+            CategoryName = request.CategoryName
         });
         await _productHubService.ProductAddedMessageAsync($"{request.Name} added.");
         return new();

@@ -7,6 +7,7 @@ using MiniETicaret.Application.Repositories;
 using MiniETicaret.Domain.Entities.Identity;
 using MiniETicaret.Persistence.Contexts;
 using MiniETicaret.Persistence.Repositories;
+using MiniETicaret.Persistence.Repositories.Category;
 using MiniETicaret.Persistence.Repositories.CopmletedOrder;
 using MiniETicaret.Persistence.Services;
 
@@ -51,6 +52,8 @@ public static class ServiceRegistration
         services.AddScoped<IEndpointWriteRepository, EndpointWriteRepository>();
         services.AddScoped<IAcMenuReadRepository,AcMenuReadRepository>();
         services.AddScoped<IAcMenuWriteRepository,AcMenuWriteRepository>();
+        services.AddScoped<ICategoryReadRepository, CategoryReadRepository>();
+        services.AddScoped<ICategoryWriteRepository, CategoryWriteRepository>();
         
 
         services.AddScoped<IUserService, UserService>();
@@ -62,6 +65,7 @@ public static class ServiceRegistration
         services.AddScoped<IRoleService, RoleService>();
         services.AddScoped<IAuthorizationEndpointService, AuthorizationEndpointService>();
         services.AddScoped<IProductService, ProductService>();
+        services.AddScoped<ICategoryService, CategoryService>();
 
 
     }

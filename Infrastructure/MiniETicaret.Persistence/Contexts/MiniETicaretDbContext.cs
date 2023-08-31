@@ -23,6 +23,7 @@ public class MiniETicaretDbContext : IdentityDbContext<AppUser,AppRole,string>
     public DbSet<CompletedOrder> CompletedOrders { get; set; }
     public DbSet<ACMenu> AcMenus { get; set; }
     public DbSet<Endpoint> Endpoints { get; set; }
+    public DbSet<Category> Categories { get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
@@ -42,6 +43,18 @@ public class MiniETicaretDbContext : IdentityDbContext<AppUser,AppRole,string>
             .HasOne(o => o.CompletedOrder)
             .WithOne(c => c.Order)
             .HasForeignKey<CompletedOrder>(c => c.OrderId);
+        
+        builder.Entity<Category>()
+            .HasMany(c => c.SubCategories)
+            .WithOne(c => c.ParentCategory)
+            .HasForeignKey(c => c.ParentCategoryId)
+            .OnDelete(DeleteBehavior.Cascade);
+        
+        builder.Entity<Product>()
+            .HasOne(p => p.Category)
+            .WithMany(c => c.Products)
+            .HasForeignKey(p => p.CategoryId)
+            .OnDelete(DeleteBehavior.Restrict);
         
         base.OnModelCreating(builder);
     }

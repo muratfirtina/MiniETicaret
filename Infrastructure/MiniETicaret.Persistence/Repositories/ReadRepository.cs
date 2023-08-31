@@ -66,4 +66,11 @@ public class ReadRepository<T> : IReadRepository<T> where T : BaseEntity
             query = query.AsNoTracking();
         return await query.AnyAsync(data => id != null && data.Id == Guid.Parse(id));
     }   
+    public async Task<T> FirstOrDefaultAsync(Expression<Func<T, bool>> method, bool tracking = true)
+    {
+        var query = Table.AsQueryable();
+        if (!tracking)
+            query = query.AsNoTracking();
+        return await query.FirstOrDefaultAsync(method);
+    }
 }
