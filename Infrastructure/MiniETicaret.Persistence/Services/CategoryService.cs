@@ -20,33 +20,32 @@ public class CategoryService:ICategoryService
 
     public async Task<CreateCategoryDto> CreateCategoryAsync(VM_Create_Category vmCreateCategory)
     {
-        // Kontrol edilecek adımdan önce var olan bir kategori var mı diye kontrol edin.
+        
         var categoryExists = await _categoryReadRepository.ExistAsync(c => c.Name == vmCreateCategory.Name);
 
         if (categoryExists)
         {
-            throw new Exception("Bu isimde bir kategori zaten var.");
+            throw new Exception("Category already exists.");
         }
 
-        // ParentCategoryId ve ParentCategoryName değerlerini varsayılan olarak ayarlayın.
+        
         Guid? parentCategoryId = null;
         string parentCategoryName = null;
 
         if (!string.IsNullOrEmpty(vmCreateCategory.ParentCategoryName))
         {
-            // Eğer ParentCategoryName değeri girilmişse, ilgili üst kategoriyi veritabanından bulun.
+            
             var parentCategory = await _categoryReadRepository.FirstOrDefaultAsync(c => c.Name == vmCreateCategory.ParentCategoryName);
 
             if (parentCategory == null)
             {
-                throw new Exception("Belirtilen üst kategori bulunamadı.");
+                throw new Exception("Parent category not found.");
             }
 
             parentCategoryId = parentCategory.Id;
             parentCategoryName = parentCategory.Name;
         }
-
-        // Yeni kategori oluşturulacak veriyi hazırlayın.
+        
         var createCategoryDto = new CreateCategoryDto
         {
             CategoryId = Guid.NewGuid().ToString(),
@@ -64,10 +63,9 @@ public class CategoryService:ICategoryService
             ParentCategoryId = parentCategoryId
         };
 
-        // Veritabanına yeni kategoriyi ekleyin.
+        
         await _categoryWriteRepository.AddAsync(newCategory);
-    
-        // Tüm işlemleri tamamlayıp veritabanını kaydedin.
+        
         await _categoryWriteRepository.SaveAsync();
 
         return createCategoryDto;

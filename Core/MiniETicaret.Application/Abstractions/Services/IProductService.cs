@@ -12,6 +12,7 @@ public interface IProductService
     Task<ProductStockDto> UpdateProductOrderStockAsync(string productId, int stock);
     Task<int>GetProductStockAsync(string productId);
     Task<ProductDto> GetProductByIdAsync(string productId);
+    
     Task<byte[]> QrCodeToProductAsync(string productId);
     Task StockUpdateWithQrCodeAsync(string productId, int stock);
 }

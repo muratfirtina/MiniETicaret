@@ -27,17 +27,21 @@ public class ProductService : IProductService
 
     public async Task<ListProductDto> GetAllProductsAsync(int page, int size)
     {
-        IQueryable<Product> query = _productReadRepository.GetAll(false)
-            .OrderBy(p => p.CreatedDate);
+        var query = _productReadRepository.GetAll(false)
+            .OrderBy(p=>p.CreatedDate);
+        
+        IQueryable<Product> productsQuery;
 
-        if (page >= 0 && size >= 0)
+        if (page == -1 && size == -1)
         {
-            query = query
-                .Skip(page * size)
-                .Take(size);
+            productsQuery = query;
+        }
+        else
+        {
+            productsQuery = query.Skip(page * size).Take(size);
         }
 
-        var products = await query
+        var products = await productsQuery
             .Include(p => p.ProductImageFiles)
             .Select(p => new
             {

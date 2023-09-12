@@ -1,15 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
-using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using MiniETicaret.Application.Abstractions.Services;
-using MiniETicaret.Application.Abstractions.Storage;
 using MiniETicaret.Application.Consts;
 using MiniETicaret.Application.CustomAttributes;
 using MiniETicaret.Application.Enums;
@@ -23,10 +16,6 @@ using MiniETicaret.Application.Features.Commands.ProductImageFile.UploadProductI
 using MiniETicaret.Application.Features.Queries.Product.GetAllProduct;
 using MiniETicaret.Application.Features.Queries.Product.GetByIdProduct;
 using MiniETicaret.Application.Features.Queries.ProductImageFile.GetProductImages;
-using MiniETicaret.Application.Repositories;
-using MiniETicaret.Application.RequestParameters;
-using MiniETicaret.Application.ViewModels.Products;
-using MiniETicaret.Domain.Entities;
 
 namespace MiniETicaretAPI.Controllers
 {
